@@ -5,7 +5,7 @@ import HeaderInterface from "../headers/headers";
 import BodyInterface from "../body/body";
 
 export default interface Request<
-    Method extends RequestMethod = RequestMethod,
+    Method extends string = string,
     Path extends string = string,
     Headers extends  Record<string, string> = Record<string, string>,
     Body = unknown

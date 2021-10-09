@@ -1,16 +1,16 @@
 {
   "name": "@dikac/t-http",
-  "version": "0.16.3",
+  "version": "0.17.0",
   "description": "Typescript http",
   "dependencies": {
     "@dikac/t-array": "^0.25.15",
     "@dikac/t-code": "^0.2.3",
     "@dikac/t-enum": "^0.10.3",
-    "@dikac/t-map": "^0.10.11",
-    "@dikac/t-message": "^0.11.2",
-    "@dikac/t-number": "^0.16.6",
-    "@dikac/t-object": "^0.36.10",
-    "@dikac/t-string": "^0.15.3"
+    "@dikac/t-map": "^0.10.12",
+    "@dikac/t-message": "^0.11.3",
+    "@dikac/t-number": "^0.16.7",
+    "@dikac/t-object": "^0.36.11",
+    "@dikac/t-string": "^0.15.4"
   },
   "devDependencies": {
     "@types/jasmine": "^3.6.9",
