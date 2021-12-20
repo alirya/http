@@ -3,14 +3,14 @@
   "version": "0.17.0",
   "description": "Typescript http",
   "dependencies": {
-    "@dikac/t-array": "^0.25.15",
-    "@dikac/t-code": "^0.2.3",
-    "@dikac/t-enum": "^0.10.3",
-    "@dikac/t-map": "^0.10.12",
-    "@dikac/t-message": "^0.11.3",
-    "@dikac/t-number": "^0.16.7",
-    "@dikac/t-object": "^0.36.11",
-    "@dikac/t-string": "^0.15.4"
+    "@dikac/t-array": "^0.26.0-alpha.4",
+    "@dikac/t-code": "^0.3.0-alpha.1",
+    "@dikac/t-enum": "^0.12.0-alpha.1",
+    "@dikac/t-map": "^0.11.0-alpha.2",
+    "@dikac/t-message": "^0.12.0-alpha.2",
+    "@dikac/t-number": "^0.17.0-alpha.3",
+    "@dikac/t-object": "^0.37.0-alpha.5",
+    "@dikac/t-string": "^0.16.0-alpha.4"
   },
   "devDependencies": {
     "@types/jasmine": "^3.6.9",
