@@ -14,19 +14,3 @@ export default class RequestClassParameters<
         public body : Body
     ) {}
 }
-//
-// export default function RequestClassParameters<
-//     Method extends string = string,
-//     Path extends string = string,
-//     Headers extends Record<string, string> = Record<string, string>,
-//     Body = unknown
-// >(
-//     method : Method,
-//     path : Path,
-//     headers : Headers,
-//     body : Body,
-// ) : Request<Method, Path, Headers, Body> {
-//
-//
-//
-// }
