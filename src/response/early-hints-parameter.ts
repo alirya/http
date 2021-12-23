@@ -6,6 +6,8 @@ import InferMessage from "@dikac/t-message/message/infer";
 import InferHeader from "../headers/record/infer";
 import InferBody from "../body/value/infer";
 
+export default function EarlyHintsParameter() : Response<103, string, {}, undefined>;
+
 export default function EarlyHintsParameter<
     ResponseType extends Optional<StrictOmit<Response, 'code'>, 'headers'|'body'|'message'>,
 >(

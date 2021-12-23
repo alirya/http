@@ -6,6 +6,8 @@ import InferMessage from "@dikac/t-message/message/infer";
 import InferHeader from "../headers/record/infer";
 import InferBody from "../body/value/infer";
 
+export default function PermanentRedirectParameter() : Response<308, string, {}, undefined>;
+
 export default function PermanentRedirectParameter<
     ResponseType extends Optional<StrictOmit<Response, 'code'>, 'headers'|'body'|'message'>,
 >(

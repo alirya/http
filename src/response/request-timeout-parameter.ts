@@ -6,6 +6,8 @@ import InferMessage from "@dikac/t-message/message/infer";
 import InferHeader from "../headers/record/infer";
 import InferBody from "../body/value/infer";
 
+export default function RequestTimeoutParameter() : Response<408, string, {}, undefined>;
+
 export default function RequestTimeoutParameter<
     ResponseType extends Optional<StrictOmit<Response, 'code'>, 'headers'|'body'|'message'>,
 >(

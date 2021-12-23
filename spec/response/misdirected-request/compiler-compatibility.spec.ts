@@ -3,6 +3,52 @@ import MisdirectedRequestParameters from "../../../dist/response/misdirected-req
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 
+describe("empty", function() {
+
+    describe("parameter", function() {
+
+        let response = MisdirectedRequestParameter();
+
+        let string : string;
+        let number : number;
+        let undef : undefined;
+
+        // @ts-expect-error
+        string = response.headers.etag;
+
+        // @ts-expect-error
+        string = response.body;
+        undef = response.body;
+
+        number = response.code;
+        string = response.message;
+
+    });
+
+    describe("parameters", function() {
+
+        let response = MisdirectedRequestParameters();
+
+
+        let string : string;
+        let number : number;
+        let undef : undefined;
+
+        // @ts-expect-error
+        string = response.headers.etag;
+
+        // @ts-expect-error
+        string = response.body;
+        undef = response.body;
+
+        number = response.code;
+        string = response.message;
+
+    });
+
+});
+
+
 describe("header", function() {
 
     describe("parameter", function() {
@@ -35,6 +81,52 @@ describe("header", function() {
         let number : number;
         let undef : undefined;
 
+        string = response.headers.etag;
+
+        // @ts-expect-error
+        string = response.body;
+        undef = response.body;
+
+        number = response.code;
+        string = response.message;
+
+    });
+
+});
+
+describe("message", function() {
+
+    describe("parameter", function() {
+
+        let response = MisdirectedRequestParameter({
+            message: 'etag data'
+        });
+
+        let string : string;
+        let number : number;
+        let undef : undefined;
+
+        // @ts-expect-error
+        string = response.headers.etag;
+
+        // @ts-expect-error
+        string = response.body;
+        undef = response.body;
+
+        number = response.code;
+        string = response.message;
+
+    });
+
+    describe("parameters", function() {
+
+        let response = MisdirectedRequestParameters('etag data');
+
+        let string : string;
+        let number : number;
+        let undef : undefined;
+
+        // @ts-expect-error
         string = response.headers.etag;
 
         // @ts-expect-error

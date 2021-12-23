@@ -3,6 +3,52 @@ import NotImplementedParameters from "../../../dist/response/not-implemented-par
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 
+describe("empty", function() {
+
+    describe("parameter", function() {
+
+        let response = NotImplementedParameter();
+
+        let string : string;
+        let number : number;
+        let undef : undefined;
+
+        // @ts-expect-error
+        string = response.headers.etag;
+
+        // @ts-expect-error
+        string = response.body;
+        undef = response.body;
+
+        number = response.code;
+        string = response.message;
+
+    });
+
+    describe("parameters", function() {
+
+        let response = NotImplementedParameters();
+
+
+        let string : string;
+        let number : number;
+        let undef : undefined;
+
+        // @ts-expect-error
+        string = response.headers.etag;
+
+        // @ts-expect-error
+        string = response.body;
+        undef = response.body;
+
+        number = response.code;
+        string = response.message;
+
+    });
+
+});
+
+
 describe("header", function() {
 
     describe("parameter", function() {
@@ -35,6 +81,52 @@ describe("header", function() {
         let number : number;
         let undef : undefined;
 
+        string = response.headers.etag;
+
+        // @ts-expect-error
+        string = response.body;
+        undef = response.body;
+
+        number = response.code;
+        string = response.message;
+
+    });
+
+});
+
+describe("message", function() {
+
+    describe("parameter", function() {
+
+        let response = NotImplementedParameter({
+            message: 'etag data'
+        });
+
+        let string : string;
+        let number : number;
+        let undef : undefined;
+
+        // @ts-expect-error
+        string = response.headers.etag;
+
+        // @ts-expect-error
+        string = response.body;
+        undef = response.body;
+
+        number = response.code;
+        string = response.message;
+
+    });
+
+    describe("parameters", function() {
+
+        let response = NotImplementedParameters('etag data');
+
+        let string : string;
+        let number : number;
+        let undef : undefined;
+
+        // @ts-expect-error
         string = response.headers.etag;
 
         // @ts-expect-error

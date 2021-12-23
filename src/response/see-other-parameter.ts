@@ -6,6 +6,8 @@ import InferMessage from "@dikac/t-message/message/infer";
 import InferHeader from "../headers/record/infer";
 import InferBody from "../body/value/infer";
 
+export default function SeeOtherParameter() : Response<303, string, {}, undefined>;
+
 export default function SeeOtherParameter<
     ResponseType extends Optional<StrictOmit<Response, 'code'>, 'headers'|'body'|'message'>,
 >(

@@ -3,6 +3,52 @@ import GatewayTimeoutParameters from "../../../dist/response/gateway-timeout-par
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 
+describe("empty", function() {
+
+    describe("parameter", function() {
+
+        let response = GatewayTimeoutParameter();
+
+        let string : string;
+        let number : number;
+        let undef : undefined;
+
+        // @ts-expect-error
+        string = response.headers.etag;
+
+        // @ts-expect-error
+        string = response.body;
+        undef = response.body;
+
+        number = response.code;
+        string = response.message;
+
+    });
+
+    describe("parameters", function() {
+
+        let response = GatewayTimeoutParameters();
+
+
+        let string : string;
+        let number : number;
+        let undef : undefined;
+
+        // @ts-expect-error
+        string = response.headers.etag;
+
+        // @ts-expect-error
+        string = response.body;
+        undef = response.body;
+
+        number = response.code;
+        string = response.message;
+
+    });
+
+});
+
+
 describe("header", function() {
 
     describe("parameter", function() {
@@ -35,6 +81,52 @@ describe("header", function() {
         let number : number;
         let undef : undefined;
 
+        string = response.headers.etag;
+
+        // @ts-expect-error
+        string = response.body;
+        undef = response.body;
+
+        number = response.code;
+        string = response.message;
+
+    });
+
+});
+
+describe("message", function() {
+
+    describe("parameter", function() {
+
+        let response = GatewayTimeoutParameter({
+            message: 'etag data'
+        });
+
+        let string : string;
+        let number : number;
+        let undef : undefined;
+
+        // @ts-expect-error
+        string = response.headers.etag;
+
+        // @ts-expect-error
+        string = response.body;
+        undef = response.body;
+
+        number = response.code;
+        string = response.message;
+
+    });
+
+    describe("parameters", function() {
+
+        let response = GatewayTimeoutParameters('etag data');
+
+        let string : string;
+        let number : number;
+        let undef : undefined;
+
+        // @ts-expect-error
         string = response.headers.etag;
 
         // @ts-expect-error

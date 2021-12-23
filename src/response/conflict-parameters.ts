@@ -1,13 +1,30 @@
 import Response from "./response";
 import ConflictParameter from "./conflict-parameter";
 
+export default function ConflictParameters() : Response<409, string, {}, undefined>;
+
 export default function ConflictParameters<
     Message extends string|undefined,
     Headers extends Record<string, string>|undefined,
     Body = undefined
 >(
-    message : Message,
-    headers : Headers,
+    message ?: Message,
+    headers ?: Headers,
+    body ?: Body
+) : Response<
+    409,
+    Message extends undefined ? string : Message,
+    Headers extends undefined ? {} : Headers,
+    Body
+>;
+
+export default function ConflictParameters<
+    Message extends string|undefined,
+    Headers extends Record<string, string>|undefined,
+    Body = undefined
+>(
+    message ?: Message,
+    headers ?: Headers,
     body ?: Body
 ) : Response<
     409,
