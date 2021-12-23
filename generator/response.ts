@@ -1,9 +1,8 @@
 import * as Fs from "fs";
-import UpperFirst from "@dikac/t-string/upper-first";
 import {Type} from "./string/replace-content";
 import ReplaceFile from "./void/replace-file";
 import FileName from "./string/file-name";
-import Strict from "../dist/response/message/record/strict";
+import Strict from "../dist/response/message/record/standard-strict";
 import StrictString from "../dist/response/message/string/strict";
 import StrictType from "../dist/response/code/number/strict";
 
