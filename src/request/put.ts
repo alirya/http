@@ -1,6 +1,6 @@
 import Request from "./request";
-import Standard from "./standard";
-import Method from "./method/method/method";
+import RequestClassParameters from "./request-class-parameters";
+import Method from "./method/string/enum/method";
 import PathInterface from "./path/path";
 import HeaderInterface from "../headers/headers";
 import BodyInterface from "../body/body";
@@ -13,7 +13,7 @@ export default function Put<
     request : PathInterface<Path> & HeaderInterface<Headers> & BodyInterface<Body>,
 ) : Request<Method.PUT, Path, Headers, Body> {
 
-    return new Standard(
+    return new RequestClassParameters(
         Method.PUT,
         request.path,
         request.headers || {},

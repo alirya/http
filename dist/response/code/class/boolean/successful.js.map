@@ -1,1 +1,0 @@
-{"version":3,"file":"successful.js","sourceRoot":"","sources":["../../../../../src/response/code/class/boolean/successful.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,+BAA+B,CAAC;AAClD,OAAO,OAAO,MAAM,iCAAiC,CAAC;AACtD;;;;GAIG;AACH,MAAM,CAAC,OAAO,UAAU,UAAU,CAAE,IAAa;IAE7C,OAAO,OAAO,CAAC,IAAI,EAAE,GAAG,EAAE,IAAI,CAAC,IAAI,KAAK,CAAC,IAAI,EAAE,GAAG,EAAE,KAAK,CAAC,CAAC;AAC/D,CAAC"}

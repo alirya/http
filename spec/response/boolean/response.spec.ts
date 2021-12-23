@@ -1,5 +1,5 @@
 import Response from "../../../dist/response/boolean/response";
-import Ok from "../../../dist/response/ok";
+import Ok from "../../../dist/response/ok-parameter";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

@@ -2,6 +2,8 @@ import CommaQualityValueFromString from "../../../../dist/headers/map/comma-qual
 
 it('basic', () => {
 
+    const a = 1;
+
     const map = CommaQualityValueFromString('text/html;q=1,application/html;q=0.5');
 
     expect(map.get('text/html')).toBe(1);
