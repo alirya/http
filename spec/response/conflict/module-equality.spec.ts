@@ -1,6 +1,5 @@
 import ConflictParameters from "../../../dist/response/conflict-parameters";
 import ConflictParameter from "../../../dist/response/conflict-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

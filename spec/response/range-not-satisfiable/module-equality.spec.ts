@@ -1,6 +1,5 @@
 import RangeNotSatisfiableParameters from "../../../dist/response/range-not-satisfiable-parameters";
 import RangeNotSatisfiableParameter from "../../../dist/response/range-not-satisfiable-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

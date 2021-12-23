@@ -1,4 +1,3 @@
-import RequestMethod from "./method/string/enum/method";
 import Request from "./request";
 
 export default class RequestClassParameters<

@@ -1,6 +1,5 @@
 import InternalServerErrorParameters from "../../../dist/response/internal-server-error-parameters";
 import InternalServerErrorParameter from "../../../dist/response/internal-server-error-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

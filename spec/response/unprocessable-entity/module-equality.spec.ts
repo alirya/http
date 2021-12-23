@@ -1,6 +1,5 @@
 import UnprocessableEntityParameters from "../../../dist/response/unprocessable-entity-parameters";
 import UnprocessableEntityParameter from "../../../dist/response/unprocessable-entity-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

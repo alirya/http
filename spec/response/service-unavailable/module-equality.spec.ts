@@ -1,6 +1,5 @@
 import ServiceUnavailableParameters from "../../../dist/response/service-unavailable-parameters";
 import ServiceUnavailableParameter from "../../../dist/response/service-unavailable-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

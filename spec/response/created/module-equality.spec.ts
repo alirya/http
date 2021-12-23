@@ -1,6 +1,5 @@
 import CreatedParameters from "../../../dist/response/created-parameters";
 import CreatedParameter from "../../../dist/response/created-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,6 +1,4 @@
-import RequestMethod from "./method/string/enum/method";
 import Request from "./request";
-import ResponseFunctionParameter from "../response/response-function-parameter";
 import RequestFunctionParameter from "./request-function-parameter";
 
 export default function  RequestClassParameters<

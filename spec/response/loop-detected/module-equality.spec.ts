@@ -1,6 +1,5 @@
 import LoopDetectedParameters from "../../../dist/response/loop-detected-parameters";
 import LoopDetectedParameter from "../../../dist/response/loop-detected-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,6 +1,5 @@
 import GatewayTimeoutParameters from "../../../dist/response/gateway-timeout-parameters";
 import GatewayTimeoutParameter from "../../../dist/response/gateway-timeout-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

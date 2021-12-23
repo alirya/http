@@ -1,6 +1,5 @@
 import PreconditionFailedParameters from "../../../dist/response/precondition-failed-parameters";
 import PreconditionFailedParameter from "../../../dist/response/precondition-failed-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

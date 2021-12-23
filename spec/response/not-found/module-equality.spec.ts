@@ -1,6 +1,5 @@
 import NotFoundParameters from "../../../dist/response/not-found-parameters";
 import NotFoundParameter from "../../../dist/response/not-found-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

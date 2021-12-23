@@ -11,35 +11,6 @@ const path = __dirname + '/../src/response';
 const specPath = __dirname + '/../spec/response';
 const src = path + '/ok';
 
-// const code = '200';
-// const base = UpperFirst(ResponseList[code].toLocaleLowerCase());
-//
-// for (const [codeR, message] of Object.entries(ResponseList)) {
-//
-//     console.log(`generating ${codeR} ${message}`);
-//
-//     for (const suffix of ['-parameter.ts', '-parameters.ts']) {
-//
-//         const messageR = message
-//             .toLocaleLowerCase()
-//             .split(' ')
-//             .map(s=>s.replace(/[^a-zA-Z]+/, ''));
-//
-//         const definitionName = messageR.map(s=>UpperFirst(s)).join('');
-//         const fileName = messageR.join('-');
-//
-//
-//         let data = Fs.readFileSync(src + suffix).toString();
-//
-//         // file import
-//         data = data.replace(new RegExp(`./${base.toLocaleLowerCase()}`, 'g'), `./${fileName}`);
-//         data = data.replace(new RegExp(base, 'g'), definitionName);
-//         data = data.replace(new RegExp(code, 'g'), codeR);
-//
-//         Fs.writeFileSync(`${path}/${fileName}${suffix}`, data);
-//     }
-// }
-
 const base : Type = {
     code : 200,
     identifier : StrictString(200)

@@ -1,6 +1,5 @@
 import PaymentRequiredParameters from "../../../dist/response/payment-required-parameters";
 import PaymentRequiredParameter from "../../../dist/response/payment-required-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

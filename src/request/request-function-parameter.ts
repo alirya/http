@@ -1,28 +1,9 @@
-import RequestMethod from "./method/string/enum/method";
 import Request from "./request";
 import InferMethod from "./method/string/infer";
 import InferPath from "./path/path/infer";
 import InferHeader from "../headers/record/infer";
 import InferBody from "../body/value/infer";
 import Partial from "@dikac/t-object/partial";
-//
-// export default class RequestClassParameters<
-//     RequestType extends Request
-// > implements Request<
-//     InferMethod<RequestType>,
-//     InferPath<RequestType>,
-//     InferHeader<RequestType>,
-//     InferBody<RequestType>
-// > {
-//
-//     constructor(
-//         public method : Method,
-//         public path : Path,
-//         public headers : Headers,
-//         public body : Body
-//     ) {}
-// }
-//
 
 export type Type<RequestType extends Partial<Request, 'headers'|'body'>> = Request<
     InferMethod<RequestType>,

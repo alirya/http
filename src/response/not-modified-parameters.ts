@@ -1,52 +1,5 @@
 import Response from "./response";
 import NotModifiedParameter from "./not-modified-parameter";
-//
-// /**
-//  * standard message
-//  */
-// export default function NotModifiedParameters() : Response<304, string, {}, undefined>;
-//
-// /**
-//  * custom message
-//  */
-// export default function NotModifiedParameters<
-//     Message extends string
-// >(
-//     message : Message,
-// ) : Response<304, Message, {}, undefined>;
-//
-// /**
-//  * optional custom message with header
-//  */
-// export default function NotModifiedParameters<
-//     Message extends string|undefined,
-//     Headers extends Record<string, string>|undefined,
-// >(
-//     message : Message,
-//     headers : Headers,
-// ) : Response<
-//     304,
-//     Message extends undefined ? string : Message,
-//     Headers extends undefined ? {} : Headers,
-//     undefined
-// >;
-
-//
-// export default function NotModifiedParameters<
-//     Message extends string|undefined,
-//     Headers extends Record<string, string>|undefined,
-//     Body = undefined
-// >(
-//     message ?: Message,
-//     headers ?: Headers,
-//     body ?: Body
-// ) : Response<
-//     304,
-//     Message extends undefined ? string : Message,
-//     Headers extends undefined ? {} : Headers,
-//     Body
-// >;
-
 
 export default function NotModifiedParameters<
     Message extends string|undefined,

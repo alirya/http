@@ -1,6 +1,5 @@
 import RequestHeaderFieldsTooLargeParameters from "../../../dist/response/request-header-fields-too-large-parameters";
 import RequestHeaderFieldsTooLargeParameter from "../../../dist/response/request-header-fields-too-large-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

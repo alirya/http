@@ -1,6 +1,5 @@
 import FoundParameters from "../../../dist/response/found-parameters";
 import FoundParameter from "../../../dist/response/found-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

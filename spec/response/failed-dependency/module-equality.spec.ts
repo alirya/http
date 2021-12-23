@@ -1,6 +1,5 @@
 import FailedDependencyParameters from "../../../dist/response/failed-dependency-parameters";
 import FailedDependencyParameter from "../../../dist/response/failed-dependency-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

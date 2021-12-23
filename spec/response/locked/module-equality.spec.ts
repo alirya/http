@@ -1,6 +1,5 @@
 import LockedParameters from "../../../dist/response/locked-parameters";
 import LockedParameter from "../../../dist/response/locked-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,6 +1,5 @@
 import UnavailableForLegalReasonsParameters from "../../../dist/response/unavailable-for-legal-reasons-parameters";
 import UnavailableForLegalReasonsParameter from "../../../dist/response/unavailable-for-legal-reasons-parameter";
-import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 
