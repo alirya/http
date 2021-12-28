@@ -12,6 +12,7 @@ describe("empty", function() {
         let string : string;
         let number : number;
         let undef : undefined;
+        let unknown : unknown;
 
         // @ts-expect-error
         string = response.headers.etag;
@@ -19,6 +20,7 @@ describe("empty", function() {
         // @ts-expect-error
         string = response.body;
         undef = response.body;
+        unknown = response.body;
 
         number = response.code;
         string = response.message;
@@ -33,6 +35,7 @@ describe("empty", function() {
         let string : string;
         let number : number;
         let undef : undefined;
+        let unknown : unknown;
 
         // @ts-expect-error
         string = response.headers.etag;
@@ -40,6 +43,7 @@ describe("empty", function() {
         // @ts-expect-error
         string = response.body;
         undef = response.body;
+        unknown = response.body;
 
         number = response.code;
         string = response.message;
@@ -60,12 +64,15 @@ describe("header", function() {
         let string : string;
         let number : number;
         let undef : undefined;
+        let unknown : unknown;
 
         string = response.headers.etag;
 
         // @ts-expect-error
         string = response.body;
+        // @ts-expect-error
         undef = response.body;
+        unknown = response.body;
 
         number = response.code;
         string = response.message;
@@ -80,12 +87,14 @@ describe("header", function() {
         let string : string;
         let number : number;
         let undef : undefined;
+        let unknown : unknown;
 
         string = response.headers.etag;
 
         // @ts-expect-error
         string = response.body;
         undef = response.body;
+        unknown = response.body;
 
         number = response.code;
         string = response.message;
@@ -105,13 +114,16 @@ describe("message", function() {
         let string : string;
         let number : number;
         let undef : undefined;
+        let unknown : unknown;
 
         // @ts-expect-error
         string = response.headers.etag;
 
         // @ts-expect-error
         string = response.body;
+        // @ts-expect-error
         undef = response.body;
+        unknown = response.body;
 
         number = response.code;
         string = response.message;
@@ -125,6 +137,7 @@ describe("message", function() {
         let string : string;
         let number : number;
         let undef : undefined;
+        let unknown : unknown;
 
         // @ts-expect-error
         string = response.headers.etag;
@@ -132,6 +145,7 @@ describe("message", function() {
         // @ts-expect-error
         string = response.body;
         undef = response.body;
+        unknown = response.body;
 
         number = response.code;
         string = response.message;
@@ -152,6 +166,7 @@ describe("body", function() {
         let string : string;
         let number : number;
         let undef : undefined;
+        let unknown : unknown;
 
         // @ts-expect-error
         string = response.headers.etag;
@@ -165,6 +180,7 @@ describe("body", function() {
         record = response.headers;
 
         string = response.body;
+        unknown = response.body;
 
         number = response.code;
         string = response.message;
@@ -178,6 +194,7 @@ describe("body", function() {
         let string : string;
         let number : number;
         let undef : undefined;
+        let unknown : unknown;
 
         // @ts-expect-error
         string = response.headers.etag;
@@ -191,6 +208,7 @@ describe("body", function() {
         record = response.headers;
 
         string = response.body;
+        unknown = response.body;
 
         number = response.code;
         string = response.message;
