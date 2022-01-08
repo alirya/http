@@ -1,5 +1,5 @@
 import Request from "./request";
-import RequestClassParameters from "./request-class-parameters";
+import RequestClass from "./request-class";
 import Method from "./method/enum/method";
 import PathInterface from "./path/path";
 import HeaderInterface from "../headers/headers";
@@ -13,7 +13,7 @@ export default function Delete<
     request : PathInterface<Path> & HeaderInterface<Headers> & BodyInterface<Body>,
 ) : Request<Method.DELETE, Path, Headers, Body> {
 
-    return new RequestClassParameters(
+    return new RequestClass(
         Method.DELETE,
         request.path,
         request.headers || {},

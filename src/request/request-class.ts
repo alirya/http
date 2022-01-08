@@ -1,6 +1,6 @@
 import Request from "./request";
 
-export default class RequestClassParameters<
+export default class RequestClass<
     Method extends string = string,
     Path extends string = string,
     Headers extends Record<string, string> = Record<string, string>,

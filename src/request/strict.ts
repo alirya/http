@@ -2,10 +2,10 @@ import PathInterface from "./path/path";
 import MethodInterface from "./method/method";
 import HeaderInterface from "../headers/headers";
 import BodyInterface from "../body/body";
-import StrictMetod from "./method/string/strict";
+import StrictMethod from "./method/string/strict";
 
-export default interface Strictz<
-    Method extends StrictMetod = StrictMetod,
+export default interface Strict<
+    Method extends StrictMethod = StrictMethod,
     Path extends string = string,
     Headers extends  Record<string, string> = Record<string, string>,
     Body = unknown

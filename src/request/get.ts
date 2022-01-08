@@ -1,5 +1,5 @@
 import Request from "./request";
-import RequestClassParameters from "./request-class-parameters";
+import RequestClass from "./request-class";
 import Method from "./method/enum/method";
 import PathInterface from "./path/path";
 import HeaderInterface from "../headers/headers";
@@ -11,7 +11,7 @@ export default function Get<
     request : PathInterface<Path> & Partial<HeaderInterface<Headers>>,
 ) : Request<Method.GET, Path, Headers, undefined> {
 
-    return new RequestClassParameters(
+    return new RequestClass(
         Method.GET,
         request.path,
         request.headers || {},
