@@ -1,11 +1,11 @@
-import PayloadTooLarge from "../../../dist/response/payload-too-large-parameter";
-import Standard from "../../../dist/response/message/string/strict";
+import PayloadTooLarge from '../../../dist/response/payload-too-large-parameter';
+import Standard from '../../../dist/response/message/string/strict';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("validate data", function() {
+describe('validate data', function() {
 
-    it("header", function() {
+    it('header', function() {
 
         let response = PayloadTooLarge({
             body:'data',
@@ -19,7 +19,7 @@ describe("validate data", function() {
 
     });
 
-    it("header", function() {
+    it('header', function() {
 
         let response = PayloadTooLarge({
             body:'data'

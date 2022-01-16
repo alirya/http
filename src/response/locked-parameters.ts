@@ -1,5 +1,5 @@
-import Response from "./response";
-import LockedParameter from "./locked-parameter";
+import Response from './response';
+import LockedParameter from './locked-parameter';
 
 export default function LockedParameters() : Response<423, string, {}, undefined>;
 

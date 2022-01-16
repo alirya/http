@@ -1,5 +1,5 @@
-import Response from "./response";
-import NotModifiedParameter from "./nomodified-parameter";
+import Response from './response';
+import NotModifiedParameter from './nomodified-parameter';
 
 export default function NotModifiedParameters() : Response<304, string, {}, undefined>;
 

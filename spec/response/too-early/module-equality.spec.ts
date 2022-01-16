@@ -1,16 +1,16 @@
-import TooEarlyParameters from "../../../dist/response/too-early-parameters";
-import TooEarlyParameter from "../../../dist/response/too-early-parameter";
+import TooEarlyParameters from '../../../dist/response/too-early-parameters';
+import TooEarlyParameter from '../../../dist/response/too-early-parameter';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("validate data", function() {
+describe('validate data', function() {
 
     const body = 'data';
     const message = 'data';
     const headers = {etag:'etag data'};
 
 
-    it("all", function() {
+    it('all', function() {
 
         let parameter = TooEarlyParameter({
             body,

@@ -1,16 +1,16 @@
-import ProxyAuthenticationRequiredParameters from "../../../dist/response/proxy-authentication-required-parameters";
-import ProxyAuthenticationRequiredParameter from "../../../dist/response/proxy-authentication-required-parameter";
+import ProxyAuthenticationRequiredParameters from '../../../dist/response/proxy-authentication-required-parameters';
+import ProxyAuthenticationRequiredParameter from '../../../dist/response/proxy-authentication-required-parameter';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("validate data", function() {
+describe('validate data', function() {
 
     const body = 'data';
     const message = 'data';
     const headers = {etag:'etag data'};
 
 
-    it("all", function() {
+    it('all', function() {
 
         let parameter = ProxyAuthenticationRequiredParameter({
             body,

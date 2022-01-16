@@ -1,5 +1,5 @@
-import Response from "./response";
-import CreatedParameter from "./created-parameter";
+import Response from './response';
+import CreatedParameter from './created-parameter';
 
 export default function CreatedParameters() : Response<201, string, {}, undefined>;
 

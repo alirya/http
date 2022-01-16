@@ -1,5 +1,5 @@
-import Response from "./response";
-import FoundParameter from "./found-parameter";
+import Response from './response';
+import FoundParameter from './found-parameter';
 
 export default function FoundParameters() : Response<302, string, {}, undefined>;
 

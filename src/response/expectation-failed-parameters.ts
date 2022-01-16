@@ -1,5 +1,5 @@
-import Response from "./response";
-import ExpectationFailedParameter from "./expectation-failed-parameter";
+import Response from './response';
+import ExpectationFailedParameter from './expectation-failed-parameter';
 
 export default function ExpectationFailedParameters() : Response<417, string, {}, undefined>;
 

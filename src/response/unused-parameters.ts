@@ -1,5 +1,5 @@
-import Response from "./response";
-import UnusedParameter from "./unused-parameter";
+import Response from './response';
+import UnusedParameter from './unused-parameter';
 
 export default function UnusedParameters() : Response<306, string, {}, undefined>;
 

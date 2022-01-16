@@ -1,5 +1,5 @@
-import Response from "./response";
-import PartialContentParameter from "./partial-contenparameter";
+import Response from './response';
+import PartialContentParameter from './partial-contenparameter';
 
 export default function PartialContentParameters() : Response<206, string, {}, undefined>;
 

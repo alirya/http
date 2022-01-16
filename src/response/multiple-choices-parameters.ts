@@ -1,5 +1,5 @@
-import Response from "./response";
-import MultipleChoicesParameter from "./multiple-choices-parameter";
+import Response from './response';
+import MultipleChoicesParameter from './multiple-choices-parameter';
 
 export default function MultipleChoicesParameters() : Response<300, string, {}, undefined>;
 

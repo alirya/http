@@ -1,5 +1,5 @@
-import Response from "./response";
-import ForbiddenParameter from "./forbidden-parameter";
+import Response from './response';
+import ForbiddenParameter from './forbidden-parameter';
 
 export default function ForbiddenParameters() : Response<403, string, {}, undefined>;
 

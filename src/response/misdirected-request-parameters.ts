@@ -1,5 +1,5 @@
-import Response from "./response";
-import MisdirectedRequestParameter from "./misdirected-requesparameter";
+import Response from './response';
+import MisdirectedRequestParameter from './misdirected-requesparameter';
 
 export default function MisdirectedRequestParameters() : Response<421, string, {}, undefined>;
 

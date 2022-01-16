@@ -1,11 +1,11 @@
-import ConflictParameter from "../../../dist/response/conflicparameter";
-import ConflictParameters from "../../../dist/response/conflicparameters";
+import ConflictParameter from '../../../dist/response/conflicparameter';
+import ConflictParameters from '../../../dist/response/conflicparameters';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("empty", function() {
+describe('empty', function() {
 
-    describe("parameter", function() {
+    describe('parameter', function() {
 
         let response = ConflictParameter();
 
@@ -27,7 +27,7 @@ describe("empty", function() {
 
     });
 
-    describe("parameters", function() {
+    describe('parameters', function() {
 
         let response = ConflictParameters();
 
@@ -53,9 +53,9 @@ describe("empty", function() {
 });
 
 
-describe("header", function() {
+describe('header', function() {
 
-    describe("parameter", function() {
+    describe('parameter', function() {
 
         let response = ConflictParameter({
             headers:{etag:'etag data'}
@@ -79,7 +79,7 @@ describe("header", function() {
 
     });
 
-    describe("parameters", function() {
+    describe('parameters', function() {
 
         let response = ConflictParameters(undefined, {etag:'etag data'});
 
@@ -103,9 +103,9 @@ describe("header", function() {
 
 });
 
-describe("message", function() {
+describe('message', function() {
 
-    describe("parameter", function() {
+    describe('parameter', function() {
 
         let response = ConflictParameter({
             message: 'etag data'
@@ -130,7 +130,7 @@ describe("message", function() {
 
     });
 
-    describe("parameters", function() {
+    describe('parameters', function() {
 
         let response = ConflictParameters('etag data');
 
@@ -154,9 +154,9 @@ describe("message", function() {
 
 });
 
-describe("body", function() {
+describe('body', function() {
 
-    describe("parameter", function() {
+    describe('parameter', function() {
 
         let response = ConflictParameter({
             body:'data',
@@ -186,7 +186,7 @@ describe("body", function() {
         string = response.message;
     });
 
-    describe("parameters", function() {
+    describe('parameters', function() {
 
         let response = ConflictParameters(undefined, undefined, 'data');
 

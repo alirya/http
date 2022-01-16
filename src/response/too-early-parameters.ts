@@ -1,5 +1,5 @@
-import Response from "./response";
-import TooEarlyParameter from "./too-early-parameter";
+import Response from './response';
+import TooEarlyParameter from './too-early-parameter';
 
 export default function TooEarlyParameters() : Response<425, string, {}, undefined>;
 

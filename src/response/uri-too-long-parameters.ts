@@ -1,5 +1,5 @@
-import Response from "./response";
-import UriTooLongParameter from "./uri-too-long-parameter";
+import Response from './response';
+import UriTooLongParameter from './uri-too-long-parameter';
 
 export default function UriTooLongParameters() : Response<414, string, {}, undefined>;
 

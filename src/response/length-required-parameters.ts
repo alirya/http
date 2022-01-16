@@ -1,5 +1,5 @@
-import Response from "./response";
-import LengthRequiredParameter from "./length-required-parameter";
+import Response from './response';
+import LengthRequiredParameter from './length-required-parameter';
 
 export default function LengthRequiredParameters() : Response<411, string, {}, undefined>;
 

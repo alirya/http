@@ -1,16 +1,16 @@
-import UriTooLongParameters from "../../../dist/response/uri-too-long-parameters";
-import UriTooLongParameter from "../../../dist/response/uri-too-long-parameter";
+import UriTooLongParameters from '../../../dist/response/uri-too-long-parameters';
+import UriTooLongParameter from '../../../dist/response/uri-too-long-parameter';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("validate data", function() {
+describe('validate data', function() {
 
     const body = 'data';
     const message = 'data';
     const headers = {etag:'etag data'};
 
 
-    it("all", function() {
+    it('all', function() {
 
         let parameter = UriTooLongParameter({
             body,

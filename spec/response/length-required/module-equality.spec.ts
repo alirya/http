@@ -1,16 +1,16 @@
-import LengthRequiredParameters from "../../../dist/response/length-required-parameters";
-import LengthRequiredParameter from "../../../dist/response/length-required-parameter";
+import LengthRequiredParameters from '../../../dist/response/length-required-parameters';
+import LengthRequiredParameter from '../../../dist/response/length-required-parameter';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("validate data", function() {
+describe('validate data', function() {
 
     const body = 'data';
     const message = 'data';
     const headers = {etag:'etag data'};
 
 
-    it("all", function() {
+    it('all', function() {
 
         let parameter = LengthRequiredParameter({
             body,

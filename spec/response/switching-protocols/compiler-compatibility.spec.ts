@@ -1,12 +1,12 @@
-import SwitchingProtocolsParameter from "../../../dist/response/switching-protocols-parameter";
-import SwitchingProtocolsParameters from "../../../dist/response/switching-protocols-parameters";
-import Standard from "../../../dist/response/message/string/strict";
+import SwitchingProtocolsParameter from '../../../dist/response/switching-protocols-parameter';
+import SwitchingProtocolsParameters from '../../../dist/response/switching-protocols-parameters';
+import Standard from '../../../dist/response/message/string/strict';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("header", function() {
+describe('header', function() {
 
-    describe("parameter", function() {
+    describe('parameter', function() {
 
         let response = SwitchingProtocolsParameter({
             headers:{etag:'etag data'}
@@ -27,7 +27,7 @@ describe("header", function() {
 
     });
 
-    describe("parameters", function() {
+    describe('parameters', function() {
 
         let response = SwitchingProtocolsParameters(undefined, {etag:'etag data'});
 
@@ -49,9 +49,9 @@ describe("header", function() {
 
 });
 
-describe("body", function() {
+describe('body', function() {
 
-    describe("parameter", function() {
+    describe('parameter', function() {
 
         let response = SwitchingProtocolsParameter({
             body:'data',
@@ -79,7 +79,7 @@ describe("body", function() {
         string = response.message;
     });
 
-    describe("parameters", function() {
+    describe('parameters', function() {
 
         let response = SwitchingProtocolsParameters(undefined, undefined, 'data');
 

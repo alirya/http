@@ -1,4 +1,4 @@
-import Method from "../method";
+import Method from '../method';
 
 type Infer<Type> = Type extends Method<infer As> ? As : never;
 

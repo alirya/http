@@ -1,5 +1,5 @@
-import Response from "./response";
-import InternalServerErrorParameter from "./internal-server-error-parameter";
+import Response from './response';
+import InternalServerErrorParameter from './internal-server-error-parameter';
 
 export default function InternalServerErrorParameters() : Response<500, string, {}, undefined>;
 

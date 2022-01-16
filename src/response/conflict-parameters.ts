@@ -1,5 +1,5 @@
-import Response from "./response";
-import ConflictParameter from "./conflict-parameter";
+import Response from './response';
+import ConflictParameter from './conflict-parameter';
 
 export default function ConflictParameters() : Response<409, string, {}, undefined>;
 

@@ -1,5 +1,5 @@
-import Response from "./response";
-import EarlyHintsParameter from "./early-hints-parameter";
+import Response from './response';
+import EarlyHintsParameter from './early-hints-parameter';
 
 export default function EarlyHintsParameters() : Response<103, string, {}, undefined>;
 

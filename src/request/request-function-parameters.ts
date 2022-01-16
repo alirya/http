@@ -1,5 +1,5 @@
-import Request from "./request";
-import RequestFunctionParameter from "./requesfunction-parameter";
+import Request from './request';
+import RequestFunctionParameter from './requesfunction-parameter';
 
 export default function  RequestClassParameters<
     Method extends string = string,

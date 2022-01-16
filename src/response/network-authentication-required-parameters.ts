@@ -1,5 +1,5 @@
-import Response from "./response";
-import NetworkAuthenticationRequiredParameter from "./network-authentication-required-parameter";
+import Response from './response';
+import NetworkAuthenticationRequiredParameter from './network-authentication-required-parameter';
 
 export default function NetworkAuthenticationRequiredParameters() : Response<511, string, {}, undefined>;
 

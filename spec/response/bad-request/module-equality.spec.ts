@@ -1,16 +1,16 @@
-import BadRequestParameters from "../../../dist/response/bad-requesparameters";
-import BadRequestParameter from "../../../dist/response/bad-requesparameter";
+import BadRequestParameters from '../../../dist/response/bad-requesparameters';
+import BadRequestParameter from '../../../dist/response/bad-requesparameter';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("validate data", function() {
+describe('validate data', function() {
 
     const body = 'data';
     const message = 'data';
     const headers = {etag:'etag data'};
 
 
-    it("all", function() {
+    it('all', function() {
 
         let parameter = BadRequestParameter({
             body,

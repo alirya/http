@@ -1,5 +1,5 @@
-import Response from "./response";
-import UpgradeRequiredParameter from "./upgrade-required-parameter";
+import Response from './response';
+import UpgradeRequiredParameter from './upgrade-required-parameter';
 
 export default function UpgradeRequiredParameters() : Response<426, string, {}, undefined>;
 

@@ -1,5 +1,5 @@
-import Response from "./response";
-import SwitchingProtocolParameter from "./switching-protocol-parameter";
+import Response from './response';
+import SwitchingProtocolParameter from './switching-protocol-parameter';
 
 export default function SwitchingProtocolParameters() : Response<101, string, {}, undefined>;
 

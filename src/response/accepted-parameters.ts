@@ -1,5 +1,5 @@
-import Response from "./response";
-import AcceptedParameter from "./accepted-parameter";
+import Response from './response';
+import AcceptedParameter from './accepted-parameter';
 
 export default function AcceptedParameters() : Response<202, string, {}, undefined>;
 

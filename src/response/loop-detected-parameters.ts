@@ -1,5 +1,5 @@
-import Response from "./response";
-import LoopDetectedParameter from "./loop-detected-parameter";
+import Response from './response';
+import LoopDetectedParameter from './loop-detected-parameter';
 
 export default function LoopDetectedParameters() : Response<508, string, {}, undefined>;
 

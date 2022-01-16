@@ -1,5 +1,5 @@
-import Response from "./response";
-import ResponseFunctionParameter from "./response-function-parameter";
+import Response from './response';
+import ResponseFunctionParameter from './response-function-parameter';
 
 export default function OkParameter() : Response<200, string, {}, undefined>;
 

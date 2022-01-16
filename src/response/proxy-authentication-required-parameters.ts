@@ -1,5 +1,5 @@
-import Response from "./response";
-import ProxyAuthenticationRequiredParameter from "./proxy-authentication-required-parameter";
+import Response from './response';
+import ProxyAuthenticationRequiredParameter from './proxy-authentication-required-parameter';
 
 export default function ProxyAuthenticationRequiredParameters() : Response<407, string, {}, undefined>;
 

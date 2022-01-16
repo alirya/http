@@ -1,5 +1,5 @@
-import Response from "./response";
-import PreconditionFailedParameter from "./precondition-failed-parameter";
+import Response from './response';
+import PreconditionFailedParameter from './precondition-failed-parameter';
 
 export default function PreconditionFailedParameters() : Response<412, string, {}, undefined>;
 

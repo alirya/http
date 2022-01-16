@@ -1,12 +1,12 @@
-import MultipleChoicesParameter from "../../../dist/response/multiple-choices-parameter";
-import MultipleChoicesParameters from "../../../dist/response/multiple-choices-parameters";
-import Standard from "../../../dist/response/message/string/strict";
+import MultipleChoicesParameter from '../../../dist/response/multiple-choices-parameter';
+import MultipleChoicesParameters from '../../../dist/response/multiple-choices-parameters';
+import Standard from '../../../dist/response/message/string/strict';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("header", function() {
+describe('header', function() {
 
-    describe("parameter", function() {
+    describe('parameter', function() {
 
         let response = MultipleChoicesParameter({
             headers:{etag:'etag data'}
@@ -27,7 +27,7 @@ describe("header", function() {
 
     });
 
-    describe("parameters", function() {
+    describe('parameters', function() {
 
         let response = MultipleChoicesParameters(undefined, {etag:'etag data'});
 
@@ -49,9 +49,9 @@ describe("header", function() {
 
 });
 
-describe("body", function() {
+describe('body', function() {
 
-    describe("parameter", function() {
+    describe('parameter', function() {
 
         let response = MultipleChoicesParameter({
             body:'data',
@@ -79,7 +79,7 @@ describe("body", function() {
         string = response.message;
     });
 
-    describe("parameters", function() {
+    describe('parameters', function() {
 
         let response = MultipleChoicesParameters(undefined, undefined, 'data');
 

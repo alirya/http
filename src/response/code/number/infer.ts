@@ -1,2 +1,2 @@
-import Infer from "@alirya/code/code/infer";
+import Infer from '@alirya/code/code/infer';
 export default Infer;

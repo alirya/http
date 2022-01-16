@@ -1,5 +1,5 @@
-import Response from "./response";
-import NonauthoritativeInformationParameter from "./nonauthoritative-information-parameter";
+import Response from './response';
+import NonauthoritativeInformationParameter from './nonauthoritative-information-parameter';
 
 export default function NonauthoritativeInformationParameters() : Response<203, string, {}, undefined>;
 

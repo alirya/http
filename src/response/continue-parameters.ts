@@ -1,5 +1,5 @@
-import Response from "./response";
-import ContinueParameter from "./continue-parameter";
+import Response from './response';
+import ContinueParameter from './continue-parameter';
 
 export default function ContinueParameters() : Response<100, string, {}, undefined>;
 

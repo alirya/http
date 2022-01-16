@@ -1,5 +1,5 @@
-import Response from "./response";
-import OkParameter from "./ok-parameter";
+import Response from './response';
+import OkParameter from './ok-parameter';
 
 export default function OkParameters() : Response<200, string, {}, undefined>;
 

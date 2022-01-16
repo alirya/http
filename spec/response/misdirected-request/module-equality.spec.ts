@@ -1,16 +1,16 @@
-import MisdirectedRequestParameters from "../../../dist/response/misdirected-requesparameters";
-import MisdirectedRequestParameter from "../../../dist/response/misdirected-requesparameter";
+import MisdirectedRequestParameters from '../../../dist/response/misdirected-requesparameters';
+import MisdirectedRequestParameter from '../../../dist/response/misdirected-requesparameter';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("validate data", function() {
+describe('validate data', function() {
 
     const body = 'data';
     const message = 'data';
     const headers = {etag:'etag data'};
 
 
-    it("all", function() {
+    it('all', function() {
 
         let parameter = MisdirectedRequestParameter({
             body,

@@ -1,11 +1,11 @@
-import MultipleChoice from "../../../dist/response/multiple-choice-parameter";
-import Standard from "../../../dist/response/message/string/strict";
+import MultipleChoice from '../../../dist/response/multiple-choice-parameter';
+import Standard from '../../../dist/response/message/string/strict';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("validate data", function() {
+describe('validate data', function() {
 
-    it("header", function() {
+    it('header', function() {
 
         let response = MultipleChoice({
             body:'data',
@@ -19,7 +19,7 @@ describe("validate data", function() {
 
     });
 
-    it("header", function() {
+    it('header', function() {
 
         let response = MultipleChoice({
             body:'data'

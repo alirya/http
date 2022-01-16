@@ -1,6 +1,6 @@
-import Successful from "../../../../../dist/response/code/class/boolean/successful";
+import Successful from '../../../../../dist/response/code/class/boolean/successful';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
 
 

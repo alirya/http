@@ -1,5 +1,5 @@
-import Response from "./response";
-import UseProxyParameter from "./use-proxy-parameter";
+import Response from './response';
+import UseProxyParameter from './use-proxy-parameter';
 
 export default function UseProxyParameters() : Response<305, string, {}, undefined>;
 

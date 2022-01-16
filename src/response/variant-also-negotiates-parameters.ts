@@ -1,5 +1,5 @@
-import Response from "./response";
-import VariantAlsoNegotiatesParameter from "./variant-also-negotiates-parameter";
+import Response from './response';
+import VariantAlsoNegotiatesParameter from './variant-also-negotiates-parameter';
 
 export default function VariantAlsoNegotiatesParameters() : Response<506, string, {}, undefined>;
 

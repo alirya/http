@@ -1,16 +1,16 @@
-import GoneParameters from "../../../dist/response/gone-parameters";
-import GoneParameter from "../../../dist/response/gone-parameter";
+import GoneParameters from '../../../dist/response/gone-parameters';
+import GoneParameter from '../../../dist/response/gone-parameter';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("validate data", function() {
+describe('validate data', function() {
 
     const body = 'data';
     const message = 'data';
     const headers = {etag:'etag data'};
 
 
-    it("all", function() {
+    it('all', function() {
 
         let parameter = GoneParameter({
             body,

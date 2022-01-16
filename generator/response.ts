@@ -1,10 +1,10 @@
-import * as Fs from "fs";
-import {Type} from "./string/replace-content";
-import ReplaceFile from "./void/replace-file";
-import FileName from "./string/file-name";
-import Strict from "../dist/response/message/record/standard-strict";
-import StrictString from "../dist/response/message/string/strict";
-import StrictType from "../dist/response/code/number/strict";
+import * as Fs from 'fs';
+import {Type} from './string/replace-content';
+import ReplaceFile from './void/replace-file';
+import FileName from './string/file-name';
+import Strict from '../dist/response/message/record/standard-strict';
+import StrictString from '../dist/response/message/string/strict';
+import StrictType from '../dist/response/code/number/strict';
 
 const path = __dirname + '/../src/response';
 const specPath = __dirname + '/../spec/response';
@@ -13,7 +13,7 @@ const src = path + '/ok';
 const base : Type = {
     code : 200,
     identifier : StrictString(200)
-}
+};
 
 for (const [codeR, message] of Object.entries(Strict()) as [StrictType|string, string][]) {
 
@@ -23,7 +23,7 @@ for (const [codeR, message] of Object.entries(Strict()) as [StrictType|string, s
         code : codeR,
         identifier : StrictString(codeR as StrictType)
     };
-        const fileName = FileName(replace.identifier)
+        const fileName = FileName(replace.identifier);
 
 
     for (const suffix of ['-parameter.ts', '-parameters.ts']) {
@@ -34,7 +34,7 @@ for (const [codeR, message] of Object.entries(Strict()) as [StrictType|string, s
             `${path}/${fileName}${suffix}`,
             base,
             replace
-        )
+        );
     }
 
     const infix = FileName(base.identifier);
@@ -51,7 +51,7 @@ for (const [codeR, message] of Object.entries(Strict()) as [StrictType|string, s
 
             Fs.mkdir(dir, {recursive: true}, function (error) {
                 if (error) {
-                    console.log(error)
+                    console.log(error);
                 }
             });
         }
@@ -61,7 +61,7 @@ for (const [codeR, message] of Object.entries(Strict()) as [StrictType|string, s
             [specPath, infixR, file].join('/'),
             base,
             replace
-        )
+        );
     }
 
 }

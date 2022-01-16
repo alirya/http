@@ -1,5 +1,5 @@
-import Response from "./response";
-import SeeOtherParameter from "./see-other-parameter";
+import Response from './response';
+import SeeOtherParameter from './see-other-parameter';
 
 export default function SeeOtherParameters() : Response<303, string, {}, undefined>;
 

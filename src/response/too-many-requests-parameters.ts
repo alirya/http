@@ -1,5 +1,5 @@
-import Response from "./response";
-import TooManyRequestsParameter from "./too-many-requests-parameter";
+import Response from './response';
+import TooManyRequestsParameter from './too-many-requests-parameter';
 
 export default function TooManyRequestsParameters() : Response<429, string, {}, undefined>;
 

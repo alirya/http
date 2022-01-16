@@ -1,6 +1,6 @@
-import Response from "./response";
-import StrictNumber from "./code/number/strict";
-import ResponseFunctionParameter from "./response-function-parameter";
+import Response from './response';
+import StrictNumber from './code/number/strict';
+import ResponseFunctionParameter from './response-function-parameter';
 
 
 export default function ResponseFunctionParameters<

@@ -1,4 +1,4 @@
-import Path from "../path";
+import Path from '../path';
 
 type Infer<Type> = Type extends Path<infer As> ? As : never;
 

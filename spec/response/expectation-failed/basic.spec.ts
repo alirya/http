@@ -1,11 +1,11 @@
-import ExpectationFailed from "../../../dist/response/expectation-failed-parameter";
-import Standard from "../../../dist/response/message/string/strict";
+import ExpectationFailed from '../../../dist/response/expectation-failed-parameter';
+import Standard from '../../../dist/response/message/string/strict';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("validate data", function() {
+describe('validate data', function() {
 
-    it("header", function() {
+    it('header', function() {
 
         let response = ExpectationFailed({
             body:'data',
@@ -19,7 +19,7 @@ describe("validate data", function() {
 
     });
 
-    it("header", function() {
+    it('header', function() {
 
         let response = ExpectationFailed({
             body:'data'

@@ -1,5 +1,5 @@
-import Response from "./response";
-import MovedPermanentlyParameter from "./moved-permanently-parameter";
+import Response from './response';
+import MovedPermanentlyParameter from './moved-permanently-parameter';
 
 export default function MovedPermanentlyParameters() : Response<301, string, {}, undefined>;
 

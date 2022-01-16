@@ -1,5 +1,5 @@
-import Response from "./response";
-import FailedDependencyParameter from "./failed-dependency-parameter";
+import Response from './response';
+import FailedDependencyParameter from './failed-dependency-parameter';
 
 export default function FailedDependencyParameters() : Response<424, string, {}, undefined>;
 

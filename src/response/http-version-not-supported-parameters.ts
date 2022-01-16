@@ -1,5 +1,5 @@
-import Response from "./response";
-import HttpVersionNotSupportedParameter from "./http-version-nosupported-parameter";
+import Response from './response';
+import HttpVersionNotSupportedParameter from './http-version-nosupported-parameter';
 
 export default function HttpVersionNotSupportedParameters() : Response<505, string, {}, undefined>;
 

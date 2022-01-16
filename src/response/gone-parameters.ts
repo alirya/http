@@ -1,5 +1,5 @@
-import Response from "./response";
-import GoneParameter from "./gone-parameter";
+import Response from './response';
+import GoneParameter from './gone-parameter';
 
 export default function GoneParameters() : Response<410, string, {}, undefined>;
 

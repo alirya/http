@@ -1,16 +1,16 @@
-import ConflictParameters from "../../../dist/response/conflicparameters";
-import ConflictParameter from "../../../dist/response/conflicparameter";
+import ConflictParameters from '../../../dist/response/conflicparameters';
+import ConflictParameter from '../../../dist/response/conflicparameter';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("validate data", function() {
+describe('validate data', function() {
 
     const body = 'data';
     const message = 'data';
     const headers = {etag:'etag data'};
 
 
-    it("all", function() {
+    it('all', function() {
 
         let parameter = ConflictParameter({
             body,

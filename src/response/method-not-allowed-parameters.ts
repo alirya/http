@@ -1,5 +1,5 @@
-import Response from "./response";
-import MethodNotAllowedParameter from "./method-noallowed-parameter";
+import Response from './response';
+import MethodNotAllowedParameter from './method-noallowed-parameter';
 
 export default function MethodNotAllowedParameters() : Response<405, string, {}, undefined>;
 

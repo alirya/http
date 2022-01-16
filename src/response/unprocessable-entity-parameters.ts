@@ -1,5 +1,5 @@
-import Response from "./response";
-import UnprocessableEntityParameter from "./unprocessable-entity-parameter";
+import Response from './response';
+import UnprocessableEntityParameter from './unprocessable-entity-parameter';
 
 export default function UnprocessableEntityParameters() : Response<422, string, {}, undefined>;
 

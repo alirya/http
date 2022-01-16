@@ -1,6 +1,6 @@
-import ClientError from "../../../../../dist/response/code/class/boolean/client-error";
+import ClientError from '../../../../../dist/response/code/class/boolean/client-error';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
 
 

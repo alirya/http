@@ -1,16 +1,16 @@
-import VariantAlsoNegotiatesParameters from "../../../dist/response/variant-also-negotiates-parameters";
-import VariantAlsoNegotiatesParameter from "../../../dist/response/variant-also-negotiates-parameter";
+import VariantAlsoNegotiatesParameters from '../../../dist/response/variant-also-negotiates-parameters';
+import VariantAlsoNegotiatesParameter from '../../../dist/response/variant-also-negotiates-parameter';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("validate data", function() {
+describe('validate data', function() {
 
     const body = 'data';
     const message = 'data';
     const headers = {etag:'etag data'};
 
 
-    it("all", function() {
+    it('all', function() {
 
         let parameter = VariantAlsoNegotiatesParameter({
             body,

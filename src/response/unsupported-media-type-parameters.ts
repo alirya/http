@@ -1,5 +1,5 @@
-import Response from "./response";
-import UnsupportedMediaTypeParameter from "./unsupported-media-type-parameter";
+import Response from './response';
+import UnsupportedMediaTypeParameter from './unsupported-media-type-parameter';
 
 export default function UnsupportedMediaTypeParameters() : Response<415, string, {}, undefined>;
 

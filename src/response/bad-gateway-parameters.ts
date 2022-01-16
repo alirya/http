@@ -1,5 +1,5 @@
-import Response from "./response";
-import BadGatewayParameter from "./bad-gateway-parameter";
+import Response from './response';
+import BadGatewayParameter from './bad-gateway-parameter';
 
 export default function BadGatewayParameters() : Response<502, string, {}, undefined>;
 

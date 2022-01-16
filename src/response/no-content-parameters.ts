@@ -1,5 +1,5 @@
-import Response from "./response";
-import NoContentParameter from "./no-contenparameter";
+import Response from './response';
+import NoContentParameter from './no-contenparameter';
 
 export default function NoContentParameters() : Response<204, string, {}, undefined>;
 

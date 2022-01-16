@@ -1,5 +1,5 @@
-import Response from "./response";
-import RequestTimeoutParameter from "./request-timeout-parameter";
+import Response from './response';
+import RequestTimeoutParameter from './request-timeout-parameter';
 
 export default function RequestTimeoutParameters() : Response<408, string, {}, undefined>;
 

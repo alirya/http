@@ -1,5 +1,5 @@
-import Response from "./response";
-import UnavailableForLegalReasonsParameter from "./unavailable-for-legal-reasons-parameter";
+import Response from './response';
+import UnavailableForLegalReasonsParameter from './unavailable-for-legal-reasons-parameter';
 
 export default function UnavailableForLegalReasonsParameters() : Response<451, string, {}, undefined>;
 

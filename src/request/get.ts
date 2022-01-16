@@ -1,8 +1,8 @@
-import Request from "./request";
-import RequestClass from "./requesclass";
-import Method from "./method/enum/method";
-import PathInterface from "./path/path";
-import HeaderInterface from "../headers/headers";
+import Request from './request';
+import RequestClass from './requesclass';
+import Method from './method/enum/method';
+import PathInterface from './path/path';
+import HeaderInterface from '../headers/headers';
 
 export default function Get<
     Path extends string,

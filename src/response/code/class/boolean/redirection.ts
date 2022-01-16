@@ -1,5 +1,5 @@
-import Lower from "@alirya/number/boolean/lower-parameters";
-import Greater from "@alirya/number/boolean/greater-parameters";
+import Lower from '@alirya/number/boolean/lower-parameters';
+import Greater from '@alirya/number/boolean/greater-parameters';
 /**
  * check if {@param code} is part of redirection http status code (3xx)
  *

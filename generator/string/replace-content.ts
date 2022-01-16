@@ -1,11 +1,11 @@
-import FileName from "./file-name";
-import DefinitionName from "./definition-name";
+import FileName from './file-name';
+import DefinitionName from './definition-name';
 
 
 export type Type = {
     code : number|string,
     identifier : string
-}
+};
 
 export default function ReplaceContent(content : string, search : Type, replace : Type) : string {
 

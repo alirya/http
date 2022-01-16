@@ -1,5 +1,5 @@
-import Response from "./response";
-import UnauthorizedParameter from "./unauthorized-parameter";
+import Response from './response';
+import UnauthorizedParameter from './unauthorized-parameter';
 
 export default function UnauthorizedParameters() : Response<401, string, {}, undefined>;
 

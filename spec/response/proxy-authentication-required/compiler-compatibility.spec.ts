@@ -1,11 +1,11 @@
-import ProxyAuthenticationRequiredParameter from "../../../dist/response/proxy-authentication-required-parameter";
-import ProxyAuthenticationRequiredParameters from "../../../dist/response/proxy-authentication-required-parameters";
+import ProxyAuthenticationRequiredParameter from '../../../dist/response/proxy-authentication-required-parameter';
+import ProxyAuthenticationRequiredParameters from '../../../dist/response/proxy-authentication-required-parameters';
 
-it("force console log", () => { spyOn(console, 'log').and.callThrough();});
+it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe("empty", function() {
+describe('empty', function() {
 
-    describe("parameter", function() {
+    describe('parameter', function() {
 
         let response = ProxyAuthenticationRequiredParameter();
 
@@ -27,7 +27,7 @@ describe("empty", function() {
 
     });
 
-    describe("parameters", function() {
+    describe('parameters', function() {
 
         let response = ProxyAuthenticationRequiredParameters();
 
@@ -53,9 +53,9 @@ describe("empty", function() {
 });
 
 
-describe("header", function() {
+describe('header', function() {
 
-    describe("parameter", function() {
+    describe('parameter', function() {
 
         let response = ProxyAuthenticationRequiredParameter({
             headers:{etag:'etag data'}
@@ -79,7 +79,7 @@ describe("header", function() {
 
     });
 
-    describe("parameters", function() {
+    describe('parameters', function() {
 
         let response = ProxyAuthenticationRequiredParameters(undefined, {etag:'etag data'});
 
@@ -103,9 +103,9 @@ describe("header", function() {
 
 });
 
-describe("message", function() {
+describe('message', function() {
 
-    describe("parameter", function() {
+    describe('parameter', function() {
 
         let response = ProxyAuthenticationRequiredParameter({
             message: 'etag data'
@@ -130,7 +130,7 @@ describe("message", function() {
 
     });
 
-    describe("parameters", function() {
+    describe('parameters', function() {
 
         let response = ProxyAuthenticationRequiredParameters('etag data');
 
@@ -154,9 +154,9 @@ describe("message", function() {
 
 });
 
-describe("body", function() {
+describe('body', function() {
 
-    describe("parameter", function() {
+    describe('parameter', function() {
 
         let response = ProxyAuthenticationRequiredParameter({
             body:'data',
@@ -186,7 +186,7 @@ describe("body", function() {
         string = response.message;
     });
 
-    describe("parameters", function() {
+    describe('parameters', function() {
 
         let response = ProxyAuthenticationRequiredParameters(undefined, undefined, 'data');
 

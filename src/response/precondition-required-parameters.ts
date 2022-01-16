@@ -1,5 +1,5 @@
-import Response from "./response";
-import PreconditionRequiredParameter from "./precondition-required-parameter";
+import Response from './response';
+import PreconditionRequiredParameter from './precondition-required-parameter';
 
 export default function PreconditionRequiredParameters() : Response<428, string, {}, undefined>;
 

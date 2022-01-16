@@ -1,5 +1,5 @@
-import ReplaceContent, {Type} from "../string/replace-content";
-import * as Fs from "fs";
+import ReplaceContent, {Type} from '../string/replace-content';
+import * as Fs from 'fs';
 
 
 export default function ReplaceFile(

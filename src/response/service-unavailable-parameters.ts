@@ -1,5 +1,5 @@
-import Response from "./response";
-import ServiceUnavailableParameter from "./service-unavailable-parameter";
+import Response from './response';
+import ServiceUnavailableParameter from './service-unavailable-parameter';
 
 export default function ServiceUnavailableParameters() : Response<503, string, {}, undefined>;
 

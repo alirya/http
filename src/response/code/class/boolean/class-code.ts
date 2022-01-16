@@ -1,9 +1,9 @@
-import Class from "../class";
-import ClientError from "./client-error";
-import ServerError from "./server-error";
-import Successful from "./successful";
-import Informational from "./informational";
-import Redirection from "./redirection";
+import Class from '../class';
+import ClientError from './client-error';
+import ServerError from './server-error';
+import Successful from './successful';
+import Informational from './informational';
+import Redirection from './redirection';
 
 /**
  * check if {@param code} is part of {@param status} http status code class

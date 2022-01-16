@@ -1,5 +1,5 @@
-import Response from "./response";
-import PayloadTooLargeParameter from "./payload-too-large-parameter";
+import Response from './response';
+import PayloadTooLargeParameter from './payload-too-large-parameter';
 
 export default function PayloadTooLargeParameters() : Response<413, string, {}, undefined>;
 

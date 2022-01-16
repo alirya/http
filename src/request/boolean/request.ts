@@ -1,9 +1,9 @@
-import RequestInterface from "../request";
-import String from "@alirya/string/boolean/string";
-import Property from "@alirya/object/property/boolean/exists";
-import Object_ from "@alirya/object/boolean/object";
-import Enum from "@alirya/enum/boolean/enum";
-import Method from "../method/enum/method";
+import RequestInterface from '../request';
+import String from '@alirya/string/boolean/string';
+import Property from '@alirya/object/property/boolean/exists';
+import Object_ from '@alirya/object/boolean/object';
+import Enum from '@alirya/enum/boolean/enum';
+import Method from '../method/enum/method';
 
 export default function Request(value : object) : value is RequestInterface {
 

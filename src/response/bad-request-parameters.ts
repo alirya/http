@@ -1,5 +1,5 @@
-import Response from "./response";
-import BadRequestParameter from "./bad-requesparameter";
+import Response from './response';
+import BadRequestParameter from './bad-requesparameter';
 
 export default function BadRequestParameters() : Response<400, string, {}, undefined>;
 

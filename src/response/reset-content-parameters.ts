@@ -1,5 +1,5 @@
-import Response from "./response";
-import ResetContentParameter from "./reset-content-parameter";
+import Response from './response';
+import ResetContentParameter from './reset-content-parameter';
 
 export default function ResetContentParameters() : Response<205, string, {}, undefined>;
 
