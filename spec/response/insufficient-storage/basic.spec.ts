@@ -1,4 +1,4 @@
-import InsufficientStorage from '../../../dist/response/insufficienstorage-parameter';
+import InsufficientStorage from '../../../dist/response/insufficient-storage-parameter';
 import Standard from '../../../dist/response/message/string/strict';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});

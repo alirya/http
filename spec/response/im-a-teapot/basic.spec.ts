@@ -1,4 +1,4 @@
-import ImATeapot from '../../../dist/response/im-a-teapoparameter';
+import ImATeapot from '../../../dist/response/im-a-teapot-parameter';
 import Standard from '../../../dist/response/message/string/strict';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});

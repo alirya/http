@@ -1,5 +1,5 @@
 import Response from './response';
-import PaymentRequiredParameter from './paymenrequired-parameter';
+import PaymentRequiredParameter from './payment-required-parameter';
 
 export default function PaymentRequiredParameters() : Response<402, string, {}, undefined>;
 

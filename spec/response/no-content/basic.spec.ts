@@ -1,4 +1,4 @@
-import NoContent from '../../../dist/response/no-contenparameter';
+import NoContent from '../../../dist/response/no-content-parameter';
 import Standard from '../../../dist/response/message/string/strict';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});

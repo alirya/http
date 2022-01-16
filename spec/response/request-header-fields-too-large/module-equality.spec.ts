@@ -1,5 +1,5 @@
-import RequestHeaderFieldsTooLargeParameters from '../../../dist/response/requesheader-fields-too-large-parameters';
-import RequestHeaderFieldsTooLargeParameter from '../../../dist/response/requesheader-fields-too-large-parameter';
+import RequestHeaderFieldsTooLargeParameters from '../../../dist/response/request-header-fields-too-large-parameters';
+import RequestHeaderFieldsTooLargeParameter from '../../../dist/response/request-header-fields-too-large-parameter';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

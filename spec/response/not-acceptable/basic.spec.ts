@@ -1,4 +1,4 @@
-import NotAcceptable from '../../../dist/response/noacceptable-parameter';
+import NotAcceptable from '../../../dist/response/not-acceptable-parameter';
 import Standard from '../../../dist/response/message/string/strict';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});

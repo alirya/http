@@ -1,5 +1,5 @@
 import Response from './response';
-import RequestHeaderFieldsTooLargeParameter from './requesheader-fields-too-large-parameter';
+import RequestHeaderFieldsTooLargeParameter from './request-header-fields-too-large-parameter';
 
 export default function RequestHeaderFieldsTooLargeParameters() : Response<431, string, {}, undefined>;
 

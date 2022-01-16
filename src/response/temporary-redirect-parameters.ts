@@ -1,5 +1,5 @@
 import Response from './response';
-import TemporaryRedirectParameter from './temporary-redirecparameter';
+import TemporaryRedirectParameter from './temporary-redirect-parameter';
 
 export default function TemporaryRedirectParameters() : Response<307, string, {}, undefined>;
 

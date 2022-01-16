@@ -1,5 +1,5 @@
 import Response from './response';
-import RangeNotSatisfiableParameter from './range-nosatisfiable-parameter';
+import RangeNotSatisfiableParameter from './range-not-satisfiable-parameter';
 
 export default function RangeNotSatisfiableParameters() : Response<416, string, {}, undefined>;
 

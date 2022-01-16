@@ -1,5 +1,5 @@
 import Response from './response';
-import PermanentRedirectParameter from './permanenredirecparameter';
+import PermanentRedirectParameter from './permanent-redirect-parameter';
 
 export default function PermanentRedirectParameters() : Response<308, string, {}, undefined>;
 

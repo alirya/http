@@ -1,5 +1,5 @@
-import MisdirectedRequestParameter from '../../../dist/response/misdirected-requesparameter';
-import MisdirectedRequestParameters from '../../../dist/response/misdirected-requesparameters';
+import MisdirectedRequestParameter from '../../../dist/response/misdirected-request-parameter';
+import MisdirectedRequestParameters from '../../../dist/response/misdirected-request-parameters';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,5 +1,5 @@
-import PermanentRedirectParameters from '../../../dist/response/permanenredirecparameters';
-import PermanentRedirectParameter from '../../../dist/response/permanenredirecparameter';
+import PermanentRedirectParameters from '../../../dist/response/permanent-redirect-parameters';
+import PermanentRedirectParameter from '../../../dist/response/permanent-redirect-parameter';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,5 +1,5 @@
-import InsufficientStorageParameters from '../../../dist/response/insufficienstorage-parameters';
-import InsufficientStorageParameter from '../../../dist/response/insufficienstorage-parameter';
+import InsufficientStorageParameters from '../../../dist/response/insufficient-storage-parameters';
+import InsufficientStorageParameter from '../../../dist/response/insufficient-storage-parameter';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

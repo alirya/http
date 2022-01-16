@@ -1,4 +1,4 @@
-import MisdirectedRequest from '../../../dist/response/misdirected-requesparameter';
+import MisdirectedRequest from '../../../dist/response/misdirected-request-parameter';
 import Standard from '../../../dist/response/message/string/strict';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});

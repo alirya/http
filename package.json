@@ -59,7 +59,7 @@
     "_doc-generate": "typedoc --entryPointStrategy expand ./src --out docs",
     "_doc-clean": "rimraf docs",
     "generator-generate": "node -r esm dist-generator/response.js",
-    "generator": "npm-run-all generator-compile generator-run",
+    "generator": "npm-run-all generator-compile generator-generate",
     "generator-compile": "npm-run-all _generator-compile-script generator-cleanup",
     "generator-compile-watch": "npm-run-all --sequential _generator-ensure-directory --parallel _generator-compile-watch-script generator-cleanup-watch",
     "generator-cleanup": "ts-cleaner --verbose --dist=dist-generator --src=generator",

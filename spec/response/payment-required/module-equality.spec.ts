@@ -1,5 +1,5 @@
-import PaymentRequiredParameters from '../../../dist/response/paymenrequired-parameters';
-import PaymentRequiredParameter from '../../../dist/response/paymenrequired-parameter';
+import PaymentRequiredParameters from '../../../dist/response/payment-required-parameters';
+import PaymentRequiredParameter from '../../../dist/response/payment-required-parameter';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

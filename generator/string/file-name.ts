@@ -1,4 +1,4 @@
-import SplitIdentifier from '../array/spliidentifier';
+import SplitIdentifier from '../array/split-identifier';
 import UpperFirst from '@alirya/string/upper-first';
 
 
