@@ -1,4 +1,4 @@
-import HttpVersionNotSupported from "../../../dist/response/http-version-not-supported-parameter";
+import HttpVersionNotSupported from "../../../dist/response/http-version-nosupported-parameter";
 import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});

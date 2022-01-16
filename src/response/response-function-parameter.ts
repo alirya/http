@@ -4,9 +4,9 @@ import StrictNumber from "./code/number/strict";
 import InferHeader from "../headers/record/infer";
 import InferBody from "../body/value/infer";
 import {Object} from "ts-toolbelt";
-import StrictOmit from "@dikac/t-object/strict-omit";
-import InferMessage from "@dikac/t-message/message/infer";
-import InferCode from "@dikac/t-code/code/infer";
+import StrictOmit from "@alirya/object/strict-omit";
+import InferMessage from "@alirya/message/message/infer";
+import InferCode from "@alirya/code/code/infer";
 import {Optional} from "utility-types";
 
 

@@ -1,8 +1,8 @@
 import Response from "./response";
 import ResponseFunctionParameter from "./response-function-parameter";
 import {Optional} from "utility-types";
-import StrictOmit from "@dikac/t-object/strict-omit";
-import InferMessage from "@dikac/t-message/message/infer";
+import StrictOmit from "@alirya/object/strict-omit";
+import InferMessage from "@alirya/message/message/infer";
 import InferHeader from "../headers/record/infer";
 import InferBody from "../body/value/infer";
 

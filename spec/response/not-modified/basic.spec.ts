@@ -1,4 +1,4 @@
-import NotModified from "../../../dist/response/not-modified-parameter";
+import NotModified from "../../../dist/response/nomodified-parameter";
 import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});

@@ -1,5 +1,5 @@
 import Response from "./response";
-import NotImplementedParameter from "./not-implemented-parameter";
+import NotImplementedParameter from "./noimplemented-parameter";
 
 export default function NotImplementedParameters() : Response<501, string, {}, undefined>;
 

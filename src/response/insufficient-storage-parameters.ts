@@ -1,5 +1,5 @@
 import Response from "./response";
-import InsufficientStorageParameter from "./insufficient-storage-parameter";
+import InsufficientStorageParameter from "./insufficienstorage-parameter";
 
 export default function InsufficientStorageParameters() : Response<507, string, {}, undefined>;
 

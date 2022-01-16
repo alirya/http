@@ -1,5 +1,5 @@
 import Response from "./response";
-import NotExtendedParameter from "./not-extended-parameter";
+import NotExtendedParameter from "./noextended-parameter";
 
 export default function NotExtendedParameters() : Response<510, string, {}, undefined>;
 

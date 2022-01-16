@@ -1,5 +1,5 @@
 import Response from "./response";
-import NotAcceptableParameter from "./not-acceptable-parameter";
+import NotAcceptableParameter from "./noacceptable-parameter";
 
 export default function NotAcceptableParameters() : Response<406, string, {}, undefined>;
 

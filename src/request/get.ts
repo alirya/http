@@ -1,5 +1,5 @@
 import Request from "./request";
-import RequestClass from "./request-class";
+import RequestClass from "./requesclass";
 import Method from "./method/enum/method";
 import PathInterface from "./path/path";
 import HeaderInterface from "../headers/headers";

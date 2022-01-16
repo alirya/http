@@ -1,5 +1,5 @@
 import Response from "./response";
-import GatewayTimeoutParameter from "./gateway-timeout-parameter";
+import GatewayTimeoutParameter from "./gateway-timeouparameter";
 
 export default function GatewayTimeoutParameters() : Response<504, string, {}, undefined>;
 

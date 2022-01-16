@@ -1,5 +1,5 @@
 import Response from "./response";
-import ImATeapotParameter from "./im-a-teapot-parameter";
+import ImATeapotParameter from "./im-a-teapoparameter";
 
 export default function ImATeapotParameters() : Response<418, string, {}, undefined>;
 

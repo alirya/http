@@ -1,5 +1,5 @@
-import NoContentParameters from "../../../dist/response/no-content-parameters";
-import NoContentParameter from "../../../dist/response/no-content-parameter";
+import NoContentParameters from "../../../dist/response/no-contenparameters";
+import NoContentParameter from "../../../dist/response/no-contenparameter";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 

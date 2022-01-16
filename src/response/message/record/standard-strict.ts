@@ -171,7 +171,7 @@ export default function StandardStrict() : Readonly<Strict> {
          */
         410 : "Gone",
         /**
-         *  Server rejected the request because the Content-Length header field is not defined and the server requires it.
+         *  Server rejected the request because the ContenLength header field is not defined and the server requires it.
          */
         411 : "Length Required",
         /**

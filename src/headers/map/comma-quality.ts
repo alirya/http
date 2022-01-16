@@ -1,5 +1,5 @@
-import String from "@dikac/t-map/string/string-parameters";
-import Mapper from "@dikac/t-map/mapper-parameters";
+import String from "@alirya/map/string/string-parameters";
+import Mapper from "@alirya/map/mapper-parameters";
 
 export default class CommaQuality extends Map<string, number> {
 

@@ -3,7 +3,7 @@ import InferMethod from "./method/string/infer";
 import InferPath from "./path/path/infer";
 import InferHeader from "../headers/record/infer";
 import InferBody from "../body/value/infer";
-import Partial from "@dikac/t-object/partial";
+import Partial from "@alirya/object/partial";
 
 export type Type<RequestType extends Partial<Request, 'headers'|'body'>> = Request<
     InferMethod<RequestType>,

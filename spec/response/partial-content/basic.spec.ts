@@ -1,4 +1,4 @@
-import PartialContent from "../../../dist/response/partial-content-parameter";
+import PartialContent from "../../../dist/response/partial-contenparameter";
 import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});

@@ -1,0 +1,33 @@
+{
+  "name": "@alirya/http",
+  "version": "0.18.0-alpha.3",
+  "description": "Typescript http",
+  "dependencies": {
+    "@alirya/t-array": "^0.26.0-alpha.4",
+    "@alirya/t-code": "^0.3.0-alpha.1",
+    "@alirya/t-enum": "^0.12.0-alpha.1",
+    "@alirya/t-map": "^0.11.0-alpha.2",
+    "@alirya/t-message": "^0.12.0-alpha.2",
+    "@alirya/t-number": "^0.17.0-alpha.3",
+    "@alirya/t-object": "^0.37.0-alpha.5",
+    "@alirya/t-string": "^0.16.0-alpha.4",
+    "ts-toolbelt": "^9.6.0",
+    "utility-types": "^3.10.0"
+  },
+  "scripts": {
+    "generator-generate": "node -r esm dist-generator/response.js",
+    "generator": "npm-run-all generator-compile generator-run",
+    "generator-compile": "npm-run-all _generator-compile-script generator-cleanup",
+    "generator-compile-watch": "npm-run-all --sequential _generator-ensure-directory --parallel _generator-compile-watch-script generator-cleanup-watch",
+    "generator-cleanup": "ts-cleaner --verbose --dist=dist-generator --src=generator",
+    "generator-cleanup-watch": "ts-cleaner --verbose --dist=dist-generator --src=generator --watch",
+    "_generator-ensure-directory": "mkdirp dist-generator",
+    "_generator-compile-script": "tsc -p tsconfig-generator.json",
+    "_generator-compile-watch-script": "tsc -w -p tsconfig-generator.json"
+  },
+  "homepage": "https://github.com/alirya/http",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alirya/http"
+  }
+}

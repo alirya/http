@@ -1,4 +1,4 @@
-import CodeInterface from "@dikac/t-code/code";
+import CodeInterface from "@alirya/code/code";
 
 /**
  * @deprecated use {@link CodeInterface} instead

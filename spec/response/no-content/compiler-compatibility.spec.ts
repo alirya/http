@@ -1,5 +1,5 @@
-import NoContentParameter from "../../../dist/response/no-content-parameter";
-import NoContentParameters from "../../../dist/response/no-content-parameters";
+import NoContentParameter from "../../../dist/response/no-contenparameter";
+import NoContentParameters from "../../../dist/response/no-contenparameters";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
 
@@ -14,10 +14,10 @@ describe("empty", function() {
         let undef : undefined;
         let unknown : unknown;
 
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.headers.etag;
 
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.body;
         undef = response.body;
         unknown = response.body;
@@ -37,10 +37,10 @@ describe("empty", function() {
         let undef : undefined;
         let unknown : unknown;
 
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.headers.etag;
 
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.body;
         undef = response.body;
         unknown = response.body;
@@ -68,9 +68,9 @@ describe("header", function() {
 
         string = response.headers.etag;
 
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.body;
-        // @ts-expect-error
+        // @ts-expecerror
         undef = response.body;
         unknown = response.body;
 
@@ -91,7 +91,7 @@ describe("header", function() {
 
         string = response.headers.etag;
 
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.body;
         undef = response.body;
         unknown = response.body;
@@ -116,12 +116,12 @@ describe("message", function() {
         let undef : undefined;
         let unknown : unknown;
 
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.headers.etag;
 
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.body;
-        // @ts-expect-error
+        // @ts-expecerror
         undef = response.body;
         unknown = response.body;
 
@@ -139,10 +139,10 @@ describe("message", function() {
         let undef : undefined;
         let unknown : unknown;
 
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.headers.etag;
 
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.body;
         undef = response.body;
         unknown = response.body;
@@ -168,14 +168,14 @@ describe("body", function() {
         let undef : undefined;
         let unknown : unknown;
 
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.headers.etag;
 
-        // @ts-expect-error
+        // @ts-expecerror
         number = response.headers;
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.headers;
-        // @ts-expect-error
+        // @ts-expecerror
         undef = response.headers;
         record = response.headers;
 
@@ -196,14 +196,14 @@ describe("body", function() {
         let undef : undefined;
         let unknown : unknown;
 
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.headers.etag;
 
-        // @ts-expect-error
+        // @ts-expecerror
         number = response.headers;
-        // @ts-expect-error
+        // @ts-expecerror
         string = response.headers;
-        // @ts-expect-error
+        // @ts-expecerror
         undef = response.headers;
         record = response.headers;
 

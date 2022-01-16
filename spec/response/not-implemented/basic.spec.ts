@@ -1,4 +1,4 @@
-import NotImplemented from "../../../dist/response/not-implemented-parameter";
+import NotImplemented from "../../../dist/response/noimplemented-parameter";
 import Standard from "../../../dist/response/message/string/strict";
 
 it("force console log", () => { spyOn(console, 'log').and.callThrough();});
