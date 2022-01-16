@@ -1,4 +1,4 @@
-import NotFound from '../../../dist/response/nofound-parameter';
+import NotFound from '../../../dist/response/not-found-parameter';
 import Standard from '../../../dist/response/message/string/strict';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});

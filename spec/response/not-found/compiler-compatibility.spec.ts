@@ -1,5 +1,5 @@
-import NotFoundParameter from '../../../dist/response/nofound-parameter';
-import NotFoundParameters from '../../../dist/response/nofound-parameters';
+import NotFoundParameter from '../../../dist/response/not-found-parameter';
+import NotFoundParameters from '../../../dist/response/not-found-parameters';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

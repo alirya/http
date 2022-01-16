@@ -1,5 +1,5 @@
 import Response from './response';
-import NotFoundParameter from './nofound-parameter';
+import NotFoundParameter from './not-found-parameter';
 
 export default function NotFoundParameters() : Response<404, string, {}, undefined>;
 
