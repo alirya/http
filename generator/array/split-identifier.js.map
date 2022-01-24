@@ -1,0 +1,1 @@
+{"version":3,"file":"split-identifier.js","sourceRoot":"","sources":["split-identifier.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,OAAO,UAAU,eAAe,CAAC,UAAmB;IAEvD,OAAO,UAAU;SACZ,iBAAiB,EAAE;SACnB,KAAK,CAAC,GAAG,CAAC;SACV,GAAG,CAAC,CAAC,CAAA,EAAE,CAAA,CAAC,CAAC,OAAO,CAAC,aAAa,EAAE,EAAE,CAAC,CAAC,CAAC;AAC9C,CAAC"}
