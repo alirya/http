@@ -5,7 +5,7 @@ it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
 describe('empty', function() {
 
-    describe('parameter', function() {
+    it('parameter', function() {
 
         let response = MovedPermanentlyParameter();
 
@@ -14,10 +14,10 @@ describe('empty', function() {
         let undef : undefined;
         let unknown : unknown;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.body;
         undef = response.body;
         unknown = response.body;
@@ -27,7 +27,7 @@ describe('empty', function() {
 
     });
 
-    describe('parameters', function() {
+    it('parameters', function() {
 
         let response = MovedPermanentlyParameters();
 
@@ -37,10 +37,10 @@ describe('empty', function() {
         let undef : undefined;
         let unknown : unknown;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.body;
         undef = response.body;
         unknown = response.body;
@@ -55,7 +55,7 @@ describe('empty', function() {
 
 describe('header', function() {
 
-    describe('parameter', function() {
+    it('parameter', function() {
 
         let response = MovedPermanentlyParameter({
             headers:{etag:'etag data'}
@@ -68,9 +68,9 @@ describe('header', function() {
 
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.body;
-        // @ts-expecerror
+        // @ts-expect-error
         undef = response.body;
         unknown = response.body;
 
@@ -79,7 +79,7 @@ describe('header', function() {
 
     });
 
-    describe('parameters', function() {
+    it('parameters', function() {
 
         let response = MovedPermanentlyParameters(undefined, {etag:'etag data'});
 
@@ -91,7 +91,7 @@ describe('header', function() {
 
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.body;
         undef = response.body;
         unknown = response.body;
@@ -105,7 +105,7 @@ describe('header', function() {
 
 describe('message', function() {
 
-    describe('parameter', function() {
+    it('parameter', function() {
 
         let response = MovedPermanentlyParameter({
             message: 'etag data'
@@ -116,12 +116,12 @@ describe('message', function() {
         let undef : undefined;
         let unknown : unknown;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.body;
-        // @ts-expecerror
+        // @ts-expect-error
         undef = response.body;
         unknown = response.body;
 
@@ -130,7 +130,7 @@ describe('message', function() {
 
     });
 
-    describe('parameters', function() {
+    it('parameters', function() {
 
         let response = MovedPermanentlyParameters('etag data');
 
@@ -139,10 +139,10 @@ describe('message', function() {
         let undef : undefined;
         let unknown : unknown;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.body;
         undef = response.body;
         unknown = response.body;
@@ -156,7 +156,7 @@ describe('message', function() {
 
 describe('body', function() {
 
-    describe('parameter', function() {
+    it('parameter', function() {
 
         let response = MovedPermanentlyParameter({
             body:'data',
@@ -168,14 +168,14 @@ describe('body', function() {
         let undef : undefined;
         let unknown : unknown;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         number = response.headers;
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers;
-        // @ts-expecerror
+        // @ts-expect-error
         undef = response.headers;
         record = response.headers;
 
@@ -186,7 +186,7 @@ describe('body', function() {
         string = response.message;
     });
 
-    describe('parameters', function() {
+    it('parameters', function() {
 
         let response = MovedPermanentlyParameters(undefined, undefined, 'data');
 
@@ -196,14 +196,14 @@ describe('body', function() {
         let undef : undefined;
         let unknown : unknown;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         number = response.headers;
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers;
-        // @ts-expecerror
+        // @ts-expect-error
         undef = response.headers;
         record = response.headers;
 

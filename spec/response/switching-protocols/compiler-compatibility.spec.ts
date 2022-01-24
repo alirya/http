@@ -6,7 +6,7 @@ it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
 describe('header', function() {
 
-    describe('parameter', function() {
+    it('parameter', function() {
 
         let response = SwitchingProtocolsParameter({
             headers:{etag:'etag data'}
@@ -18,7 +18,7 @@ describe('header', function() {
 
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.body;
         undef = response.body;
 
@@ -27,7 +27,7 @@ describe('header', function() {
 
     });
 
-    describe('parameters', function() {
+    it('parameters', function() {
 
         let response = SwitchingProtocolsParameters(undefined, {etag:'etag data'});
 
@@ -38,7 +38,7 @@ describe('header', function() {
 
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.body;
         undef = response.body;
 
@@ -51,7 +51,7 @@ describe('header', function() {
 
 describe('body', function() {
 
-    describe('parameter', function() {
+    it('parameter', function() {
 
         let response = SwitchingProtocolsParameter({
             body:'data',
@@ -62,14 +62,14 @@ describe('body', function() {
         let number : number;
         let undef : undefined;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         number = response.headers;
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers;
-        // @ts-expecerror
+        // @ts-expect-error
         undef = response.headers;
         record = response.headers;
 
@@ -79,7 +79,7 @@ describe('body', function() {
         string = response.message;
     });
 
-    describe('parameters', function() {
+    it('parameters', function() {
 
         let response = SwitchingProtocolsParameters(undefined, undefined, 'data');
 
@@ -88,14 +88,14 @@ describe('body', function() {
         let number : number;
         let undef : undefined;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         number = response.headers;
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers;
-        // @ts-expecerror
+        // @ts-expect-error
         undef = response.headers;
         record = response.headers;
 

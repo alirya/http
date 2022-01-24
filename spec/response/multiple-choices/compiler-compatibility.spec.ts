@@ -18,7 +18,7 @@ describe('header', function() {
 
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.body;
         undef = response.body;
 
@@ -38,7 +38,7 @@ describe('header', function() {
 
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.body;
         undef = response.body;
 
@@ -62,14 +62,14 @@ describe('body', function() {
         let number : number;
         let undef : undefined;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         number = response.headers;
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers;
-        // @ts-expecerror
+        // @ts-expect-error
         undef = response.headers;
         record = response.headers;
 
@@ -88,14 +88,14 @@ describe('body', function() {
         let number : number;
         let undef : undefined;
 
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers.etag;
 
-        // @ts-expecerror
+        // @ts-expect-error
         number = response.headers;
-        // @ts-expecerror
+        // @ts-expect-error
         string = response.headers;
-        // @ts-expecerror
+        // @ts-expect-error
         undef = response.headers;
         record = response.headers;
 
