@@ -5,7 +5,7 @@ import InferHeader from '../headers/record/infer';
 import InferBody from '../body/value/infer';
 import Partial from '@alirya/object/partial';
 
-export type Type<RequestType extends Partial<Request, 'headers'|'body'>> = Request<
+export type RequestFunctionParameterReturn<RequestType extends Partial<Request, 'headers'|'body'>> = Request<
     InferMethod<RequestType>,
     InferPath<RequestType>,
     InferHeader<RequestType> extends never ? {} : InferHeader<RequestType>,
@@ -16,7 +16,7 @@ export default function RequestFunctionParameter<
     RequestType extends Partial<Request, 'headers'|'body'>
 >(
     request : RequestType,
-) : Type<RequestType> {
+) : RequestFunctionParameterReturn<RequestType> {
 
 
     if(!request.headers) {
@@ -29,6 +29,6 @@ export default function RequestFunctionParameter<
         request.body = undefined;
     }
 
-    return request as Request as Type<RequestType>;
+    return request as Request as RequestFunctionParameterReturn<RequestType>;
 
 }
