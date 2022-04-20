@@ -1,17 +1,29 @@
 {
   "name": "@alirya/http",
-  "version": "0.18.2",
+  "version": "0.18.3",
   "description": "Typescript http",
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "author": {
+    "name": "Andika Candra"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/alirya/http",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alirya/http"
+  },
   "dependencies": {
     "tslib": "^2.3.1",
-    "@alirya/array": "^0.26.1",
-    "@alirya/code": "^0.3.2",
-    "@alirya/enum": "^0.12.3",
-    "@alirya/map": "^0.12.0",
-    "@alirya/message": "^0.12.1",
-    "@alirya/number": "^0.17.2",
-    "@alirya/object": "^0.37.3",
-    "@alirya/string": "^0.16.4",
+    "@alirya/array": "^0.26.3",
+    "@alirya/code": "^0.3.3",
+    "@alirya/enum": "^0.12.4",
+    "@alirya/map": "^0.12.1",
+    "@alirya/message": "^0.12.2",
+    "@alirya/number": "^0.17.3",
+    "@alirya/object": "^0.37.4",
+    "@alirya/string": "^0.16.8",
     "ts-toolbelt": "^9.6.0",
     "utility-types": "^3.10.0"
   },
@@ -34,6 +46,7 @@
     "utility-types": "^3.10.0",
     "package-version-git-tag": "^3.0.0"
   },
+  "private": true,
   "scripts": {
     "spec-run-js": "node -r esm node_modules/jasmine/bin/jasmine.js --config=./jasmine.json",
     "spec-run": "node -r esm node_modules/jasmine/bin/jasmine.js --config=./jasmine.json --reporter=jasmine-ts-console-reporter",
@@ -75,18 +88,5 @@
     "_generator-ensure-directory": "mkdirp dist-generator",
     "_generator-compile-script": "tsc -p tsconfig-generator.json",
     "_generator-compile-watch-script": "tsc -w -p tsconfig-generator.json"
-  },
-  "publishConfig": {
-    "directory": "dist"
-  },
-  "author": {
-    "name": "Andika Candra"
-  },
-  "private": true,
-  "license": "Apache-2.0",
-  "homepage": "https://github.com/alirya/http",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alirya/http"
   }
 }
