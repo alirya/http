@@ -1,5 +1,4 @@
-import NotExtendedParameter from '../../../dist/response/not-extended-parameter';
-import NotExtendedParameters from '../../../dist/response/not-extended-parameters';
+import {NotExtendedParameters, NotExtendedParameter} from '../../../dist/response/not-extended';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

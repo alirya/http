@@ -1,9 +1,9 @@
 import Request from './request';
-import RequestClass from './request-class';
 import Method from './method/enum/method';
 import PathInterface from './path/path';
 import HeaderInterface from '../headers/headers';
 import BodyInterface from '../body/body';
+import RequestCreate from './create';
 
 export default function Post<
     Body,
@@ -13,10 +13,10 @@ export default function Post<
     request : PathInterface<Path> & HeaderInterface<Headers> & BodyInterface<Body>,
 ) : Request<Method.POST, Path, Headers, Body> {
 
-    return new RequestClass(
+    return RequestCreate.Parameters(
         Method.POST,
         request.path,
-        request.headers || {},
+        request.headers,
         request.body
-    );
+    ) as Request<Method.POST, Path, Headers, Body>;
 }

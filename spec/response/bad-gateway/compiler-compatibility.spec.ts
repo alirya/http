@@ -1,5 +1,4 @@
-import BadGatewayParameter from '../../../dist/response/bad-gateway-parameter';
-import BadGatewayParameters from '../../../dist/response/bad-gateway-parameters';
+import {BadGatewayParameters, BadGatewayParameter} from '../../../dist/response/bad-gateway';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

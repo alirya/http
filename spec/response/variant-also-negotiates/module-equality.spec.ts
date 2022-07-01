@@ -1,5 +1,4 @@
-import VariantAlsoNegotiatesParameters from '../../../dist/response/variant-also-negotiates-parameters';
-import VariantAlsoNegotiatesParameter from '../../../dist/response/variant-also-negotiates-parameter';
+import {VariantAlsoNegotiatesParameter, VariantAlsoNegotiatesParameters} from '../../../dist/response/variant-also-negotiates';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

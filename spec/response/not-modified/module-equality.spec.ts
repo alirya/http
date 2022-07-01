@@ -1,5 +1,4 @@
-import NotModifiedParameters from '../../../dist/response/not-modified-parameters';
-import NotModifiedParameter from '../../../dist/response/not-modified-parameter';
+import {NotModifiedParameter, NotModifiedParameters} from '../../../dist/response/not-modified';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

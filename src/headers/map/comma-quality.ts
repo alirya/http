@@ -1,5 +1,5 @@
-import String from '@alirya/map/string/string-parameters';
-import Mapper from '@alirya/map/mapper-parameters';
+import {StringParameters} from '@alirya/map/string/string';
+import {MapperParameters} from '@alirya/map/mapper';
 
 export default class CommaQuality extends Map<string, number> {
 
@@ -15,7 +15,7 @@ export default class CommaQuality extends Map<string, number> {
 
     toString() : string {
 
-        const mapped = Mapper(this, (k, v)=>[k, 'q=' + v.toString().slice(0, 4)]);
-        return String(mapped, ',', ';');
+        const mapped = MapperParameters(this, (k, v)=>[k, 'q=' + v.toString().slice(0, 4)]);
+        return StringParameters(mapped, ',', ';');
     }
 }

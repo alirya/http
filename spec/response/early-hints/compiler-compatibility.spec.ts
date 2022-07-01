@@ -1,5 +1,4 @@
-import EarlyHintsParameter from '../../../dist/response/early-hints-parameter';
-import EarlyHintsParameters from '../../../dist/response/early-hints-parameters';
+import {EarlyHintsParameters, EarlyHintsParameter} from '../../../dist/response/early-hints';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

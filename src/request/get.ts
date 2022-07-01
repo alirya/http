@@ -1,8 +1,8 @@
 import Request from './request';
-import RequestClass from './request-class';
 import Method from './method/enum/method';
 import PathInterface from './path/path';
 import HeaderInterface from '../headers/headers';
+import RequestCreate from './create';
 
 export default function Get<
     Path extends string,
@@ -11,10 +11,10 @@ export default function Get<
     request : PathInterface<Path> & Partial<HeaderInterface<Headers>>,
 ) : Request<Method.GET, Path, Headers, undefined> {
 
-    return new RequestClass(
+    return RequestCreate.Parameters(
         Method.GET,
         request.path,
-        request.headers || {},
+        request.headers,
         undefined
     ) as Request<Method.GET, Path, Headers, undefined>;
 }

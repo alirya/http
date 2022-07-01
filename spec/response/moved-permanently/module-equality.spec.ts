@@ -1,5 +1,4 @@
-import MovedPermanentlyParameters from '../../../dist/response/moved-permanently-parameters';
-import MovedPermanentlyParameter from '../../../dist/response/moved-permanently-parameter';
+import {MovedPermanentlyParameter, MovedPermanentlyParameters} from '../../../dist/response/moved-permanently';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

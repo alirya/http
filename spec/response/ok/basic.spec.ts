@@ -1,4 +1,4 @@
-import Ok from '../../../dist/response/ok-parameter';
+import Ok from '../../../dist/response/ok';
 import Standard from '../../../dist/response/message/string/strict';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
@@ -7,7 +7,7 @@ describe('validate data', function() {
 
     it('all', function() {
 
-        let response = Ok({
+        let response = Ok.Parameter({
             body:'data',
             headers:{etag:'etag data'},
             message: 'message'
@@ -22,7 +22,7 @@ describe('validate data', function() {
 
     it('empty', function() {
 
-        let response = Ok();
+        let response = Ok.Parameter();
 
         expect(response.headers).toEqual({});
         expect(response.body).toBe(undefined);
@@ -33,7 +33,7 @@ describe('validate data', function() {
 
     it('auto message', function() {
 
-        let response = Ok({
+        let response = Ok.Parameter({
             body:'data',
             headers:{etag:'etag data'},
         });
@@ -47,7 +47,7 @@ describe('validate data', function() {
 
     it('body only', function() {
 
-        let response = Ok({
+        let response = Ok.Parameter({
             body:'data'
         });
 

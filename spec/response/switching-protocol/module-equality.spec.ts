@@ -1,5 +1,4 @@
-import SwitchingProtocolParameters from '../../../dist/response/switching-protocol-parameters';
-import SwitchingProtocolParameter from '../../../dist/response/switching-protocol-parameter';
+import {SwitchingProtocolParameter, SwitchingProtocolParameters} from '../../../dist/response/switching-protocol';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

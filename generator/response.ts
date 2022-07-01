@@ -26,16 +26,16 @@ for (const [codeR, message] of Object.entries(Strict()) as [StrictType|string, s
         const fileName = FileName(replace.identifier);
 
 
-    for (const suffix of ['-parameter.ts', '-parameters.ts']) {
+    //for (const suffix of ['-parameter.ts', '-parameters.ts']) {
 
         // src
         ReplaceFile(
-            src + suffix,
-            `${path}/${fileName}${suffix}`,
+            src + '.ts',
+            `${path}/${fileName}.ts`,
             base,
             replace
         );
-    }
+    //}
 
     const infix = FileName(base.identifier);
     const root = `${specPath}/${infix}`;

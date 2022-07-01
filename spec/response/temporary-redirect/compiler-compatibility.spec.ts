@@ -1,5 +1,4 @@
-import TemporaryRedirectParameter from '../../../dist/response/temporary-redirect-parameter';
-import TemporaryRedirectParameters from '../../../dist/response/temporary-redirect-parameters';
+import {TemporaryRedirectParameters, TemporaryRedirectParameter} from '../../../dist/response/temporary-redirect';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

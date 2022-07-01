@@ -1,5 +1,4 @@
-import SeeOtherParameters from '../../../dist/response/see-other-parameters';
-import SeeOtherParameter from '../../../dist/response/see-other-parameter';
+import {SeeOtherParameter, SeeOtherParameters} from '../../../dist/response/see-other';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
