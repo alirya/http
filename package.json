@@ -22,7 +22,7 @@
     "@alirya/map": "^0.12.1",
     "@alirya/message": "^0.12.2",
     "@alirya/number": "^0.17.3",
-    "@alirya/object": "^0.37.8",
+    "@alirya/object": "^0.37.7",
     "@alirya/string": "^0.16.8",
     "ts-toolbelt": "^9.6.0",
     "utility-types": "^3.10.0"
