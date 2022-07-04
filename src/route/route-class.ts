@@ -1,6 +1,6 @@
 import Route from './route';
 
-export default class RequestClass<
+export default class RouteClass<
     Method extends string = string,
     Path extends string = string,
 > implements Route<Method, Path> {
