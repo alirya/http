@@ -1,6 +1,6 @@
 {
   "name": "@alirya/http",
-  "version": "0.18.3",
+  "version": "0.19.0",
   "description": "Typescript http",
   "publishConfig": {
     "directory": "dist"
@@ -16,14 +16,14 @@
   },
   "dependencies": {
     "tslib": "^2.3.1",
-    "@alirya/array": "^0.26.3",
-    "@alirya/code": "^0.3.3",
-    "@alirya/enum": "^0.12.4",
-    "@alirya/map": "^0.12.1",
-    "@alirya/message": "^0.12.2",
-    "@alirya/number": "^0.17.3",
-    "@alirya/object": "^0.37.7",
-    "@alirya/string": "^0.16.8",
+    "@alirya/array": "^0.27.0",
+    "@alirya/code": "^0.4.0",
+    "@alirya/enum": "^0.13.0",
+    "@alirya/map": "^0.13.0",
+    "@alirya/message": "^0.13.0",
+    "@alirya/number": "^0.18.0",
+    "@alirya/object": "^0.38.0",
+    "@alirya/string": "^0.17.0",
     "ts-toolbelt": "^9.6.0",
     "utility-types": "^3.10.0"
   },
@@ -77,7 +77,7 @@
     "_doc-generate": "typedoc --entryPointStrategy expand ./src --out docs",
     "_doc-clean": "rimraf docs",
     "generator-generate": "node -r esm dist-generator/response.js",
-    "generator": "npm-run-all generator-compile generator-run",
+    "generator": "npm-run-all generator-compile generator-generate",
     "generator-compile": "npm-run-all _generator-compile-script generator-cleanup",
     "generator-compile-watch": "npm-run-all --sequential _generator-ensure-directory --parallel _generator-compile-watch-script generator-cleanup-watch",
     "generator-cleanup": "ts-cleaner --verbose --dist=dist-generator --src=generator",

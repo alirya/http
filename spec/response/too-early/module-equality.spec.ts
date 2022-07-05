@@ -1,5 +1,4 @@
-import TooEarlyParameters from '../../../dist/response/too-early-parameters';
-import TooEarlyParameter from '../../../dist/response/too-early-parameter';
+import {TooEarlyParameter, TooEarlyParameters} from '../../../dist/response/too-early';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

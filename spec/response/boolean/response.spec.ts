@@ -1,5 +1,5 @@
 import Response from '../../../dist/response/boolean/response';
-import Ok from '../../../dist/response/ok-parameter';
+import Ok from '../../../dist/response/ok';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
@@ -13,6 +13,6 @@ it('plain', () => {
 
 it('class', () => {
 
-    expect(Response(Ok({body:undefined}))).toBe(true);
+    expect(Response(Ok.Parameter({body:undefined}))).toBe(true);
 
 });

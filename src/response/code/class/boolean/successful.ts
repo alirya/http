@@ -1,5 +1,5 @@
-import Lower from '@alirya/number/boolean/lower-parameters';
-import Greater from '@alirya/number/boolean/greater-parameters';
+import {LowerParameters} from '@alirya/number/boolean/lower';
+import {GreaterParameters} from '@alirya/number/boolean/greater';
 /**
  * check if {@param code} is part of Successful http status code (2xx)
  *
@@ -7,5 +7,5 @@ import Greater from '@alirya/number/boolean/greater-parameters';
  */
 export default function Successful (code : number) : boolean {
 
-    return Greater(code, 200, true) && Lower(code, 300, false);
+    return GreaterParameters(code, 200, true) && LowerParameters(code, 300, false);
 }

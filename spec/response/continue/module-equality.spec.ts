@@ -1,5 +1,4 @@
-import ContinueParameters from '../../../dist/response/continue-parameters';
-import ContinueParameter from '../../../dist/response/continue-parameter';
+import {ContinueParameter, ContinueParameters} from '../../../dist/response/continue';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

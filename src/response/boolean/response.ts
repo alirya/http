@@ -1,5 +1,5 @@
 import ResponseInterface from '../response';
-import Property from '@alirya/object/property/boolean/exists';
+import {ExistsParameters} from '@alirya/object/property/boolean/exists';
 import Number from '@alirya/number/boolean/number';
 import Code from '@alirya/code/boolean/code';
 import Message from '@alirya/message/boolean/message';
@@ -18,7 +18,7 @@ export default function Response(value : object) : value is ResponseInterface {
         return false;
     }
 
-    if(!Property(value, 'headers') || !Object_(value.headers)) {
+    if(!ExistsParameters(value, 'headers') || !Object_(value.headers)) {
 
         return false;
     }

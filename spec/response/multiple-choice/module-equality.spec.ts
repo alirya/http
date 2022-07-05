@@ -1,5 +1,4 @@
-import MultipleChoiceParameters from '../../../dist/response/multiple-choice-parameters';
-import MultipleChoiceParameter from '../../../dist/response/multiple-choice-parameter';
+import {MultipleChoiceParameter, MultipleChoiceParameters} from '../../../dist/response/multiple-choice';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

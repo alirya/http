@@ -1,5 +1,4 @@
-import BadRequestParameters from '../../../dist/response/bad-request-parameters';
-import BadRequestParameter from '../../../dist/response/bad-request-parameter';
+import {BadRequestParameter, BadRequestParameters} from '../../../dist/response/bad-request';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

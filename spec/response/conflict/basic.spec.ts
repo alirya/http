@@ -1,15 +1,41 @@
-import Conflict from '../../../dist/response/conflict-parameter';
+import Conflict from '../../../dist/response/conflict';
 import Standard from '../../../dist/response/message/string/strict';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
 describe('validate data', function() {
 
-    it('header', function() {
+    it('all', function() {
 
-        let response = Conflict({
+        let response = Conflict.Parameter({
             body:'data',
-            headers:{etag:'etag data'}
+            headers:{etag:'etag data'},
+            message: 'message'
+        });
+
+        expect(response.headers.etag).toBe('etag data');
+        expect(response.body).toBe('data');
+        expect(response.code).toBe(409);
+        expect(response.message).toBe('message');
+
+    });
+
+    it('empty', function() {
+
+        let response = Conflict.Parameter();
+
+        expect(response.headers).toEqual({});
+        expect(response.body).toBe(undefined);
+        expect(response.code).toBe(409);
+        expect(response.message).toBe(Standard(409));
+
+    });
+
+    it('auto message', function() {
+
+        let response = Conflict.Parameter({
+            body:'data',
+            headers:{etag:'etag data'},
         });
 
         expect(response.headers.etag).toBe('etag data');
@@ -19,9 +45,9 @@ describe('validate data', function() {
 
     });
 
-    it('header', function() {
+    it('body only', function() {
 
-        let response = Conflict({
+        let response = Conflict.Parameter({
             body:'data'
         });
 

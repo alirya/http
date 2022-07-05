@@ -1,5 +1,4 @@
-import ForbiddenParameter from '../../../dist/response/forbidden-parameter';
-import ForbiddenParameters from '../../../dist/response/forbidden-parameters';
+import {ForbiddenParameters, ForbiddenParameter} from '../../../dist/response/forbidden';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

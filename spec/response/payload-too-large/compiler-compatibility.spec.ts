@@ -1,5 +1,4 @@
-import PayloadTooLargeParameter from '../../../dist/response/payload-too-large-parameter';
-import PayloadTooLargeParameters from '../../../dist/response/payload-too-large-parameters';
+import {PayloadTooLargeParameters, PayloadTooLargeParameter} from '../../../dist/response/payload-too-large';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,5 +1,5 @@
-import Lower from '@alirya/number/boolean/lower-parameters';
-import Greater from '@alirya/number/boolean/greater-parameters';
+import {LowerParameters} from '@alirya/number/boolean/lower';
+import {GreaterParameters} from '@alirya/number/boolean/greater';
 /**
  * check if {@param code} is part of server error http status code (5xx)
  *
@@ -7,5 +7,5 @@ import Greater from '@alirya/number/boolean/greater-parameters';
  */
 export default function ServerError(code : number) : boolean {
 
-    return Greater(code, 500, true) && Lower(code, 600, false);
+    return GreaterParameters(code, 500, true) && LowerParameters(code, 600, false);
 }

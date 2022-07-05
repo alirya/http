@@ -1,5 +1,5 @@
-import Lower from '@alirya/number/boolean/lower-parameters';
-import Greater from '@alirya/number/boolean/greater-parameters';
+import {LowerParameters} from '@alirya/number/boolean/lower';
+import {GreaterParameters} from '@alirya/number/boolean/greater';
 /**
  * check if {@param code} is part of redirection http status code (3xx)
  *
@@ -7,5 +7,5 @@ import Greater from '@alirya/number/boolean/greater-parameters';
  */
 export default function Redirection (code : number) : boolean {
 
-    return Greater(code, 300, true) && Lower(code, 400, false);
+    return GreaterParameters(code, 300, true) && LowerParameters(code, 400, false);
 }

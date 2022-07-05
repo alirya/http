@@ -1,9 +1,9 @@
 import Request from './request';
-import RequestClass from './request-class';
 import Method from './method/enum/method';
 import PathInterface from './path/path';
 import HeaderInterface from '../headers/headers';
 import BodyInterface from '../body/body';
+import RequestCreate from './create';
 
 export default function Patch<
     Body,
@@ -13,10 +13,10 @@ export default function Patch<
     request : PathInterface<Path> & HeaderInterface<Headers> & BodyInterface<Body>,
 ) : Request<Method.PATCH, Path, Headers, Body> {
 
-    return new RequestClass(
+    return RequestCreate.Parameters(
         Method.PATCH,
         request.path,
-        request.headers || {},
+        request.headers,
         request.body
-    );
+    ) as Request<Method.PATCH, Path, Headers, Body>;
 }

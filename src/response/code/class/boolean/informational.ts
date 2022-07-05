@@ -1,5 +1,5 @@
-import Lower from '@alirya/number/boolean/lower-parameters';
-import Greater from '@alirya/number/boolean/greater-parameters';
+import {LowerParameters} from '@alirya/number/boolean/lower';
+import {GreaterParameters} from '@alirya/number/boolean/greater';
 /**
  * check if {@param code} is part of informational http status code (1xx)
  *
@@ -7,5 +7,5 @@ import Greater from '@alirya/number/boolean/greater-parameters';
  */
 export default function Informational(code : number) : boolean {
 
-    return Greater(code, 100, true) && Lower(code, 200, false);
+    return GreaterParameters(code, 100, true) && LowerParameters(code, 200, false);
 }

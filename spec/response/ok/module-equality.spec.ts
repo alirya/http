@@ -1,5 +1,4 @@
-import OkParameters from '../../../dist/response/ok-parameters';
-import OkParameter from '../../../dist/response/ok-parameter';
+import {OkParameter, OkParameters} from '../../../dist/response/ok';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,5 +1,4 @@
-import UnavailableForLegalReasonsParameter from '../../../dist/response/unavailable-for-legal-reasons-parameter';
-import UnavailableForLegalReasonsParameters from '../../../dist/response/unavailable-for-legal-reasons-parameters';
+import {UnavailableForLegalReasonsParameters, UnavailableForLegalReasonsParameter} from '../../../dist/response/unavailable-for-legal-reasons';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

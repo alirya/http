@@ -1,5 +1,4 @@
-import ImATeapotParameter from '../../../dist/response/im-a-teapot-parameter';
-import ImATeapotParameters from '../../../dist/response/im-a-teapot-parameters';
+import {ImATeapotParameters, ImATeapotParameter} from '../../../dist/response/im-a-teapot';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

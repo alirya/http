@@ -1,5 +1,4 @@
-import ResetContentParameters from '../../../dist/response/reset-content-parameters';
-import ResetContentParameter from '../../../dist/response/reset-content-parameter';
+import {ResetContentParameter, ResetContentParameters} from '../../../dist/response/reset-content';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

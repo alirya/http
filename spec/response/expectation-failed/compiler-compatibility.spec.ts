@@ -1,5 +1,4 @@
-import ExpectationFailedParameter from '../../../dist/response/expectation-failed-parameter';
-import ExpectationFailedParameters from '../../../dist/response/expectation-failed-parameters';
+import {ExpectationFailedParameters, ExpectationFailedParameter} from '../../../dist/response/expectation-failed';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
