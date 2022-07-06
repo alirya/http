@@ -1,4 +1,4 @@
-import {NoContentParameters, NoContentParameter} from '../../../dist/response/no-content';
+import {NoContentParameters, NoContentParameter} from '../../../dist/response/no-content.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

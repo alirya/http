@@ -1,5 +1,5 @@
-import ResetContent from '../../../dist/response/reset-content';
-import Standard from '../../../dist/response/message/string/strict';
+import ResetContent from '../../../dist/response/reset-content.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

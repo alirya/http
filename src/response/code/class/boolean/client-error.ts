@@ -1,5 +1,5 @@
-import {LowerParameters} from '@alirya/number/boolean/lower';
-import {GreaterParameters} from '@alirya/number/boolean/greater';
+import {LowerParameters} from '@alirya/number/boolean/lower.js';
+import {GreaterParameters} from '@alirya/number/boolean/greater.js';
 /**
  * check if {@param code} is part of client error http status code (4xx)
  *

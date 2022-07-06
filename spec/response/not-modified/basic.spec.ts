@@ -1,5 +1,5 @@
-import NotModified from '../../../dist/response/not-modified';
-import Standard from '../../../dist/response/message/string/strict';
+import NotModified from '../../../dist/response/not-modified.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

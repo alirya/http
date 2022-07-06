@@ -1,5 +1,5 @@
-import FailedDependency from '../../../dist/response/failed-dependency';
-import Standard from '../../../dist/response/message/string/strict';
+import FailedDependency from '../../../dist/response/failed-dependency.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

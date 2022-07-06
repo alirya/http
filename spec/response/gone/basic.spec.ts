@@ -1,5 +1,5 @@
-import Gone from '../../../dist/response/gone';
-import Standard from '../../../dist/response/message/string/strict';
+import Gone from '../../../dist/response/gone.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

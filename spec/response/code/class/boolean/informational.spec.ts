@@ -1,4 +1,4 @@
-import Informational from '../../../../../dist/response/code/class/boolean/informational';
+import Informational from '../../../../../dist/response/code/class/boolean/informational.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,4 +1,4 @@
-import {UriTooLongParameters, UriTooLongParameter} from '../../../dist/response/uri-too-long';
+import {UriTooLongParameters, UriTooLongParameter} from '../../../dist/response/uri-too-long.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

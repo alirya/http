@@ -1,4 +1,4 @@
-import {RequestTimeoutParameter, RequestTimeoutParameters} from '../../../dist/response/request-timeout';
+import {RequestTimeoutParameter, RequestTimeoutParameters} from '../../../dist/response/request-timeout.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,5 +1,5 @@
-import VariantAlsoNegotiates from '../../../dist/response/variant-also-negotiates';
-import Standard from '../../../dist/response/message/string/strict';
+import VariantAlsoNegotiates from '../../../dist/response/variant-also-negotiates.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

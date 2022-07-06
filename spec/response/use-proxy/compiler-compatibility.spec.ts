@@ -1,4 +1,4 @@
-import {UseProxyParameters, UseProxyParameter} from '../../../dist/response/use-proxy';
+import {UseProxyParameters, UseProxyParameter} from '../../../dist/response/use-proxy.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

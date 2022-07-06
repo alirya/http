@@ -1,4 +1,4 @@
-import {PaymentRequiredParameter, PaymentRequiredParameters} from '../../../dist/response/payment-required';
+import {PaymentRequiredParameter, PaymentRequiredParameters} from '../../../dist/response/payment-required.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

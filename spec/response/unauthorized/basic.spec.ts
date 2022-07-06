@@ -1,5 +1,5 @@
-import Unauthorized from '../../../dist/response/unauthorized';
-import Standard from '../../../dist/response/message/string/strict';
+import Unauthorized from '../../../dist/response/unauthorized.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

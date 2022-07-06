@@ -1,4 +1,4 @@
-import {UnusedParameters, UnusedParameter} from '../../../dist/response/unused';
+import {UnusedParameters, UnusedParameter} from '../../../dist/response/unused.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

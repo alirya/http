@@ -1,5 +1,5 @@
-import Unused from '../../../dist/response/unused';
-import Standard from '../../../dist/response/message/string/strict';
+import Unused from '../../../dist/response/unused.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

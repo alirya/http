@@ -1,4 +1,4 @@
-import ReplaceContent, {Type} from '../string/replace-content';
+import ReplaceContent, {Type} from '../string/replace-content.js';
 import * as Fs from 'fs';
 
 

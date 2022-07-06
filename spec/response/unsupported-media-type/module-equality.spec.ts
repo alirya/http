@@ -1,4 +1,4 @@
-import {UnsupportedMediaTypeParameter, UnsupportedMediaTypeParameters} from '../../../dist/response/unsupported-media-type';
+import {UnsupportedMediaTypeParameter, UnsupportedMediaTypeParameters} from '../../../dist/response/unsupported-media-type.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

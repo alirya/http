@@ -1,4 +1,4 @@
-import {NotFoundParameter, NotFoundParameters} from '../../../dist/response/not-found';
+import {NotFoundParameter, NotFoundParameters} from '../../../dist/response/not-found.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

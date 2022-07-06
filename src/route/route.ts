@@ -1,5 +1,5 @@
-import PathInterface from '../request/path/path';
-import MethodInterface from '../request/method/method';
+import PathInterface from '../request/path/path.js';
+import MethodInterface from '../request/method/method.js';
 
 export default interface Route<
     Method extends string = string,

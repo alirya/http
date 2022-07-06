@@ -1,4 +1,4 @@
-import {ProxyAuthenticationRequiredParameters, ProxyAuthenticationRequiredParameter} from '../../../dist/response/proxy-authentication-required';
+import {ProxyAuthenticationRequiredParameters, ProxyAuthenticationRequiredParameter} from '../../../dist/response/proxy-authentication-required.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

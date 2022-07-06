@@ -1,5 +1,5 @@
-import SeeOther from '../../../dist/response/see-other';
-import Standard from '../../../dist/response/message/string/strict';
+import SeeOther from '../../../dist/response/see-other.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

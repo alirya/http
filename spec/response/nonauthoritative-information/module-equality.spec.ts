@@ -1,4 +1,4 @@
-import {NonauthoritativeInformationParameter, NonauthoritativeInformationParameters} from '../../../dist/response/nonauthoritative-information';
+import {NonauthoritativeInformationParameter, NonauthoritativeInformationParameters} from '../../../dist/response/nonauthoritative-information.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

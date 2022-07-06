@@ -1,4 +1,4 @@
-import {PartialContentParameters, PartialContentParameter} from '../../../dist/response/partial-content';
+import {PartialContentParameters, PartialContentParameter} from '../../../dist/response/partial-content.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

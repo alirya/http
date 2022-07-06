@@ -1,4 +1,4 @@
-import {GoneParameter, GoneParameters} from '../../../dist/response/gone';
+import {GoneParameter, GoneParameters} from '../../../dist/response/gone.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

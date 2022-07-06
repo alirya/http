@@ -1,4 +1,4 @@
-import {UnauthorizedParameter, UnauthorizedParameters} from '../../../dist/response/unauthorized';
+import {UnauthorizedParameter, UnauthorizedParameters} from '../../../dist/response/unauthorized.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

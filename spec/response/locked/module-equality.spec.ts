@@ -1,4 +1,4 @@
-import {LockedParameter, LockedParameters} from '../../../dist/response/locked';
+import {LockedParameter, LockedParameters} from '../../../dist/response/locked.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,4 +1,4 @@
-import {LoopDetectedParameter, LoopDetectedParameters} from '../../../dist/response/loop-detected';
+import {LoopDetectedParameter, LoopDetectedParameters} from '../../../dist/response/loop-detected.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

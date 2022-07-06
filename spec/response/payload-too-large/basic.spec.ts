@@ -1,5 +1,5 @@
-import PayloadTooLarge from '../../../dist/response/payload-too-large';
-import Standard from '../../../dist/response/message/string/strict';
+import PayloadTooLarge from '../../../dist/response/payload-too-large.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

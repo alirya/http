@@ -1,4 +1,4 @@
-import {AcceptedParameters, AcceptedParameter} from '../../../dist/response/accepted';
+import {AcceptedParameters, AcceptedParameter} from '../../../dist/response/accepted.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

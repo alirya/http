@@ -1,5 +1,5 @@
-import FileName from './file-name';
-import DefinitionName from './definition-name';
+import FileName from './file-name.js';
+import DefinitionName from './definition-name.js';
 
 
 export type Type = {

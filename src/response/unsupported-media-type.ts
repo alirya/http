@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function UnsupportedMediaTypeParameters() : Response<415, string, {}, undefined>;
 

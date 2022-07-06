@@ -1,5 +1,5 @@
-import TooEarly from '../../../dist/response/too-early';
-import Standard from '../../../dist/response/message/string/strict';
+import TooEarly from '../../../dist/response/too-early.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

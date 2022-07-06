@@ -1,4 +1,4 @@
-import {TooManyRequestsParameters, TooManyRequestsParameter} from '../../../dist/response/too-many-requests';
+import {TooManyRequestsParameters, TooManyRequestsParameter} from '../../../dist/response/too-many-requests.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

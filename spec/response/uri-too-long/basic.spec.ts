@@ -1,5 +1,5 @@
-import UriTooLong from '../../../dist/response/uri-too-long';
-import Standard from '../../../dist/response/message/string/strict';
+import UriTooLong from '../../../dist/response/uri-too-long.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

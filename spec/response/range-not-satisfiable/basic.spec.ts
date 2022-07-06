@@ -1,5 +1,5 @@
-import RangeNotSatisfiable from '../../../dist/response/range-not-satisfiable';
-import Standard from '../../../dist/response/message/string/strict';
+import RangeNotSatisfiable from '../../../dist/response/range-not-satisfiable.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

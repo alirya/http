@@ -1,5 +1,5 @@
-import PreconditionFailed from '../../../dist/response/precondition-failed';
-import Standard from '../../../dist/response/message/string/strict';
+import PreconditionFailed from '../../../dist/response/precondition-failed.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

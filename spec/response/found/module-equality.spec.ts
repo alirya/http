@@ -1,4 +1,4 @@
-import {FoundParameter, FoundParameters} from '../../../dist/response/found';
+import {FoundParameter, FoundParameters} from '../../../dist/response/found.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

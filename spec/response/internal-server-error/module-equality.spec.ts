@@ -1,4 +1,4 @@
-import {InternalServerErrorParameter, InternalServerErrorParameters} from '../../../dist/response/internal-server-error';
+import {InternalServerErrorParameter, InternalServerErrorParameters} from '../../../dist/response/internal-server-error.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,5 +1,5 @@
-import TooManyRequests from '../../../dist/response/too-many-requests';
-import Standard from '../../../dist/response/message/string/strict';
+import TooManyRequests from '../../../dist/response/too-many-requests.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

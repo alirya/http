@@ -1,5 +1,5 @@
-import MultipleChoice from '../../../dist/response/multiple-choice';
-import Standard from '../../../dist/response/message/string/strict';
+import MultipleChoice from '../../../dist/response/multiple-choice.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

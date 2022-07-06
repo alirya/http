@@ -1,5 +1,5 @@
-import Continue from '../../../dist/response/continue';
-import Standard from '../../../dist/response/message/string/strict';
+import Continue from '../../../dist/response/continue.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

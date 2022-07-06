@@ -1,5 +1,5 @@
-import MethodNotAllowed from '../../../dist/response/method-not-allowed';
-import Standard from '../../../dist/response/message/string/strict';
+import MethodNotAllowed from '../../../dist/response/method-not-allowed.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

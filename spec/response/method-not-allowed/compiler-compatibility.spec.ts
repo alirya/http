@@ -1,4 +1,4 @@
-import {MethodNotAllowedParameters, MethodNotAllowedParameter} from '../../../dist/response/method-not-allowed';
+import {MethodNotAllowedParameters, MethodNotAllowedParameter} from '../../../dist/response/method-not-allowed.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

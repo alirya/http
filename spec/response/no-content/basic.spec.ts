@@ -1,5 +1,5 @@
-import NoContent from '../../../dist/response/no-content';
-import Standard from '../../../dist/response/message/string/strict';
+import NoContent from '../../../dist/response/no-content.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,10 +1,10 @@
-import ResponseInterface from '../response';
-import {ExistsParameters} from '@alirya/object/property/boolean/exists';
-import Number from '@alirya/number/boolean/number';
-import Code from '@alirya/code/boolean/code';
-import Message from '@alirya/message/boolean/message';
-import String from '@alirya/string/boolean/string';
-import Object_ from '@alirya/object/boolean/object';
+import ResponseInterface from '../response.js';
+import {ExistsParameters} from '@alirya/object/property/boolean/exists.js';
+import Number from '@alirya/number/boolean/number.js';
+import Code from '@alirya/code/boolean/code.js';
+import Message from '@alirya/message/boolean/message.js';
+import String from '@alirya/string/boolean/string.js';
+import Object_ from '@alirya/object/boolean/object.js';
 
 export default function Response(value : object) : value is ResponseInterface {
 

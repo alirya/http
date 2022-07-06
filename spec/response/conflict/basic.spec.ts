@@ -1,5 +1,5 @@
-import Conflict from '../../../dist/response/conflict';
-import Standard from '../../../dist/response/message/string/strict';
+import Conflict from '../../../dist/response/conflict.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

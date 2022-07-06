@@ -1,5 +1,5 @@
-import Forbidden from '../../../dist/response/forbidden';
-import Standard from '../../../dist/response/message/string/strict';
+import Forbidden from '../../../dist/response/forbidden.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

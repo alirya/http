@@ -1,7 +1,7 @@
-import HeaderInterface from '../headers/headers';
-import BodyInterface from '../body/body';
-import MessageInterface from '@alirya/message/message';
-import CodeInterface from '@alirya/code/code';
+import HeaderInterface from '../headers/headers.js';
+import BodyInterface from '../body/body.js';
+import MessageInterface from '@alirya/message/message.js';
+import CodeInterface from '@alirya/code/code.js';
 
 export default interface Response<
     Code extends number = number,

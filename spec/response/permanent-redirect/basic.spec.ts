@@ -1,5 +1,5 @@
-import PermanentRedirect from '../../../dist/response/permanent-redirect';
-import Standard from '../../../dist/response/message/string/strict';
+import PermanentRedirect from '../../../dist/response/permanent-redirect.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

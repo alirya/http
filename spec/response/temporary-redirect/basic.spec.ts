@@ -1,5 +1,5 @@
-import TemporaryRedirect from '../../../dist/response/temporary-redirect';
-import Standard from '../../../dist/response/message/string/strict';
+import TemporaryRedirect from '../../../dist/response/temporary-redirect.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

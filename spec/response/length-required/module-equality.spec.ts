@@ -1,4 +1,4 @@
-import {LengthRequiredParameter, LengthRequiredParameters} from '../../../dist/response/length-required';
+import {LengthRequiredParameter, LengthRequiredParameters} from '../../../dist/response/length-required.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

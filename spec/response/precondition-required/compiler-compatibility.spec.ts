@@ -1,4 +1,4 @@
-import {PreconditionRequiredParameters, PreconditionRequiredParameter} from '../../../dist/response/precondition-required';
+import {PreconditionRequiredParameters, PreconditionRequiredParameter} from '../../../dist/response/precondition-required.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

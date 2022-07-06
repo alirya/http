@@ -1,5 +1,5 @@
-import Response from '../../../dist/response/boolean/response';
-import Ok from '../../../dist/response/ok';
+import Response from '../../../dist/response/boolean/response.js';
+import Ok from '../../../dist/response/ok.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

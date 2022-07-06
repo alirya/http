@@ -1,4 +1,4 @@
-import {ServiceUnavailableParameter, ServiceUnavailableParameters} from '../../../dist/response/service-unavailable';
+import {ServiceUnavailableParameter, ServiceUnavailableParameters} from '../../../dist/response/service-unavailable.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

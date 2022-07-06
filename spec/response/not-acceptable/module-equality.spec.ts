@@ -1,4 +1,4 @@
-import {NotAcceptableParameter, NotAcceptableParameters} from '../../../dist/response/not-acceptable';
+import {NotAcceptableParameter, NotAcceptableParameters} from '../../../dist/response/not-acceptable.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

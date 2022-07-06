@@ -1,4 +1,4 @@
-import {UpgradeRequiredParameter, UpgradeRequiredParameters} from '../../../dist/response/upgrade-required';
+import {UpgradeRequiredParameter, UpgradeRequiredParameters} from '../../../dist/response/upgrade-required.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,5 +1,5 @@
-import NotAcceptable from '../../../dist/response/not-acceptable';
-import Standard from '../../../dist/response/message/string/strict';
+import NotAcceptable from '../../../dist/response/not-acceptable.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

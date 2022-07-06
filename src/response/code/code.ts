@@ -1,4 +1,4 @@
-import CodeInterface from '@alirya/code/code';
+import CodeInterface from '@alirya/code/code.js';
 
 /**
  * @deprecated use {@link CodeInterface} instead

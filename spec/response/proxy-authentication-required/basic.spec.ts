@@ -1,5 +1,5 @@
-import ProxyAuthenticationRequired from '../../../dist/response/proxy-authentication-required';
-import Standard from '../../../dist/response/message/string/strict';
+import ProxyAuthenticationRequired from '../../../dist/response/proxy-authentication-required.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

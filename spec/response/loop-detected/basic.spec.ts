@@ -1,5 +1,5 @@
-import LoopDetected from '../../../dist/response/loop-detected';
-import Standard from '../../../dist/response/message/string/strict';
+import LoopDetected from '../../../dist/response/loop-detected.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

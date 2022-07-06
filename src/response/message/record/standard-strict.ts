@@ -1,4 +1,4 @@
-import Strict from './strict';
+import Strict from './strict.js';
 
 
 export default function StandardStrict() : Readonly<Strict> {

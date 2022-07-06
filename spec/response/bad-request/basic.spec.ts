@@ -1,5 +1,5 @@
-import BadRequest from '../../../dist/response/bad-request';
-import Standard from '../../../dist/response/message/string/strict';
+import BadRequest from '../../../dist/response/bad-request.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

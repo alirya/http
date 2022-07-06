@@ -1,4 +1,4 @@
-import {GatewayTimeoutParameter, GatewayTimeoutParameters} from '../../../dist/response/gateway-timeout';
+import {GatewayTimeoutParameter, GatewayTimeoutParameters} from '../../../dist/response/gateway-timeout.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,6 +1,6 @@
-import HeaderInterface from '../headers/headers';
-import BodyInterface from '../body/body';
-import Route from '../route/route';
+import HeaderInterface from '../headers/headers.js';
+import BodyInterface from '../body/body.js';
+import Route from '../route/route.js';
 
 export default interface Request<
     Method extends string = string,

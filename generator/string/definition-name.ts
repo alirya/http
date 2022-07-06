@@ -1,5 +1,5 @@
-import SplitIdentifier from '../array/split-identifier';
-import UpperFirst from '@alirya/string/upper-first';
+import SplitIdentifier from '../array/split-identifier.js';
+import UpperFirst from '@alirya/string/upper-first.js';
 
 
 export default function DefinitionName(string : string) : string {

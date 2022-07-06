@@ -1,5 +1,5 @@
-import EarlyHints from '../../../dist/response/early-hints';
-import Standard from '../../../dist/response/message/string/strict';
+import EarlyHints from '../../../dist/response/early-hints.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

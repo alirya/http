@@ -1,4 +1,4 @@
-import {NotImplementedParameter, NotImplementedParameters} from '../../../dist/response/not-implemented';
+import {NotImplementedParameter, NotImplementedParameters} from '../../../dist/response/not-implemented.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

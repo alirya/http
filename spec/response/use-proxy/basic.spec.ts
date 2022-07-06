@@ -1,5 +1,5 @@
-import UseProxy from '../../../dist/response/use-proxy';
-import Standard from '../../../dist/response/message/string/strict';
+import UseProxy from '../../../dist/response/use-proxy.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,5 +1,5 @@
-import HttpVersionNotSupported from '../../../dist/response/http-version-not-supported';
-import Standard from '../../../dist/response/message/string/strict';
+import HttpVersionNotSupported from '../../../dist/response/http-version-not-supported.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

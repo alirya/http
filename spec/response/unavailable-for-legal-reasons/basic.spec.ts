@@ -1,5 +1,5 @@
-import UnavailableForLegalReasons from '../../../dist/response/unavailable-for-legal-reasons';
-import Standard from '../../../dist/response/message/string/strict';
+import UnavailableForLegalReasons from '../../../dist/response/unavailable-for-legal-reasons.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

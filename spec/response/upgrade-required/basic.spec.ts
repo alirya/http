@@ -1,5 +1,5 @@
-import UpgradeRequired from '../../../dist/response/upgrade-required';
-import Standard from '../../../dist/response/message/string/strict';
+import UpgradeRequired from '../../../dist/response/upgrade-required.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

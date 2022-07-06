@@ -1,4 +1,4 @@
-import {NetworkAuthenticationRequiredParameters, NetworkAuthenticationRequiredParameter} from '../../../dist/response/network-authentication-required';
+import {NetworkAuthenticationRequiredParameters, NetworkAuthenticationRequiredParameter} from '../../../dist/response/network-authentication-required.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

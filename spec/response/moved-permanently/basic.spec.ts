@@ -1,5 +1,5 @@
-import MovedPermanently from '../../../dist/response/moved-permanently';
-import Standard from '../../../dist/response/message/string/strict';
+import MovedPermanently from '../../../dist/response/moved-permanently.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

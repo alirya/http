@@ -1,4 +1,4 @@
-import {CreatedParameter, CreatedParameters} from '../../../dist/response/created';
+import {CreatedParameter, CreatedParameters} from '../../../dist/response/created.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

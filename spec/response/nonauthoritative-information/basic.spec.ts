@@ -1,5 +1,5 @@
-import NonauthoritativeInformation from '../../../dist/response/nonauthoritative-information';
-import Standard from '../../../dist/response/message/string/strict';
+import NonauthoritativeInformation from '../../../dist/response/nonauthoritative-information.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

@@ -1,4 +1,4 @@
-import Successful from '../../../../../dist/response/code/class/boolean/successful';
+import Successful from '../../../../../dist/response/code/class/boolean/successful.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

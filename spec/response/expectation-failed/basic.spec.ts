@@ -1,5 +1,5 @@
-import ExpectationFailed from '../../../dist/response/expectation-failed';
-import Standard from '../../../dist/response/message/string/strict';
+import ExpectationFailed from '../../../dist/response/expectation-failed.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

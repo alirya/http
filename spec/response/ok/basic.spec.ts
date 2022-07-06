@@ -1,5 +1,5 @@
-import Ok from '../../../dist/response/ok';
-import Standard from '../../../dist/response/message/string/strict';
+import Ok from '../../../dist/response/ok.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

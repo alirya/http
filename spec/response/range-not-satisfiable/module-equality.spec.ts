@@ -1,4 +1,4 @@
-import {RangeNotSatisfiableParameter, RangeNotSatisfiableParameters} from '../../../dist/response/range-not-satisfiable';
+import {RangeNotSatisfiableParameter, RangeNotSatisfiableParameters} from '../../../dist/response/range-not-satisfiable.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

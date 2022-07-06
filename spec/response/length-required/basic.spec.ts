@@ -1,5 +1,5 @@
-import LengthRequired from '../../../dist/response/length-required';
-import Standard from '../../../dist/response/message/string/strict';
+import LengthRequired from '../../../dist/response/length-required.js';
+import Standard from '../../../dist/response/message/string/strict.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

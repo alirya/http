@@ -1,4 +1,4 @@
-import Redirection from '../../../../../dist/response/code/class/boolean/redirection';
+import Redirection from '../../../../../dist/response/code/class/boolean/redirection.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

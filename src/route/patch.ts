@@ -1,6 +1,6 @@
-import Method from '../request/method/enum/method';
-import Route from './route';
-import RouteClass from './route-class';
+import Method from '../request/method/enum/method.js';
+import Route from './route.js';
+import RouteClass from './route-class.js';
 
 export default function Patch<Path extends string>(
     path : Path
