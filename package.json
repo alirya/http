@@ -1,6 +1,6 @@
 {
   "name": "@alirya/http",
-  "version": "0.19.0",
+  "version": "0.19.1",
   "description": "Typescript http",
   "publishConfig": {
     "directory": "dist"
@@ -16,14 +16,14 @@
   },
   "dependencies": {
     "tslib": "^2.3.1",
-    "@alirya/array": "^0.27.0",
-    "@alirya/code": "^0.4.0",
-    "@alirya/enum": "^0.13.0",
-    "@alirya/map": "^0.13.0",
-    "@alirya/message": "^0.13.0",
-    "@alirya/number": "^0.18.1",
-    "@alirya/object": "^0.38.0",
-    "@alirya/string": "^0.17.0",
+    "@alirya/array": "^0.27.1",
+    "@alirya/code": "^0.4.1",
+    "@alirya/enum": "^0.13.1",
+    "@alirya/map": "^0.13.1",
+    "@alirya/message": "^0.13.1",
+    "@alirya/number": "^0.18.2",
+    "@alirya/object": "^0.38.1",
+    "@alirya/string": "^0.17.1",
     "ts-toolbelt": "^9.6.0",
     "utility-types": "^3.10.0"
   },
