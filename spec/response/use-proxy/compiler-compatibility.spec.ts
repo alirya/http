@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = UseProxyParameters('etag data');
+        let response = UseProxyParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = UseProxyParameters(undefined, undefined, 'data');
+        let response = UseProxyParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

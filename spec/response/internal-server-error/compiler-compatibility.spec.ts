@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = InternalServerErrorParameters('etag data');
+        let response = InternalServerErrorParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = InternalServerErrorParameters(undefined, undefined, 'data');
+        let response = InternalServerErrorParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

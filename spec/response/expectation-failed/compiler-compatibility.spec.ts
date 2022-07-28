@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = ExpectationFailedParameters('etag data');
+        let response = ExpectationFailedParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = ExpectationFailedParameters(undefined, undefined, 'data');
+        let response = ExpectationFailedParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = SwitchingProtocolParameters('etag data');
+        let response = SwitchingProtocolParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = SwitchingProtocolParameters(undefined, undefined, 'data');
+        let response = SwitchingProtocolParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

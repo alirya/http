@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = ProxyAuthenticationRequiredParameters('etag data');
+        let response = ProxyAuthenticationRequiredParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = ProxyAuthenticationRequiredParameters(undefined, undefined, 'data');
+        let response = ProxyAuthenticationRequiredParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

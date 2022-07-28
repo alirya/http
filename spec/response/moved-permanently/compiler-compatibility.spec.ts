@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = MovedPermanentlyParameters('etag data');
+        let response = MovedPermanentlyParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = MovedPermanentlyParameters(undefined, undefined, 'data');
+        let response = MovedPermanentlyParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

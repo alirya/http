@@ -16,8 +16,8 @@ export default function Delete<
     return RequestCreate.Parameters(
         Method.DELETE,
         request.path,
+        request.body,
         request.headers,
-        request.body
     ) as Request<Method.DELETE, Path, Headers, Body>;
 }
 

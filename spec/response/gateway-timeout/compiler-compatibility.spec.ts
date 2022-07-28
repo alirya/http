@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = GatewayTimeoutParameters('etag data');
+        let response = GatewayTimeoutParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = GatewayTimeoutParameters(undefined, undefined, 'data');
+        let response = GatewayTimeoutParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

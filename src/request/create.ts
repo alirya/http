@@ -29,8 +29,8 @@ export function CreateParameters<
 > (
     method : Method,
     path : Path,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
 ) : Request<Method, Path, Headers extends undefined ? {} : Headers, Body> {
 
     return CreateParameter({

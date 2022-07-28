@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = UnavailableForLegalReasonsParameters('etag data');
+        let response = UnavailableForLegalReasonsParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = UnavailableForLegalReasonsParameters(undefined, undefined, 'data');
+        let response = UnavailableForLegalReasonsParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

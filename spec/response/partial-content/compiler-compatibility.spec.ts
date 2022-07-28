@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = PartialContentParameters('etag data');
+        let response = PartialContentParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = PartialContentParameters(undefined, undefined, 'data');
+        let response = PartialContentParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

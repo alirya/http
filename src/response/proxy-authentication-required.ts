@@ -8,9 +8,9 @@ export function ProxyAuthenticationRequiredParameters<
     Headers extends Record<string, string>|undefined,
     Body = undefined
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
+    message ?: Message,
 ) : Response<
     407,
     Message extends undefined ? string : Message,
@@ -23,9 +23,9 @@ export function ProxyAuthenticationRequiredParameters<
     Headers extends Record<string, string>|undefined,
     Body = undefined
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
+    message ?: Message,
 ) : Response<
     407,
     Message extends undefined ? string : Message,

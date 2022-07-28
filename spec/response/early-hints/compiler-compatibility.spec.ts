@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = EarlyHintsParameters('etag data');
+        let response = EarlyHintsParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = EarlyHintsParameters(undefined, undefined, 'data');
+        let response = EarlyHintsParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

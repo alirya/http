@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = MultipleChoiceParameters('etag data');
+        let response = MultipleChoiceParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = MultipleChoiceParameters(undefined, undefined, 'data');
+        let response = MultipleChoiceParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

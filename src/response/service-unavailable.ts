@@ -8,9 +8,9 @@ export function ServiceUnavailableParameters<
     Headers extends Record<string, string>|undefined,
     Body = undefined
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
+    message ?: Message,
 ) : Response<
     503,
     Message extends undefined ? string : Message,
@@ -23,9 +23,9 @@ export function ServiceUnavailableParameters<
     Headers extends Record<string, string>|undefined,
     Body = undefined
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
+    message ?: Message,
 ) : Response<
     503,
     Message extends undefined ? string : Message,

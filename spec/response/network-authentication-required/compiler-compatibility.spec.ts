@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = NetworkAuthenticationRequiredParameters('etag data');
+        let response = NetworkAuthenticationRequiredParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = NetworkAuthenticationRequiredParameters(undefined, undefined, 'data');
+        let response = NetworkAuthenticationRequiredParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

@@ -19,8 +19,8 @@ export class CreateClass<
     constructor(
         public code : Code,
         public message : Message,
+        public body : Body,
         public headers : Headers,
-        public body : Body
     ) {}
 }
 

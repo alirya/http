@@ -14,7 +14,7 @@ export default function Head<
     return RequestCreate.Parameters(
         Method.HEAD,
         request.path,
+        undefined,
         request.headers,
-        undefined
     ) as Request<Method.HEAD, Path, Headers, undefined>;
 }

@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = InsufficientStorageParameters('etag data');
+        let response = InsufficientStorageParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = InsufficientStorageParameters(undefined, undefined, 'data');
+        let response = InsufficientStorageParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;
