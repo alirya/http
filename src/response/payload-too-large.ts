@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function PayloadTooLargeParameters() : Response<413, string, {}, undefined>;
+export function PayloadTooLargeParameters() : PayloadTooLargeResponse<undefined>;
 
 export function PayloadTooLargeParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    413,
-    Message extends undefined ? string : Message,
+) : PayloadTooLargeResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function PayloadTooLargeParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    413,
-    Message extends undefined ? string : Message,
+) : PayloadTooLargeResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return PayloadTooLargeParameter({message, headers, body}) as Response as Response<
-        413,
-        Message extends undefined ? string : Message,
+    return PayloadTooLargeParameter({message, headers, body}) as PayloadTooLargeResponse as PayloadTooLargeResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface PayloadTooLargeResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 413, Message> {
+
+}
 
 
-export function PayloadTooLargeParameter() : Response<413, string, {}, undefined>;
+export function PayloadTooLargeParameter() : PayloadTooLargeResponse<undefined>;
+
+export function PayloadTooLargeParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<PayloadTooLargeResponse<Body, Headers, Message>, 'code'>>,
+) : PayloadTooLargeResponse<Body, Headers, Message>;
 
 export function PayloadTooLargeParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<413, Message, Headers, Body>;
+    response : Partial<Omit<PayloadTooLargeResponse<Body, Headers, Message>, 'code'>> = {},
+) : PayloadTooLargeResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function PayloadTooLargeParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<413, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 413}) as Response<413, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 413}) as PayloadTooLargeResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function PayloadTooLargeParameter<
 namespace PayloadTooLarge {
     export const Parameters = PayloadTooLargeParameters;
     export const Parameter = PayloadTooLargeParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = PayloadTooLargeResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default PayloadTooLarge;

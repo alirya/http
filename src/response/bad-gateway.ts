@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function BadGatewayParameters() : Response<502, string, {}, undefined>;
+export function BadGatewayParameters() : BadGatewayResponse<undefined>;
 
 export function BadGatewayParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    502,
-    Message extends undefined ? string : Message,
+) : BadGatewayResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function BadGatewayParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    502,
-    Message extends undefined ? string : Message,
+) : BadGatewayResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return BadGatewayParameter({message, headers, body}) as Response as Response<
-        502,
-        Message extends undefined ? string : Message,
+    return BadGatewayParameter({message, headers, body}) as BadGatewayResponse as BadGatewayResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface BadGatewayResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 502, Message> {
+
+}
 
 
-export function BadGatewayParameter() : Response<502, string, {}, undefined>;
+export function BadGatewayParameter() : BadGatewayResponse<undefined>;
+
+export function BadGatewayParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<BadGatewayResponse<Body, Headers, Message>, 'code'>>,
+) : BadGatewayResponse<Body, Headers, Message>;
 
 export function BadGatewayParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<502, Message, Headers, Body>;
+    response : Partial<Omit<BadGatewayResponse<Body, Headers, Message>, 'code'>> = {},
+) : BadGatewayResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function BadGatewayParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<502, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 502}) as Response<502, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 502}) as BadGatewayResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function BadGatewayParameter<
 namespace BadGateway {
     export const Parameters = BadGatewayParameters;
     export const Parameter = BadGatewayParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = BadGatewayResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default BadGateway;

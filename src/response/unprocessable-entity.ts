@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function UnprocessableEntityParameters() : Response<422, string, {}, undefined>;
+export function UnprocessableEntityParameters() : UnprocessableEntityResponse<undefined>;
 
 export function UnprocessableEntityParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    422,
-    Message extends undefined ? string : Message,
+) : UnprocessableEntityResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function UnprocessableEntityParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    422,
-    Message extends undefined ? string : Message,
+) : UnprocessableEntityResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return UnprocessableEntityParameter({message, headers, body}) as Response as Response<
-        422,
-        Message extends undefined ? string : Message,
+    return UnprocessableEntityParameter({message, headers, body}) as UnprocessableEntityResponse as UnprocessableEntityResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface UnprocessableEntityResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 422, Message> {
+
+}
 
 
-export function UnprocessableEntityParameter() : Response<422, string, {}, undefined>;
+export function UnprocessableEntityParameter() : UnprocessableEntityResponse<undefined>;
+
+export function UnprocessableEntityParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<UnprocessableEntityResponse<Body, Headers, Message>, 'code'>>,
+) : UnprocessableEntityResponse<Body, Headers, Message>;
 
 export function UnprocessableEntityParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<422, Message, Headers, Body>;
+    response : Partial<Omit<UnprocessableEntityResponse<Body, Headers, Message>, 'code'>> = {},
+) : UnprocessableEntityResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function UnprocessableEntityParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<422, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 422}) as Response<422, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 422}) as UnprocessableEntityResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function UnprocessableEntityParameter<
 namespace UnprocessableEntity {
     export const Parameters = UnprocessableEntityParameters;
     export const Parameter = UnprocessableEntityParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = UnprocessableEntityResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default UnprocessableEntity;

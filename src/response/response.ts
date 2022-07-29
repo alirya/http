@@ -4,10 +4,10 @@ import MessageInterface from '@alirya/message/message';
 import CodeInterface from '@alirya/code/code';
 
 export default interface Response<
+    Body = unknown,
+    Headers extends Record<string, string> = Record<string, string>,
     Code extends number = number,
     Message extends string = string,
-    Headers extends Record<string, string> = Record<string, string>,
-    Body = unknown
 >  extends CodeInterface<Code>, MessageInterface<Message>, HeaderInterface<Headers>, BodyInterface<Body> {
 
 }

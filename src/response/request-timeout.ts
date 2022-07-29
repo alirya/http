@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function RequestTimeoutParameters() : Response<408, string, {}, undefined>;
+export function RequestTimeoutParameters() : RequestTimeoutResponse<undefined>;
 
 export function RequestTimeoutParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    408,
-    Message extends undefined ? string : Message,
+) : RequestTimeoutResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function RequestTimeoutParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    408,
-    Message extends undefined ? string : Message,
+) : RequestTimeoutResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return RequestTimeoutParameter({message, headers, body}) as Response as Response<
-        408,
-        Message extends undefined ? string : Message,
+    return RequestTimeoutParameter({message, headers, body}) as RequestTimeoutResponse as RequestTimeoutResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface RequestTimeoutResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 408, Message> {
+
+}
 
 
-export function RequestTimeoutParameter() : Response<408, string, {}, undefined>;
+export function RequestTimeoutParameter() : RequestTimeoutResponse<undefined>;
+
+export function RequestTimeoutParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<RequestTimeoutResponse<Body, Headers, Message>, 'code'>>,
+) : RequestTimeoutResponse<Body, Headers, Message>;
 
 export function RequestTimeoutParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<408, Message, Headers, Body>;
+    response : Partial<Omit<RequestTimeoutResponse<Body, Headers, Message>, 'code'>> = {},
+) : RequestTimeoutResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function RequestTimeoutParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<408, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 408}) as Response<408, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 408}) as RequestTimeoutResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function RequestTimeoutParameter<
 namespace RequestTimeout {
     export const Parameters = RequestTimeoutParameters;
     export const Parameter = RequestTimeoutParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = RequestTimeoutResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default RequestTimeout;

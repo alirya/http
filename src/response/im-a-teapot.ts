@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function ImATeapotParameters() : Response<418, string, {}, undefined>;
+export function ImATeapotParameters() : ImATeapotResponse<undefined>;
 
 export function ImATeapotParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    418,
-    Message extends undefined ? string : Message,
+) : ImATeapotResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function ImATeapotParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    418,
-    Message extends undefined ? string : Message,
+) : ImATeapotResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return ImATeapotParameter({message, headers, body}) as Response as Response<
-        418,
-        Message extends undefined ? string : Message,
+    return ImATeapotParameter({message, headers, body}) as ImATeapotResponse as ImATeapotResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface ImATeapotResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 418, Message> {
+
+}
 
 
-export function ImATeapotParameter() : Response<418, string, {}, undefined>;
+export function ImATeapotParameter() : ImATeapotResponse<undefined>;
+
+export function ImATeapotParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<ImATeapotResponse<Body, Headers, Message>, 'code'>>,
+) : ImATeapotResponse<Body, Headers, Message>;
 
 export function ImATeapotParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<418, Message, Headers, Body>;
+    response : Partial<Omit<ImATeapotResponse<Body, Headers, Message>, 'code'>> = {},
+) : ImATeapotResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function ImATeapotParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<418, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 418}) as Response<418, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 418}) as ImATeapotResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function ImATeapotParameter<
 namespace ImATeapot {
     export const Parameters = ImATeapotParameters;
     export const Parameter = ImATeapotParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = ImATeapotResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default ImATeapot;

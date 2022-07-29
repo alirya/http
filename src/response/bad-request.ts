@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function BadRequestParameters() : Response<400, string, {}, undefined>;
+export function BadRequestParameters() : BadRequestResponse<undefined>;
 
 export function BadRequestParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    400,
-    Message extends undefined ? string : Message,
+) : BadRequestResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function BadRequestParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    400,
-    Message extends undefined ? string : Message,
+) : BadRequestResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return BadRequestParameter({message, headers, body}) as Response as Response<
-        400,
-        Message extends undefined ? string : Message,
+    return BadRequestParameter({message, headers, body}) as BadRequestResponse as BadRequestResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface BadRequestResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 400, Message> {
+
+}
 
 
-export function BadRequestParameter() : Response<400, string, {}, undefined>;
+export function BadRequestParameter() : BadRequestResponse<undefined>;
+
+export function BadRequestParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<BadRequestResponse<Body, Headers, Message>, 'code'>>,
+) : BadRequestResponse<Body, Headers, Message>;
 
 export function BadRequestParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<400, Message, Headers, Body>;
+    response : Partial<Omit<BadRequestResponse<Body, Headers, Message>, 'code'>> = {},
+) : BadRequestResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function BadRequestParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<400, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 400}) as Response<400, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 400}) as BadRequestResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function BadRequestParameter<
 namespace BadRequest {
     export const Parameters = BadRequestParameters;
     export const Parameter = BadRequestParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = BadRequestResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default BadRequest;

@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function MultipleChoiceParameters() : Response<300, string, {}, undefined>;
+export function MultipleChoiceParameters() : MultipleChoiceResponse<undefined>;
 
 export function MultipleChoiceParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    300,
-    Message extends undefined ? string : Message,
+) : MultipleChoiceResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function MultipleChoiceParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    300,
-    Message extends undefined ? string : Message,
+) : MultipleChoiceResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return MultipleChoiceParameter({message, headers, body}) as Response as Response<
-        300,
-        Message extends undefined ? string : Message,
+    return MultipleChoiceParameter({message, headers, body}) as MultipleChoiceResponse as MultipleChoiceResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface MultipleChoiceResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 300, Message> {
+
+}
 
 
-export function MultipleChoiceParameter() : Response<300, string, {}, undefined>;
+export function MultipleChoiceParameter() : MultipleChoiceResponse<undefined>;
+
+export function MultipleChoiceParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<MultipleChoiceResponse<Body, Headers, Message>, 'code'>>,
+) : MultipleChoiceResponse<Body, Headers, Message>;
 
 export function MultipleChoiceParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<300, Message, Headers, Body>;
+    response : Partial<Omit<MultipleChoiceResponse<Body, Headers, Message>, 'code'>> = {},
+) : MultipleChoiceResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function MultipleChoiceParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<300, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 300}) as Response<300, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 300}) as MultipleChoiceResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function MultipleChoiceParameter<
 namespace MultipleChoice {
     export const Parameters = MultipleChoiceParameters;
     export const Parameter = MultipleChoiceParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = MultipleChoiceResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default MultipleChoice;

@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function ForbiddenParameters() : Response<403, string, {}, undefined>;
+export function ForbiddenParameters() : ForbiddenResponse<undefined>;
 
 export function ForbiddenParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    403,
-    Message extends undefined ? string : Message,
+) : ForbiddenResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function ForbiddenParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    403,
-    Message extends undefined ? string : Message,
+) : ForbiddenResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return ForbiddenParameter({message, headers, body}) as Response as Response<
-        403,
-        Message extends undefined ? string : Message,
+    return ForbiddenParameter({message, headers, body}) as ForbiddenResponse as ForbiddenResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface ForbiddenResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 403, Message> {
+
+}
 
 
-export function ForbiddenParameter() : Response<403, string, {}, undefined>;
+export function ForbiddenParameter() : ForbiddenResponse<undefined>;
+
+export function ForbiddenParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<ForbiddenResponse<Body, Headers, Message>, 'code'>>,
+) : ForbiddenResponse<Body, Headers, Message>;
 
 export function ForbiddenParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<403, Message, Headers, Body>;
+    response : Partial<Omit<ForbiddenResponse<Body, Headers, Message>, 'code'>> = {},
+) : ForbiddenResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function ForbiddenParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<403, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 403}) as Response<403, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 403}) as ForbiddenResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function ForbiddenParameter<
 namespace Forbidden {
     export const Parameters = ForbiddenParameters;
     export const Parameter = ForbiddenParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = ForbiddenResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default Forbidden;

@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function HttpVersionNotSupportedParameters() : Response<505, string, {}, undefined>;
+export function HttpVersionNotSupportedParameters() : HttpVersionNotSupportedResponse<undefined>;
 
 export function HttpVersionNotSupportedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    505,
-    Message extends undefined ? string : Message,
+) : HttpVersionNotSupportedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function HttpVersionNotSupportedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    505,
-    Message extends undefined ? string : Message,
+) : HttpVersionNotSupportedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return HttpVersionNotSupportedParameter({message, headers, body}) as Response as Response<
-        505,
-        Message extends undefined ? string : Message,
+    return HttpVersionNotSupportedParameter({message, headers, body}) as HttpVersionNotSupportedResponse as HttpVersionNotSupportedResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface HttpVersionNotSupportedResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 505, Message> {
+
+}
 
 
-export function HttpVersionNotSupportedParameter() : Response<505, string, {}, undefined>;
+export function HttpVersionNotSupportedParameter() : HttpVersionNotSupportedResponse<undefined>;
+
+export function HttpVersionNotSupportedParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<HttpVersionNotSupportedResponse<Body, Headers, Message>, 'code'>>,
+) : HttpVersionNotSupportedResponse<Body, Headers, Message>;
 
 export function HttpVersionNotSupportedParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<505, Message, Headers, Body>;
+    response : Partial<Omit<HttpVersionNotSupportedResponse<Body, Headers, Message>, 'code'>> = {},
+) : HttpVersionNotSupportedResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function HttpVersionNotSupportedParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<505, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 505}) as Response<505, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 505}) as HttpVersionNotSupportedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function HttpVersionNotSupportedParameter<
 namespace HttpVersionNotSupported {
     export const Parameters = HttpVersionNotSupportedParameters;
     export const Parameter = HttpVersionNotSupportedParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = HttpVersionNotSupportedResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default HttpVersionNotSupported;

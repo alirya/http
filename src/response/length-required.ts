@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function LengthRequiredParameters() : Response<411, string, {}, undefined>;
+export function LengthRequiredParameters() : LengthRequiredResponse<undefined>;
 
 export function LengthRequiredParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    411,
-    Message extends undefined ? string : Message,
+) : LengthRequiredResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function LengthRequiredParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    411,
-    Message extends undefined ? string : Message,
+) : LengthRequiredResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return LengthRequiredParameter({message, headers, body}) as Response as Response<
-        411,
-        Message extends undefined ? string : Message,
+    return LengthRequiredParameter({message, headers, body}) as LengthRequiredResponse as LengthRequiredResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface LengthRequiredResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 411, Message> {
+
+}
 
 
-export function LengthRequiredParameter() : Response<411, string, {}, undefined>;
+export function LengthRequiredParameter() : LengthRequiredResponse<undefined>;
+
+export function LengthRequiredParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<LengthRequiredResponse<Body, Headers, Message>, 'code'>>,
+) : LengthRequiredResponse<Body, Headers, Message>;
 
 export function LengthRequiredParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<411, Message, Headers, Body>;
+    response : Partial<Omit<LengthRequiredResponse<Body, Headers, Message>, 'code'>> = {},
+) : LengthRequiredResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function LengthRequiredParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<411, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 411}) as Response<411, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 411}) as LengthRequiredResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function LengthRequiredParameter<
 namespace LengthRequired {
     export const Parameters = LengthRequiredParameters;
     export const Parameter = LengthRequiredParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = LengthRequiredResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default LengthRequired;

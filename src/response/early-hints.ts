@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function EarlyHintsParameters() : Response<103, string, {}, undefined>;
+export function EarlyHintsParameters() : EarlyHintsResponse<undefined>;
 
 export function EarlyHintsParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    103,
-    Message extends undefined ? string : Message,
+) : EarlyHintsResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function EarlyHintsParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    103,
-    Message extends undefined ? string : Message,
+) : EarlyHintsResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return EarlyHintsParameter({message, headers, body}) as Response as Response<
-        103,
-        Message extends undefined ? string : Message,
+    return EarlyHintsParameter({message, headers, body}) as EarlyHintsResponse as EarlyHintsResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface EarlyHintsResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 103, Message> {
+
+}
 
 
-export function EarlyHintsParameter() : Response<103, string, {}, undefined>;
+export function EarlyHintsParameter() : EarlyHintsResponse<undefined>;
+
+export function EarlyHintsParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<EarlyHintsResponse<Body, Headers, Message>, 'code'>>,
+) : EarlyHintsResponse<Body, Headers, Message>;
 
 export function EarlyHintsParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<103, Message, Headers, Body>;
+    response : Partial<Omit<EarlyHintsResponse<Body, Headers, Message>, 'code'>> = {},
+) : EarlyHintsResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function EarlyHintsParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<103, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 103}) as Response<103, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 103}) as EarlyHintsResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function EarlyHintsParameter<
 namespace EarlyHints {
     export const Parameters = EarlyHintsParameters;
     export const Parameter = EarlyHintsParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = EarlyHintsResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default EarlyHints;

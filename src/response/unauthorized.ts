@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function UnauthorizedParameters() : Response<401, string, {}, undefined>;
+export function UnauthorizedParameters() : UnauthorizedResponse<undefined>;
 
 export function UnauthorizedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    401,
-    Message extends undefined ? string : Message,
+) : UnauthorizedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function UnauthorizedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    401,
-    Message extends undefined ? string : Message,
+) : UnauthorizedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return UnauthorizedParameter({message, headers, body}) as Response as Response<
-        401,
-        Message extends undefined ? string : Message,
+    return UnauthorizedParameter({message, headers, body}) as UnauthorizedResponse as UnauthorizedResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface UnauthorizedResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 401, Message> {
+
+}
 
 
-export function UnauthorizedParameter() : Response<401, string, {}, undefined>;
+export function UnauthorizedParameter() : UnauthorizedResponse<undefined>;
+
+export function UnauthorizedParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<UnauthorizedResponse<Body, Headers, Message>, 'code'>>,
+) : UnauthorizedResponse<Body, Headers, Message>;
 
 export function UnauthorizedParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<401, Message, Headers, Body>;
+    response : Partial<Omit<UnauthorizedResponse<Body, Headers, Message>, 'code'>> = {},
+) : UnauthorizedResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function UnauthorizedParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<401, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 401}) as Response<401, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 401}) as UnauthorizedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function UnauthorizedParameter<
 namespace Unauthorized {
     export const Parameters = UnauthorizedParameters;
     export const Parameter = UnauthorizedParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = UnauthorizedResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default Unauthorized;

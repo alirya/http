@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function ConflictParameters() : Response<409, string, {}, undefined>;
+export function ConflictParameters() : ConflictResponse<undefined>;
 
 export function ConflictParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    409,
-    Message extends undefined ? string : Message,
+) : ConflictResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function ConflictParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    409,
-    Message extends undefined ? string : Message,
+) : ConflictResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return ConflictParameter({message, headers, body}) as Response as Response<
-        409,
-        Message extends undefined ? string : Message,
+    return ConflictParameter({message, headers, body}) as ConflictResponse as ConflictResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface ConflictResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 409, Message> {
+
+}
 
 
-export function ConflictParameter() : Response<409, string, {}, undefined>;
+export function ConflictParameter() : ConflictResponse<undefined>;
+
+export function ConflictParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<ConflictResponse<Body, Headers, Message>, 'code'>>,
+) : ConflictResponse<Body, Headers, Message>;
 
 export function ConflictParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<409, Message, Headers, Body>;
+    response : Partial<Omit<ConflictResponse<Body, Headers, Message>, 'code'>> = {},
+) : ConflictResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function ConflictParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<409, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 409}) as Response<409, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 409}) as ConflictResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function ConflictParameter<
 namespace Conflict {
     export const Parameters = ConflictParameters;
     export const Parameter = ConflictParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = ConflictResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default Conflict;

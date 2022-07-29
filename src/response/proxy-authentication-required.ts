@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function ProxyAuthenticationRequiredParameters() : Response<407, string, {}, undefined>;
+export function ProxyAuthenticationRequiredParameters() : ProxyAuthenticationRequiredResponse<undefined>;
 
 export function ProxyAuthenticationRequiredParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    407,
-    Message extends undefined ? string : Message,
+) : ProxyAuthenticationRequiredResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function ProxyAuthenticationRequiredParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    407,
-    Message extends undefined ? string : Message,
+) : ProxyAuthenticationRequiredResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return ProxyAuthenticationRequiredParameter({message, headers, body}) as Response as Response<
-        407,
-        Message extends undefined ? string : Message,
+    return ProxyAuthenticationRequiredParameter({message, headers, body}) as ProxyAuthenticationRequiredResponse as ProxyAuthenticationRequiredResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface ProxyAuthenticationRequiredResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 407, Message> {
+
+}
 
 
-export function ProxyAuthenticationRequiredParameter() : Response<407, string, {}, undefined>;
+export function ProxyAuthenticationRequiredParameter() : ProxyAuthenticationRequiredResponse<undefined>;
+
+export function ProxyAuthenticationRequiredParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<ProxyAuthenticationRequiredResponse<Body, Headers, Message>, 'code'>>,
+) : ProxyAuthenticationRequiredResponse<Body, Headers, Message>;
 
 export function ProxyAuthenticationRequiredParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<407, Message, Headers, Body>;
+    response : Partial<Omit<ProxyAuthenticationRequiredResponse<Body, Headers, Message>, 'code'>> = {},
+) : ProxyAuthenticationRequiredResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function ProxyAuthenticationRequiredParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<407, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 407}) as Response<407, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 407}) as ProxyAuthenticationRequiredResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function ProxyAuthenticationRequiredParameter<
 namespace ProxyAuthenticationRequired {
     export const Parameters = ProxyAuthenticationRequiredParameters;
     export const Parameter = ProxyAuthenticationRequiredParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = ProxyAuthenticationRequiredResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default ProxyAuthenticationRequired;

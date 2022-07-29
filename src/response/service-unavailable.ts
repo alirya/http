@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function ServiceUnavailableParameters() : Response<503, string, {}, undefined>;
+export function ServiceUnavailableParameters() : ServiceUnavailableResponse<undefined>;
 
 export function ServiceUnavailableParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    503,
-    Message extends undefined ? string : Message,
+) : ServiceUnavailableResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function ServiceUnavailableParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    503,
-    Message extends undefined ? string : Message,
+) : ServiceUnavailableResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return ServiceUnavailableParameter({message, headers, body}) as Response as Response<
-        503,
-        Message extends undefined ? string : Message,
+    return ServiceUnavailableParameter({message, headers, body}) as ServiceUnavailableResponse as ServiceUnavailableResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface ServiceUnavailableResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 503, Message> {
+
+}
 
 
-export function ServiceUnavailableParameter() : Response<503, string, {}, undefined>;
+export function ServiceUnavailableParameter() : ServiceUnavailableResponse<undefined>;
+
+export function ServiceUnavailableParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<ServiceUnavailableResponse<Body, Headers, Message>, 'code'>>,
+) : ServiceUnavailableResponse<Body, Headers, Message>;
 
 export function ServiceUnavailableParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<503, Message, Headers, Body>;
+    response : Partial<Omit<ServiceUnavailableResponse<Body, Headers, Message>, 'code'>> = {},
+) : ServiceUnavailableResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function ServiceUnavailableParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<503, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 503}) as Response<503, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 503}) as ServiceUnavailableResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function ServiceUnavailableParameter<
 namespace ServiceUnavailable {
     export const Parameters = ServiceUnavailableParameters;
     export const Parameter = ServiceUnavailableParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = ServiceUnavailableResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default ServiceUnavailable;

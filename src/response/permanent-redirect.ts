@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function PermanentRedirectParameters() : Response<308, string, {}, undefined>;
+export function PermanentRedirectParameters() : PermanentRedirectResponse<undefined>;
 
 export function PermanentRedirectParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    308,
-    Message extends undefined ? string : Message,
+) : PermanentRedirectResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function PermanentRedirectParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    308,
-    Message extends undefined ? string : Message,
+) : PermanentRedirectResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return PermanentRedirectParameter({message, headers, body}) as Response as Response<
-        308,
-        Message extends undefined ? string : Message,
+    return PermanentRedirectParameter({message, headers, body}) as PermanentRedirectResponse as PermanentRedirectResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface PermanentRedirectResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 308, Message> {
+
+}
 
 
-export function PermanentRedirectParameter() : Response<308, string, {}, undefined>;
+export function PermanentRedirectParameter() : PermanentRedirectResponse<undefined>;
+
+export function PermanentRedirectParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<PermanentRedirectResponse<Body, Headers, Message>, 'code'>>,
+) : PermanentRedirectResponse<Body, Headers, Message>;
 
 export function PermanentRedirectParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<308, Message, Headers, Body>;
+    response : Partial<Omit<PermanentRedirectResponse<Body, Headers, Message>, 'code'>> = {},
+) : PermanentRedirectResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function PermanentRedirectParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<308, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 308}) as Response<308, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 308}) as PermanentRedirectResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function PermanentRedirectParameter<
 namespace PermanentRedirect {
     export const Parameters = PermanentRedirectParameters;
     export const Parameter = PermanentRedirectParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = PermanentRedirectResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default PermanentRedirect;

@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function NotAcceptableParameters() : Response<406, string, {}, undefined>;
+export function NotAcceptableParameters() : NotAcceptableResponse<undefined>;
 
 export function NotAcceptableParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    406,
-    Message extends undefined ? string : Message,
+) : NotAcceptableResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function NotAcceptableParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    406,
-    Message extends undefined ? string : Message,
+) : NotAcceptableResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return NotAcceptableParameter({message, headers, body}) as Response as Response<
-        406,
-        Message extends undefined ? string : Message,
+    return NotAcceptableParameter({message, headers, body}) as NotAcceptableResponse as NotAcceptableResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface NotAcceptableResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 406, Message> {
+
+}
 
 
-export function NotAcceptableParameter() : Response<406, string, {}, undefined>;
+export function NotAcceptableParameter() : NotAcceptableResponse<undefined>;
+
+export function NotAcceptableParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<NotAcceptableResponse<Body, Headers, Message>, 'code'>>,
+) : NotAcceptableResponse<Body, Headers, Message>;
 
 export function NotAcceptableParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<406, Message, Headers, Body>;
+    response : Partial<Omit<NotAcceptableResponse<Body, Headers, Message>, 'code'>> = {},
+) : NotAcceptableResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function NotAcceptableParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<406, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 406}) as Response<406, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 406}) as NotAcceptableResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function NotAcceptableParameter<
 namespace NotAcceptable {
     export const Parameters = NotAcceptableParameters;
     export const Parameter = NotAcceptableParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = NotAcceptableResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default NotAcceptable;

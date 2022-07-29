@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function UnsupportedMediaTypeParameters() : Response<415, string, {}, undefined>;
+export function UnsupportedMediaTypeParameters() : UnsupportedMediaTypeResponse<undefined>;
 
 export function UnsupportedMediaTypeParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    415,
-    Message extends undefined ? string : Message,
+) : UnsupportedMediaTypeResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function UnsupportedMediaTypeParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    415,
-    Message extends undefined ? string : Message,
+) : UnsupportedMediaTypeResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return UnsupportedMediaTypeParameter({message, headers, body}) as Response as Response<
-        415,
-        Message extends undefined ? string : Message,
+    return UnsupportedMediaTypeParameter({message, headers, body}) as UnsupportedMediaTypeResponse as UnsupportedMediaTypeResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface UnsupportedMediaTypeResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 415, Message> {
+
+}
 
 
-export function UnsupportedMediaTypeParameter() : Response<415, string, {}, undefined>;
+export function UnsupportedMediaTypeParameter() : UnsupportedMediaTypeResponse<undefined>;
+
+export function UnsupportedMediaTypeParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<UnsupportedMediaTypeResponse<Body, Headers, Message>, 'code'>>,
+) : UnsupportedMediaTypeResponse<Body, Headers, Message>;
 
 export function UnsupportedMediaTypeParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<415, Message, Headers, Body>;
+    response : Partial<Omit<UnsupportedMediaTypeResponse<Body, Headers, Message>, 'code'>> = {},
+) : UnsupportedMediaTypeResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function UnsupportedMediaTypeParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<415, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 415}) as Response<415, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 415}) as UnsupportedMediaTypeResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function UnsupportedMediaTypeParameter<
 namespace UnsupportedMediaType {
     export const Parameters = UnsupportedMediaTypeParameters;
     export const Parameter = UnsupportedMediaTypeParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = UnsupportedMediaTypeResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default UnsupportedMediaType;

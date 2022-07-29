@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function TooEarlyParameters() : Response<425, string, {}, undefined>;
+export function TooEarlyParameters() : TooEarlyResponse<undefined>;
 
 export function TooEarlyParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    425,
-    Message extends undefined ? string : Message,
+) : TooEarlyResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function TooEarlyParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    425,
-    Message extends undefined ? string : Message,
+) : TooEarlyResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return TooEarlyParameter({message, headers, body}) as Response as Response<
-        425,
-        Message extends undefined ? string : Message,
+    return TooEarlyParameter({message, headers, body}) as TooEarlyResponse as TooEarlyResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface TooEarlyResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 425, Message> {
+
+}
 
 
-export function TooEarlyParameter() : Response<425, string, {}, undefined>;
+export function TooEarlyParameter() : TooEarlyResponse<undefined>;
+
+export function TooEarlyParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<TooEarlyResponse<Body, Headers, Message>, 'code'>>,
+) : TooEarlyResponse<Body, Headers, Message>;
 
 export function TooEarlyParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<425, Message, Headers, Body>;
+    response : Partial<Omit<TooEarlyResponse<Body, Headers, Message>, 'code'>> = {},
+) : TooEarlyResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function TooEarlyParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<425, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 425}) as Response<425, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 425}) as TooEarlyResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function TooEarlyParameter<
 namespace TooEarly {
     export const Parameters = TooEarlyParameters;
     export const Parameter = TooEarlyParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = TooEarlyResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default TooEarly;

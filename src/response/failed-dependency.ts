@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function FailedDependencyParameters() : Response<424, string, {}, undefined>;
+export function FailedDependencyParameters() : FailedDependencyResponse<undefined>;
 
 export function FailedDependencyParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    424,
-    Message extends undefined ? string : Message,
+) : FailedDependencyResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function FailedDependencyParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    424,
-    Message extends undefined ? string : Message,
+) : FailedDependencyResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return FailedDependencyParameter({message, headers, body}) as Response as Response<
-        424,
-        Message extends undefined ? string : Message,
+    return FailedDependencyParameter({message, headers, body}) as FailedDependencyResponse as FailedDependencyResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface FailedDependencyResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 424, Message> {
+
+}
 
 
-export function FailedDependencyParameter() : Response<424, string, {}, undefined>;
+export function FailedDependencyParameter() : FailedDependencyResponse<undefined>;
+
+export function FailedDependencyParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<FailedDependencyResponse<Body, Headers, Message>, 'code'>>,
+) : FailedDependencyResponse<Body, Headers, Message>;
 
 export function FailedDependencyParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<424, Message, Headers, Body>;
+    response : Partial<Omit<FailedDependencyResponse<Body, Headers, Message>, 'code'>> = {},
+) : FailedDependencyResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function FailedDependencyParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<424, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 424}) as Response<424, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 424}) as FailedDependencyResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function FailedDependencyParameter<
 namespace FailedDependency {
     export const Parameters = FailedDependencyParameters;
     export const Parameter = FailedDependencyParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = FailedDependencyResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default FailedDependency;

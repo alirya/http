@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function AcceptedParameters() : Response<202, string, {}, undefined>;
+export function AcceptedParameters() : AcceptedResponse<undefined>;
 
 export function AcceptedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    202,
-    Message extends undefined ? string : Message,
+) : AcceptedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function AcceptedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    202,
-    Message extends undefined ? string : Message,
+) : AcceptedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return AcceptedParameter({message, headers, body}) as Response as Response<
-        202,
-        Message extends undefined ? string : Message,
+    return AcceptedParameter({message, headers, body}) as AcceptedResponse as AcceptedResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface AcceptedResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 202, Message> {
+
+}
 
 
-export function AcceptedParameter() : Response<202, string, {}, undefined>;
+export function AcceptedParameter() : AcceptedResponse<undefined>;
+
+export function AcceptedParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<AcceptedResponse<Body, Headers, Message>, 'code'>>,
+) : AcceptedResponse<Body, Headers, Message>;
 
 export function AcceptedParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<202, Message, Headers, Body>;
+    response : Partial<Omit<AcceptedResponse<Body, Headers, Message>, 'code'>> = {},
+) : AcceptedResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function AcceptedParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<202, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 202}) as Response<202, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 202}) as AcceptedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function AcceptedParameter<
 namespace Accepted {
     export const Parameters = AcceptedParameters;
     export const Parameter = AcceptedParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = AcceptedResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default Accepted;

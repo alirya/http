@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function TooManyRequestsParameters() : Response<429, string, {}, undefined>;
+export function TooManyRequestsParameters() : TooManyRequestsResponse<undefined>;
 
 export function TooManyRequestsParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    429,
-    Message extends undefined ? string : Message,
+) : TooManyRequestsResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function TooManyRequestsParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    429,
-    Message extends undefined ? string : Message,
+) : TooManyRequestsResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return TooManyRequestsParameter({message, headers, body}) as Response as Response<
-        429,
-        Message extends undefined ? string : Message,
+    return TooManyRequestsParameter({message, headers, body}) as TooManyRequestsResponse as TooManyRequestsResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface TooManyRequestsResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 429, Message> {
+
+}
 
 
-export function TooManyRequestsParameter() : Response<429, string, {}, undefined>;
+export function TooManyRequestsParameter() : TooManyRequestsResponse<undefined>;
+
+export function TooManyRequestsParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<TooManyRequestsResponse<Body, Headers, Message>, 'code'>>,
+) : TooManyRequestsResponse<Body, Headers, Message>;
 
 export function TooManyRequestsParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<429, Message, Headers, Body>;
+    response : Partial<Omit<TooManyRequestsResponse<Body, Headers, Message>, 'code'>> = {},
+) : TooManyRequestsResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function TooManyRequestsParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<429, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 429}) as Response<429, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 429}) as TooManyRequestsResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function TooManyRequestsParameter<
 namespace TooManyRequests {
     export const Parameters = TooManyRequestsParameters;
     export const Parameter = TooManyRequestsParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = TooManyRequestsResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default TooManyRequests;

@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function MisdirectedRequestParameters() : Response<421, string, {}, undefined>;
+export function MisdirectedRequestParameters() : MisdirectedRequestResponse<undefined>;
 
 export function MisdirectedRequestParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    421,
-    Message extends undefined ? string : Message,
+) : MisdirectedRequestResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function MisdirectedRequestParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
     body ?: Body,
     headers ?: Headers,
     message ?: Message,
-) : Response<
-    421,
-    Message extends undefined ? string : Message,
+) : MisdirectedRequestResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return MisdirectedRequestParameter({message, headers, body}) as Response as Response<
-        421,
-        Message extends undefined ? string : Message,
+    return MisdirectedRequestParameter({message, headers, body}) as MisdirectedRequestResponse as MisdirectedRequestResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface MisdirectedRequestResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 421, Message> {
+
+}
 
 
-export function MisdirectedRequestParameter() : Response<421, string, {}, undefined>;
+export function MisdirectedRequestParameter() : MisdirectedRequestResponse<undefined>;
+
+export function MisdirectedRequestParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<MisdirectedRequestResponse<Body, Headers, Message>, 'code'>>,
+) : MisdirectedRequestResponse<Body, Headers, Message>;
 
 export function MisdirectedRequestParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<421, Message, Headers, Body>;
+    response : Partial<Omit<MisdirectedRequestResponse<Body, Headers, Message>, 'code'>> = {},
+) : MisdirectedRequestResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function MisdirectedRequestParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<421, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 421}) as Response<421, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 421}) as MisdirectedRequestResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function MisdirectedRequestParameter<
 namespace MisdirectedRequest {
     export const Parameters = MisdirectedRequestParameters;
     export const Parameter = MisdirectedRequestParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = MisdirectedRequestResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default MisdirectedRequest;
