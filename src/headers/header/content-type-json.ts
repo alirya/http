@@ -1,6 +1,5 @@
+import ContentType from './content-type';
 
-const ContentTypeJson : Record<'ContenType', string> = Object.freeze({
-    'ContenType' : 'application/json'
-});
+const ContentTypeJson : Record<'Content-Type', string> = Object.freeze(ContentType('application/json'));
 
 export default ContentTypeJson;
