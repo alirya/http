@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function NotExtendedParameters() : Response<510, string, {}, undefined>;
+export function NotExtendedParameters() : NotExtendedResponse<undefined>;
 
 export function NotExtendedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    510,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : NotExtendedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function NotExtendedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    510,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : NotExtendedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return NotExtendedParameter({message, headers, body}) as Response as Response<
-        510,
-        Message extends undefined ? string : Message,
+    return NotExtendedParameter({message, headers, body}) as NotExtendedResponse as NotExtendedResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface NotExtendedResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 510, Message> {
+
+}
 
 
-export function NotExtendedParameter() : Response<510, string, {}, undefined>;
+export function NotExtendedParameter() : NotExtendedResponse<undefined>;
+
+export function NotExtendedParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<NotExtendedResponse<Body, Headers, Message>, 'code'>>,
+) : NotExtendedResponse<Body, Headers, Message>;
 
 export function NotExtendedParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<510, Message, Headers, Body>;
+    response : Partial<Omit<NotExtendedResponse<Body, Headers, Message>, 'code'>> = {},
+) : NotExtendedResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function NotExtendedParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<510, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 510}) as Response<510, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 510}) as NotExtendedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function NotExtendedParameter<
 namespace NotExtended {
     export const Parameters = NotExtendedParameters;
     export const Parameter = NotExtendedParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = NotExtendedResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default NotExtended;

@@ -16,7 +16,7 @@ export default function Patch<
     return RequestCreate.Parameters(
         Method.PATCH,
         request.path,
+        request.body,
         request.headers,
-        request.body
     ) as Request<Method.PATCH, Path, Headers, Body>;
 }

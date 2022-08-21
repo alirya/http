@@ -16,7 +16,7 @@ export default function Post<
     return RequestCreate.Parameters(
         Method.POST,
         request.path,
+        request.body,
         request.headers,
-        request.body
     ) as Request<Method.POST, Path, Headers, Body>;
 }

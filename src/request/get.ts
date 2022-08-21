@@ -14,7 +14,7 @@ export default function Get<
     return RequestCreate.Parameters(
         Method.GET,
         request.path,
+        undefined,
         request.headers,
-        undefined
     ) as Request<Method.GET, Path, Headers, undefined>;
 }

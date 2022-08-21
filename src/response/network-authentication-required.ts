@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function NetworkAuthenticationRequiredParameters() : Response<511, string, {}, undefined>;
+export function NetworkAuthenticationRequiredParameters() : NetworkAuthenticationRequiredResponse<undefined>;
 
 export function NetworkAuthenticationRequiredParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    511,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : NetworkAuthenticationRequiredResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function NetworkAuthenticationRequiredParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    511,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : NetworkAuthenticationRequiredResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return NetworkAuthenticationRequiredParameter({message, headers, body}) as Response as Response<
-        511,
-        Message extends undefined ? string : Message,
+    return NetworkAuthenticationRequiredParameter({message, headers, body}) as NetworkAuthenticationRequiredResponse as NetworkAuthenticationRequiredResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface NetworkAuthenticationRequiredResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 511, Message> {
+
+}
 
 
-export function NetworkAuthenticationRequiredParameter() : Response<511, string, {}, undefined>;
+export function NetworkAuthenticationRequiredParameter() : NetworkAuthenticationRequiredResponse<undefined>;
+
+export function NetworkAuthenticationRequiredParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<NetworkAuthenticationRequiredResponse<Body, Headers, Message>, 'code'>>,
+) : NetworkAuthenticationRequiredResponse<Body, Headers, Message>;
 
 export function NetworkAuthenticationRequiredParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<511, Message, Headers, Body>;
+    response : Partial<Omit<NetworkAuthenticationRequiredResponse<Body, Headers, Message>, 'code'>> = {},
+) : NetworkAuthenticationRequiredResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function NetworkAuthenticationRequiredParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<511, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 511}) as Response<511, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 511}) as NetworkAuthenticationRequiredResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function NetworkAuthenticationRequiredParameter<
 namespace NetworkAuthenticationRequired {
     export const Parameters = NetworkAuthenticationRequiredParameters;
     export const Parameter = NetworkAuthenticationRequiredParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = NetworkAuthenticationRequiredResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default NetworkAuthenticationRequired;

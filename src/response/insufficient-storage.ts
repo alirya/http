@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function InsufficientStorageParameters() : Response<507, string, {}, undefined>;
+export function InsufficientStorageParameters() : InsufficientStorageResponse<undefined>;
 
 export function InsufficientStorageParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    507,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : InsufficientStorageResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function InsufficientStorageParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    507,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : InsufficientStorageResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return InsufficientStorageParameter({message, headers, body}) as Response as Response<
-        507,
-        Message extends undefined ? string : Message,
+    return InsufficientStorageParameter({message, headers, body}) as InsufficientStorageResponse as InsufficientStorageResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface InsufficientStorageResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 507, Message> {
+
+}
 
 
-export function InsufficientStorageParameter() : Response<507, string, {}, undefined>;
+export function InsufficientStorageParameter() : InsufficientStorageResponse<undefined>;
+
+export function InsufficientStorageParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<InsufficientStorageResponse<Body, Headers, Message>, 'code'>>,
+) : InsufficientStorageResponse<Body, Headers, Message>;
 
 export function InsufficientStorageParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<507, Message, Headers, Body>;
+    response : Partial<Omit<InsufficientStorageResponse<Body, Headers, Message>, 'code'>> = {},
+) : InsufficientStorageResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function InsufficientStorageParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<507, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 507}) as Response<507, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 507}) as InsufficientStorageResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function InsufficientStorageParameter<
 namespace InsufficientStorage {
     export const Parameters = InsufficientStorageParameters;
     export const Parameter = InsufficientStorageParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = InsufficientStorageResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default InsufficientStorage;

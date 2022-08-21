@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = PayloadTooLargeParameters('etag data');
+        let response = PayloadTooLargeParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = PayloadTooLargeParameters(undefined, undefined, 'data');
+        let response = PayloadTooLargeParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

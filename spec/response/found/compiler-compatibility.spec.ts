@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = FoundParameters('etag data');
+        let response = FoundParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = FoundParameters(undefined, undefined, 'data');
+        let response = FoundParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

@@ -10,123 +10,113 @@ import InferCode from '@alirya/code/code/infer';
 import {Optional} from 'utility-types';
 
 export class CreateClass<
+    Body,
+    Headers extends {},
     Code extends number,
     Message extends string,
-    Headers extends Record<string, string>,
-    Body
-    > implements Response<Code, Message, Headers, Body> {
+    > implements Response<Body, Headers, Code, Message> {
 
     constructor(
+        public body : Body,
+        public headers : Headers,
         public code : Code,
         public message : Message,
-        public headers : Headers,
-        public body : Body
     ) {}
 }
 
 
 
+// export function CreateParameters<
+//     Code extends StrictNumber,
+//     Headers extends Record<string, string>,
+//     Body
+// >(
+//     code : Code,
+// ) : Response<Code, string, {}, undefined>;
+
+
 export function CreateParameters<
-    Code extends StrictNumber,
-    Headers extends Record<string, string>,
     Body
 >(
+    body : Body,
+) : Response<Body, {}, 200>;
+
+export function CreateParameters<
+    Body,
+    Headers extends {},
+>(
+    body : Body,
+    headers : Headers,
+) : Response<Body, Headers, 200>;
+
+
+// export function CreateParameters<
+//     Code extends number,
+//     Message extends string,
+//     Headers extends Record<string, string>,
+//     Body
+// >(
+//     code : Code,
+//     message : Message,
+//     headers : Headers,
+// ) : Response<Code, Message, Headers, undefined>;
+
+export function CreateParameters<
+    Code extends StrictNumber,
+    Headers extends {},
+    Body
+>(
+    body : Body,
+    headers : Headers,
     code : Code,
-) : Response<Code, string, {}, undefined>;
+) : Response<Body, Headers, Code>;
 
 
 export function CreateParameters<
     Code extends number,
     Message extends string,
-    Headers extends Record<string, string>,
+    Headers extends {},
     Body
 >(
+    body : Body,
+    headers : Headers,
     code : Code,
     message : Message,
-) : Response<Code, Message, {}, undefined>;
+) : Response<Body, Headers, Code, Message>;
 
-export function CreateParameters<
-    Code extends StrictNumber,
-    Headers extends Record<string, string>,
-    Body
->(
-    code : Code,
-    message : null,
-) : Response<Code, string, {}, undefined>;
-
-
-export function CreateParameters<
-    Code extends number,
-    Message extends string,
-    Headers extends Record<string, string>,
-    Body
->(
-    code : Code,
-    message : Message,
-    headers : Headers,
-) : Response<Code, Message, Headers, undefined>;
-
-export function CreateParameters<
-    Code extends StrictNumber,
-    Headers extends Record<string, string>,
-    Body
->(
-    code : Code,
-    message : null,
-    headers : Headers,
-) : Response<Code, string, Headers, undefined>;
-
-
+// export function CreateParameters<
+//     Code extends StrictNumber,
+//     Headers extends Record<string, string>,
+//     Body
+// >(
+//     code : Code,
+//     message : null,
+//     headers : Headers,
+//     body : Body
+// ) : Response<Code, string, Headers, Body>;
 
 
 
 
 
 export function CreateParameters<
-    Code extends number,
-    Message extends string,
-    Headers extends Record<string, string>,
-    Body
->(
-    code : Code,
-    message : Message,
-    headers : Headers,
-    body : Body
-) : Response<Code, Message, Headers, Body>;
-
-export function CreateParameters<
-    Code extends StrictNumber,
-    Headers extends Record<string, string>,
-    Body
->(
-    code : Code,
-    message : null,
-    headers : Headers,
-    body : Body
-) : Response<Code, string, Headers, Body>;
-
-
-
-
-
-export function CreateParameters<
+    Body,
+    Headers extends {},
     Code extends StrictNumber,
     Message extends string,
-    Headers extends Record<string, string>,
-    Body
 >(
-    code : Code,
-    message ?: Message|null,
-    headers : Headers|{} = {},
-    body : Body|undefined = undefined
-) : Response<Code, Message|string, Headers|{}, Body|undefined> {
+    body ?: Body,
+    headers : Headers|Record<string, string> = {},
+    code : Code|number = 200,
+    message ?: Message,
+) : Response<Body|undefined, Headers|Record<string, string>, Code, Message|string> {
 
     return CreateParameter({
         code,
-        message : message || undefined,
+        message,
         headers,
         body
-    });
+    }) as Response<Body|undefined, Headers|Record<string, string>, Code, Message|string>;
 }
 
 
@@ -143,10 +133,10 @@ export function CreateParameter<
 >(
     response : ResponseType,
 ) : Response<
-    InferCode<ResponseType>,
-    string,
+    InferBody<ResponseType> extends never ? undefined : InferBody<ResponseType>,
     InferHeader<ResponseType> extends never ? {} : InferHeader<ResponseType>,
-    InferBody<ResponseType> extends never ? undefined : InferBody<ResponseType>
+    InferCode<ResponseType>,
+    string
 >;
 
 /**
@@ -159,10 +149,10 @@ export function CreateParameter<
 >(
     response : Response
 ) :  Response<
-    InferCode<ResponseType>,
-    InferMessage<ResponseType>,
+    InferBody<ResponseType> extends never ? undefined : InferBody<ResponseType>,
     InferHeader<ResponseType> extends never ? {} : InferHeader<ResponseType>,
-    InferBody<ResponseType> extends never ? undefined : InferBody<ResponseType>
+    InferCode<ResponseType>,
+    InferMessage<ResponseType>
 >;
 
 export function CreateParameter<

@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function TemporaryRedirectParameters() : Response<307, string, {}, undefined>;
+export function TemporaryRedirectParameters() : TemporaryRedirectResponse<undefined>;
 
 export function TemporaryRedirectParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    307,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : TemporaryRedirectResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function TemporaryRedirectParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    307,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : TemporaryRedirectResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return TemporaryRedirectParameter({message, headers, body}) as Response as Response<
-        307,
-        Message extends undefined ? string : Message,
+    return TemporaryRedirectParameter({message, headers, body}) as TemporaryRedirectResponse as TemporaryRedirectResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface TemporaryRedirectResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 307, Message> {
+
+}
 
 
-export function TemporaryRedirectParameter() : Response<307, string, {}, undefined>;
+export function TemporaryRedirectParameter() : TemporaryRedirectResponse<undefined>;
+
+export function TemporaryRedirectParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<TemporaryRedirectResponse<Body, Headers, Message>, 'code'>>,
+) : TemporaryRedirectResponse<Body, Headers, Message>;
 
 export function TemporaryRedirectParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<307, Message, Headers, Body>;
+    response : Partial<Omit<TemporaryRedirectResponse<Body, Headers, Message>, 'code'>> = {},
+) : TemporaryRedirectResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function TemporaryRedirectParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<307, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 307}) as Response<307, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 307}) as TemporaryRedirectResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function TemporaryRedirectParameter<
 namespace TemporaryRedirect {
     export const Parameters = TemporaryRedirectParameters;
     export const Parameter = TemporaryRedirectParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = TemporaryRedirectResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default TemporaryRedirect;

@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = RangeNotSatisfiableParameters('etag data');
+        let response = RangeNotSatisfiableParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = RangeNotSatisfiableParameters(undefined, undefined, 'data');
+        let response = RangeNotSatisfiableParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

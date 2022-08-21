@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function NoContentParameters() : Response<204, string, {}, undefined>;
+export function NoContentParameters() : NoContentResponse<undefined>;
 
 export function NoContentParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    204,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : NoContentResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function NoContentParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    204,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : NoContentResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return NoContentParameter({message, headers, body}) as Response as Response<
-        204,
-        Message extends undefined ? string : Message,
+    return NoContentParameter({message, headers, body}) as NoContentResponse as NoContentResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface NoContentResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 204, Message> {
+
+}
 
 
-export function NoContentParameter() : Response<204, string, {}, undefined>;
+export function NoContentParameter() : NoContentResponse<undefined>;
+
+export function NoContentParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<NoContentResponse<Body, Headers, Message>, 'code'>>,
+) : NoContentResponse<Body, Headers, Message>;
 
 export function NoContentParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<204, Message, Headers, Body>;
+    response : Partial<Omit<NoContentResponse<Body, Headers, Message>, 'code'>> = {},
+) : NoContentResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function NoContentParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<204, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 204}) as Response<204, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 204}) as NoContentResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function NoContentParameter<
 namespace NoContent {
     export const Parameters = NoContentParameters;
     export const Parameter = NoContentParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = NoContentResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default NoContent;

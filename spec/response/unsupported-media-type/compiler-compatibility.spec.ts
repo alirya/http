@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = UnsupportedMediaTypeParameters('etag data');
+        let response = UnsupportedMediaTypeParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = UnsupportedMediaTypeParameters(undefined, undefined, 'data');
+        let response = UnsupportedMediaTypeParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

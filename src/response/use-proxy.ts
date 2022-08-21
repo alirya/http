@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function UseProxyParameters() : Response<305, string, {}, undefined>;
+export function UseProxyParameters() : UseProxyResponse<undefined>;
 
 export function UseProxyParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    305,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : UseProxyResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function UseProxyParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    305,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : UseProxyResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return UseProxyParameter({message, headers, body}) as Response as Response<
-        305,
-        Message extends undefined ? string : Message,
+    return UseProxyParameter({message, headers, body}) as UseProxyResponse as UseProxyResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface UseProxyResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 305, Message> {
+
+}
 
 
-export function UseProxyParameter() : Response<305, string, {}, undefined>;
+export function UseProxyParameter() : UseProxyResponse<undefined>;
+
+export function UseProxyParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<UseProxyResponse<Body, Headers, Message>, 'code'>>,
+) : UseProxyResponse<Body, Headers, Message>;
 
 export function UseProxyParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<305, Message, Headers, Body>;
+    response : Partial<Omit<UseProxyResponse<Body, Headers, Message>, 'code'>> = {},
+) : UseProxyResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function UseProxyParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<305, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 305}) as Response<305, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 305}) as UseProxyResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function UseProxyParameter<
 namespace UseProxy {
     export const Parameters = UseProxyParameters;
     export const Parameter = UseProxyParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = UseProxyResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default UseProxy;

@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function RequestHeaderFieldsTooLargeParameters() : Response<431, string, {}, undefined>;
+export function RequestHeaderFieldsTooLargeParameters() : RequestHeaderFieldsTooLargeResponse<undefined>;
 
 export function RequestHeaderFieldsTooLargeParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    431,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : RequestHeaderFieldsTooLargeResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function RequestHeaderFieldsTooLargeParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    431,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : RequestHeaderFieldsTooLargeResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return RequestHeaderFieldsTooLargeParameter({message, headers, body}) as Response as Response<
-        431,
-        Message extends undefined ? string : Message,
+    return RequestHeaderFieldsTooLargeParameter({message, headers, body}) as RequestHeaderFieldsTooLargeResponse as RequestHeaderFieldsTooLargeResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface RequestHeaderFieldsTooLargeResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 431, Message> {
+
+}
 
 
-export function RequestHeaderFieldsTooLargeParameter() : Response<431, string, {}, undefined>;
+export function RequestHeaderFieldsTooLargeParameter() : RequestHeaderFieldsTooLargeResponse<undefined>;
+
+export function RequestHeaderFieldsTooLargeParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<RequestHeaderFieldsTooLargeResponse<Body, Headers, Message>, 'code'>>,
+) : RequestHeaderFieldsTooLargeResponse<Body, Headers, Message>;
 
 export function RequestHeaderFieldsTooLargeParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<431, Message, Headers, Body>;
+    response : Partial<Omit<RequestHeaderFieldsTooLargeResponse<Body, Headers, Message>, 'code'>> = {},
+) : RequestHeaderFieldsTooLargeResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function RequestHeaderFieldsTooLargeParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<431, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 431}) as Response<431, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 431}) as RequestHeaderFieldsTooLargeResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function RequestHeaderFieldsTooLargeParameter<
 namespace RequestHeaderFieldsTooLarge {
     export const Parameters = RequestHeaderFieldsTooLargeParameters;
     export const Parameter = RequestHeaderFieldsTooLargeParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = RequestHeaderFieldsTooLargeResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default RequestHeaderFieldsTooLarge;

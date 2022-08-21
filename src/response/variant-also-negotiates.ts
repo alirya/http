@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function VariantAlsoNegotiatesParameters() : Response<506, string, {}, undefined>;
+export function VariantAlsoNegotiatesParameters() : VariantAlsoNegotiatesResponse<undefined>;
 
 export function VariantAlsoNegotiatesParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    506,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : VariantAlsoNegotiatesResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function VariantAlsoNegotiatesParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    506,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : VariantAlsoNegotiatesResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return VariantAlsoNegotiatesParameter({message, headers, body}) as Response as Response<
-        506,
-        Message extends undefined ? string : Message,
+    return VariantAlsoNegotiatesParameter({message, headers, body}) as VariantAlsoNegotiatesResponse as VariantAlsoNegotiatesResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface VariantAlsoNegotiatesResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 506, Message> {
+
+}
 
 
-export function VariantAlsoNegotiatesParameter() : Response<506, string, {}, undefined>;
+export function VariantAlsoNegotiatesParameter() : VariantAlsoNegotiatesResponse<undefined>;
+
+export function VariantAlsoNegotiatesParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<VariantAlsoNegotiatesResponse<Body, Headers, Message>, 'code'>>,
+) : VariantAlsoNegotiatesResponse<Body, Headers, Message>;
 
 export function VariantAlsoNegotiatesParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<506, Message, Headers, Body>;
+    response : Partial<Omit<VariantAlsoNegotiatesResponse<Body, Headers, Message>, 'code'>> = {},
+) : VariantAlsoNegotiatesResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function VariantAlsoNegotiatesParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<506, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 506}) as Response<506, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 506}) as VariantAlsoNegotiatesResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function VariantAlsoNegotiatesParameter<
 namespace VariantAlsoNegotiates {
     export const Parameters = VariantAlsoNegotiatesParameters;
     export const Parameter = VariantAlsoNegotiatesParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = VariantAlsoNegotiatesResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default VariantAlsoNegotiates;

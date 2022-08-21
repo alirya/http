@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function UriTooLongParameters() : Response<414, string, {}, undefined>;
+export function UriTooLongParameters() : UriTooLongResponse<undefined>;
 
 export function UriTooLongParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    414,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : UriTooLongResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function UriTooLongParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    414,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : UriTooLongResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return UriTooLongParameter({message, headers, body}) as Response as Response<
-        414,
-        Message extends undefined ? string : Message,
+    return UriTooLongParameter({message, headers, body}) as UriTooLongResponse as UriTooLongResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface UriTooLongResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 414, Message> {
+
+}
 
 
-export function UriTooLongParameter() : Response<414, string, {}, undefined>;
+export function UriTooLongParameter() : UriTooLongResponse<undefined>;
+
+export function UriTooLongParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<UriTooLongResponse<Body, Headers, Message>, 'code'>>,
+) : UriTooLongResponse<Body, Headers, Message>;
 
 export function UriTooLongParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<414, Message, Headers, Body>;
+    response : Partial<Omit<UriTooLongResponse<Body, Headers, Message>, 'code'>> = {},
+) : UriTooLongResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function UriTooLongParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<414, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 414}) as Response<414, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 414}) as UriTooLongResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function UriTooLongParameter<
 namespace UriTooLong {
     export const Parameters = UriTooLongParameters;
     export const Parameter = UriTooLongParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = UriTooLongResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default UriTooLong;

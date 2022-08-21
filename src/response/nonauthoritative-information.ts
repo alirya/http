@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function NonauthoritativeInformationParameters() : Response<203, string, {}, undefined>;
+export function NonauthoritativeInformationParameters() : NonauthoritativeInformationResponse<undefined>;
 
 export function NonauthoritativeInformationParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    203,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : NonauthoritativeInformationResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function NonauthoritativeInformationParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    203,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : NonauthoritativeInformationResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return NonauthoritativeInformationParameter({message, headers, body}) as Response as Response<
-        203,
-        Message extends undefined ? string : Message,
+    return NonauthoritativeInformationParameter({message, headers, body}) as NonauthoritativeInformationResponse as NonauthoritativeInformationResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface NonauthoritativeInformationResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 203, Message> {
+
+}
 
 
-export function NonauthoritativeInformationParameter() : Response<203, string, {}, undefined>;
+export function NonauthoritativeInformationParameter() : NonauthoritativeInformationResponse<undefined>;
+
+export function NonauthoritativeInformationParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<NonauthoritativeInformationResponse<Body, Headers, Message>, 'code'>>,
+) : NonauthoritativeInformationResponse<Body, Headers, Message>;
 
 export function NonauthoritativeInformationParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<203, Message, Headers, Body>;
+    response : Partial<Omit<NonauthoritativeInformationResponse<Body, Headers, Message>, 'code'>> = {},
+) : NonauthoritativeInformationResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function NonauthoritativeInformationParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<203, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 203}) as Response<203, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 203}) as NonauthoritativeInformationResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function NonauthoritativeInformationParameter<
 namespace NonauthoritativeInformation {
     export const Parameters = NonauthoritativeInformationParameters;
     export const Parameter = NonauthoritativeInformationParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = NonauthoritativeInformationResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default NonauthoritativeInformation;

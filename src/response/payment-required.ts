@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function PaymentRequiredParameters() : Response<402, string, {}, undefined>;
+export function PaymentRequiredParameters() : PaymentRequiredResponse<undefined>;
 
 export function PaymentRequiredParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    402,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : PaymentRequiredResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function PaymentRequiredParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    402,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : PaymentRequiredResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return PaymentRequiredParameter({message, headers, body}) as Response as Response<
-        402,
-        Message extends undefined ? string : Message,
+    return PaymentRequiredParameter({message, headers, body}) as PaymentRequiredResponse as PaymentRequiredResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface PaymentRequiredResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 402, Message> {
+
+}
 
 
-export function PaymentRequiredParameter() : Response<402, string, {}, undefined>;
+export function PaymentRequiredParameter() : PaymentRequiredResponse<undefined>;
+
+export function PaymentRequiredParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<PaymentRequiredResponse<Body, Headers, Message>, 'code'>>,
+) : PaymentRequiredResponse<Body, Headers, Message>;
 
 export function PaymentRequiredParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<402, Message, Headers, Body>;
+    response : Partial<Omit<PaymentRequiredResponse<Body, Headers, Message>, 'code'>> = {},
+) : PaymentRequiredResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function PaymentRequiredParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<402, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 402}) as Response<402, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 402}) as PaymentRequiredResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function PaymentRequiredParameter<
 namespace PaymentRequired {
     export const Parameters = PaymentRequiredParameters;
     export const Parameter = PaymentRequiredParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = PaymentRequiredResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default PaymentRequired;

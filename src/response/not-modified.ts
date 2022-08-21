@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function NotModifiedParameters() : Response<304, string, {}, undefined>;
+export function NotModifiedParameters() : NotModifiedResponse<undefined>;
 
 export function NotModifiedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    304,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : NotModifiedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function NotModifiedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    304,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : NotModifiedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return NotModifiedParameter({message, headers, body}) as Response as Response<
-        304,
-        Message extends undefined ? string : Message,
+    return NotModifiedParameter({message, headers, body}) as NotModifiedResponse as NotModifiedResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface NotModifiedResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 304, Message> {
+
+}
 
 
-export function NotModifiedParameter() : Response<304, string, {}, undefined>;
+export function NotModifiedParameter() : NotModifiedResponse<undefined>;
+
+export function NotModifiedParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<NotModifiedResponse<Body, Headers, Message>, 'code'>>,
+) : NotModifiedResponse<Body, Headers, Message>;
 
 export function NotModifiedParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<304, Message, Headers, Body>;
+    response : Partial<Omit<NotModifiedResponse<Body, Headers, Message>, 'code'>> = {},
+) : NotModifiedResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function NotModifiedParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<304, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 304}) as Response<304, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 304}) as NotModifiedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function NotModifiedParameter<
 namespace NotModified {
     export const Parameters = NotModifiedParameters;
     export const Parameter = NotModifiedParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = NotModifiedResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default NotModified;

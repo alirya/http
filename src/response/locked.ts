@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function LockedParameters() : Response<423, string, {}, undefined>;
+export function LockedParameters() : LockedResponse<undefined>;
 
 export function LockedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    423,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : LockedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function LockedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    423,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : LockedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return LockedParameter({message, headers, body}) as Response as Response<
-        423,
-        Message extends undefined ? string : Message,
+    return LockedParameter({message, headers, body}) as LockedResponse as LockedResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface LockedResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 423, Message> {
+
+}
 
 
-export function LockedParameter() : Response<423, string, {}, undefined>;
+export function LockedParameter() : LockedResponse<undefined>;
+
+export function LockedParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<LockedResponse<Body, Headers, Message>, 'code'>>,
+) : LockedResponse<Body, Headers, Message>;
 
 export function LockedParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<423, Message, Headers, Body>;
+    response : Partial<Omit<LockedResponse<Body, Headers, Message>, 'code'>> = {},
+) : LockedResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function LockedParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<423, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 423}) as Response<423, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 423}) as LockedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function LockedParameter<
 namespace Locked {
     export const Parameters = LockedParameters;
     export const Parameter = LockedParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = LockedResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default Locked;

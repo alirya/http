@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function NotFoundParameters() : Response<404, string, {}, undefined>;
+export function NotFoundParameters() : NotFoundResponse<undefined>;
 
 export function NotFoundParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    404,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : NotFoundResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function NotFoundParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    404,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : NotFoundResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return NotFoundParameter({message, headers, body}) as Response as Response<
-        404,
-        Message extends undefined ? string : Message,
+    return NotFoundParameter({message, headers, body}) as NotFoundResponse as NotFoundResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface NotFoundResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 404, Message> {
+
+}
 
 
-export function NotFoundParameter() : Response<404, string, {}, undefined>;
+export function NotFoundParameter() : NotFoundResponse<undefined>;
+
+export function NotFoundParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<NotFoundResponse<Body, Headers, Message>, 'code'>>,
+) : NotFoundResponse<Body, Headers, Message>;
 
 export function NotFoundParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<404, Message, Headers, Body>;
+    response : Partial<Omit<NotFoundResponse<Body, Headers, Message>, 'code'>> = {},
+) : NotFoundResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function NotFoundParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<404, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 404}) as Response<404, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 404}) as NotFoundResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function NotFoundParameter<
 namespace NotFound {
     export const Parameters = NotFoundParameters;
     export const Parameter = NotFoundParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = NotFoundResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default NotFound;

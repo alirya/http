@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = TooManyRequestsParameters('etag data');
+        let response = TooManyRequestsParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = TooManyRequestsParameters(undefined, undefined, 'data');
+        let response = TooManyRequestsParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

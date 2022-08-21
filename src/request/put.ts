@@ -16,7 +16,7 @@ export default function Put<
     return RequestCreate.Parameters(
         Method.PUT,
         request.path,
+        request.body,
         request.headers,
-        request.body
     ) as Request<Method.PUT, Path, Headers, Body>;
 }

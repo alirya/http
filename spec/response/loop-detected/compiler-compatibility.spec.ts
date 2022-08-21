@@ -131,7 +131,7 @@ describe('message', function() {
 
     it('parameters', function() {
 
-        let response = LoopDetectedParameters('etag data');
+        let response = LoopDetectedParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -187,7 +187,7 @@ describe('body', function() {
 
     it('parameters', function() {
 
-        let response = LoopDetectedParameters(undefined, undefined, 'data');
+        let response = LoopDetectedParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;

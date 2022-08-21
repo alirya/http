@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function GoneParameters() : Response<410, string, {}, undefined>;
+export function GoneParameters() : GoneResponse<undefined>;
 
 export function GoneParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    410,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : GoneResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function GoneParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    410,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : GoneResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return GoneParameter({message, headers, body}) as Response as Response<
-        410,
-        Message extends undefined ? string : Message,
+    return GoneParameter({message, headers, body}) as GoneResponse as GoneResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface GoneResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 410, Message> {
+
+}
 
 
-export function GoneParameter() : Response<410, string, {}, undefined>;
+export function GoneParameter() : GoneResponse<undefined>;
+
+export function GoneParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<GoneResponse<Body, Headers, Message>, 'code'>>,
+) : GoneResponse<Body, Headers, Message>;
 
 export function GoneParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<410, Message, Headers, Body>;
+    response : Partial<Omit<GoneResponse<Body, Headers, Message>, 'code'>> = {},
+) : GoneResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function GoneParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<410, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 410}) as Response<410, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 410}) as GoneResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function GoneParameter<
 namespace Gone {
     export const Parameters = GoneParameters;
     export const Parameter = GoneParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = GoneResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default Gone;

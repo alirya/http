@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function FoundParameters() : Response<302, string, {}, undefined>;
+export function FoundParameters() : FoundResponse<undefined>;
 
 export function FoundParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    302,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : FoundResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function FoundParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    302,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : FoundResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return FoundParameter({message, headers, body}) as Response as Response<
-        302,
-        Message extends undefined ? string : Message,
+    return FoundParameter({message, headers, body}) as FoundResponse as FoundResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface FoundResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 302, Message> {
+
+}
 
 
-export function FoundParameter() : Response<302, string, {}, undefined>;
+export function FoundParameter() : FoundResponse<undefined>;
+
+export function FoundParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<FoundResponse<Body, Headers, Message>, 'code'>>,
+) : FoundResponse<Body, Headers, Message>;
 
 export function FoundParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<302, Message, Headers, Body>;
+    response : Partial<Omit<FoundResponse<Body, Headers, Message>, 'code'>> = {},
+) : FoundResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function FoundParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<302, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 302}) as Response<302, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 302}) as FoundResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function FoundParameter<
 namespace Found {
     export const Parameters = FoundParameters;
     export const Parameter = FoundParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = FoundResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default Found;

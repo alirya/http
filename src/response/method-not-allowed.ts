@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function MethodNotAllowedParameters() : Response<405, string, {}, undefined>;
+export function MethodNotAllowedParameters() : MethodNotAllowedResponse<undefined>;
 
 export function MethodNotAllowedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    405,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : MethodNotAllowedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function MethodNotAllowedParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    405,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : MethodNotAllowedResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return MethodNotAllowedParameter({message, headers, body}) as Response as Response<
-        405,
-        Message extends undefined ? string : Message,
+    return MethodNotAllowedParameter({message, headers, body}) as MethodNotAllowedResponse as MethodNotAllowedResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface MethodNotAllowedResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 405, Message> {
+
+}
 
 
-export function MethodNotAllowedParameter() : Response<405, string, {}, undefined>;
+export function MethodNotAllowedParameter() : MethodNotAllowedResponse<undefined>;
+
+export function MethodNotAllowedParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<MethodNotAllowedResponse<Body, Headers, Message>, 'code'>>,
+) : MethodNotAllowedResponse<Body, Headers, Message>;
 
 export function MethodNotAllowedParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<405, Message, Headers, Body>;
+    response : Partial<Omit<MethodNotAllowedResponse<Body, Headers, Message>, 'code'>> = {},
+) : MethodNotAllowedResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function MethodNotAllowedParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<405, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 405}) as Response<405, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 405}) as MethodNotAllowedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function MethodNotAllowedParameter<
 namespace MethodNotAllowed {
     export const Parameters = MethodNotAllowedParameters;
     export const Parameter = MethodNotAllowedParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = MethodNotAllowedResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default MethodNotAllowed;

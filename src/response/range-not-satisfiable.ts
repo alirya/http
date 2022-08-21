@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function RangeNotSatisfiableParameters() : Response<416, string, {}, undefined>;
+export function RangeNotSatisfiableParameters() : RangeNotSatisfiableResponse<undefined>;
 
 export function RangeNotSatisfiableParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    416,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : RangeNotSatisfiableResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function RangeNotSatisfiableParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    416,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : RangeNotSatisfiableResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return RangeNotSatisfiableParameter({message, headers, body}) as Response as Response<
-        416,
-        Message extends undefined ? string : Message,
+    return RangeNotSatisfiableParameter({message, headers, body}) as RangeNotSatisfiableResponse as RangeNotSatisfiableResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface RangeNotSatisfiableResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 416, Message> {
+
+}
 
 
-export function RangeNotSatisfiableParameter() : Response<416, string, {}, undefined>;
+export function RangeNotSatisfiableParameter() : RangeNotSatisfiableResponse<undefined>;
+
+export function RangeNotSatisfiableParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<RangeNotSatisfiableResponse<Body, Headers, Message>, 'code'>>,
+) : RangeNotSatisfiableResponse<Body, Headers, Message>;
 
 export function RangeNotSatisfiableParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<416, Message, Headers, Body>;
+    response : Partial<Omit<RangeNotSatisfiableResponse<Body, Headers, Message>, 'code'>> = {},
+) : RangeNotSatisfiableResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function RangeNotSatisfiableParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<416, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 416}) as Response<416, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 416}) as RangeNotSatisfiableResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function RangeNotSatisfiableParameter<
 namespace RangeNotSatisfiable {
     export const Parameters = RangeNotSatisfiableParameters;
     export const Parameter = RangeNotSatisfiableParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = RangeNotSatisfiableResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default RangeNotSatisfiable;

@@ -1,67 +1,71 @@
 import Response from './response';
 import {CreateParameter} from './create';
 
-export function OkParameters() : Response<200, string, {}, undefined>;
+export function OkParameters() : OkResponse<undefined>;
 
 export function OkParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    200,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : OkResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 >;
 
 export function OkParameters<
-    Message extends string|undefined,
-    Headers extends Record<string, string>|undefined,
-    Body = undefined
+    Body = undefined,
+    Headers extends {} = {},
+    Message extends string = string,
 >(
-    message ?: Message,
+    body ?: Body,
     headers ?: Headers,
-    body ?: Body
-) : Response<
-    200,
-    Message extends undefined ? string : Message,
+    message ?: Message,
+) : OkResponse<
+    Body,
     Headers extends undefined ? {} : Headers,
-    Body
+    Message extends undefined ? string : Message
 > {
 
-    return OkParameter({message, headers, body}) as Response as Response<
-        200,
-        Message extends undefined ? string : Message,
+    return OkParameter({message, headers, body}) as OkResponse as OkResponse<
+        Body,
         Headers extends undefined ? {} : Headers,
-        Body
+        Message extends undefined ? string : Message
     >;
 }
 
+export interface OkResponse<
+    Body = unknown,
+    Headers extends {} = {},
+    Message extends string = string,
+> extends Response<Body, Headers, 200, Message> {
+
+}
 
 
-export function OkParameter() : Response<200, string, {}, undefined>;
+export function OkParameter() : OkResponse<undefined>;
+
+export function OkParameter<
+    Body,
+    Headers extends {} = {},
+    Message extends string = string,
+    >(
+    response : Partial<Omit<OkResponse<Body, Headers, Message>, 'code'>>,
+) : OkResponse<Body, Headers, Message>;
 
 export function OkParameter<
     Message extends string,
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>>,
-) : Response<200, Message, Headers, Body>;
+    response : Partial<Omit<OkResponse<Body, Headers, Message>, 'code'>> = {},
+) : OkResponse<Body|undefined, Headers|{}, Message|string> {
 
-export function OkParameter<
-    Message extends string,
-    Body,
-    Headers extends {}
-    >(
-    response : Partial<Omit<Response<number, Message, Headers, Body>, 'code'>> = {},
-) : Response<200, Message|string, Headers|{}, Body|undefined> {
-
-    return CreateParameter({...response, code: 200}) as Response<200, Message|string, Headers|{}, Body|undefined>;
+    return CreateParameter({...response, code: 200}) as OkResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
@@ -70,5 +74,14 @@ export function OkParameter<
 namespace Ok {
     export const Parameters = OkParameters;
     export const Parameter = OkParameter;
+    export type Response<
+        Body = unknown,
+        Headers extends {} = {},
+        Message extends string = string,
+    > = OkResponse<
+        Body,
+        Headers,
+        Message
+    >;
 }
 export default Ok;
