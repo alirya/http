@@ -54,7 +54,7 @@ export function NotFoundParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<NotFoundResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<NotFoundResponse<Body, Headers, Message>, 'status'>>,
 ) : NotFoundResponse<Body, Headers, Message>;
 
 export function NotFoundParameter<
@@ -62,10 +62,10 @@ export function NotFoundParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<NotFoundResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<NotFoundResponse<Body, Headers, Message>, 'status'>> = {},
 ) : NotFoundResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 404}) as NotFoundResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 404}) as NotFoundResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

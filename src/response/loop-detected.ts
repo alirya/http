@@ -54,7 +54,7 @@ export function LoopDetectedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<LoopDetectedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<LoopDetectedResponse<Body, Headers, Message>, 'status'>>,
 ) : LoopDetectedResponse<Body, Headers, Message>;
 
 export function LoopDetectedParameter<
@@ -62,10 +62,10 @@ export function LoopDetectedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<LoopDetectedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<LoopDetectedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : LoopDetectedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 508}) as LoopDetectedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 508}) as LoopDetectedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

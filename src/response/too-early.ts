@@ -54,7 +54,7 @@ export function TooEarlyParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<TooEarlyResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<TooEarlyResponse<Body, Headers, Message>, 'status'>>,
 ) : TooEarlyResponse<Body, Headers, Message>;
 
 export function TooEarlyParameter<
@@ -62,10 +62,10 @@ export function TooEarlyParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<TooEarlyResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<TooEarlyResponse<Body, Headers, Message>, 'status'>> = {},
 ) : TooEarlyResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 425}) as TooEarlyResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 425}) as TooEarlyResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

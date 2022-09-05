@@ -54,7 +54,7 @@ export function BadGatewayParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<BadGatewayResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<BadGatewayResponse<Body, Headers, Message>, 'status'>>,
 ) : BadGatewayResponse<Body, Headers, Message>;
 
 export function BadGatewayParameter<
@@ -62,10 +62,10 @@ export function BadGatewayParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<BadGatewayResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<BadGatewayResponse<Body, Headers, Message>, 'status'>> = {},
 ) : BadGatewayResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 502}) as BadGatewayResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 502}) as BadGatewayResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

@@ -54,7 +54,7 @@ export function ForbiddenParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<ForbiddenResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<ForbiddenResponse<Body, Headers, Message>, 'status'>>,
 ) : ForbiddenResponse<Body, Headers, Message>;
 
 export function ForbiddenParameter<
@@ -62,10 +62,10 @@ export function ForbiddenParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<ForbiddenResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<ForbiddenResponse<Body, Headers, Message>, 'status'>> = {},
 ) : ForbiddenResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 403}) as ForbiddenResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 403}) as ForbiddenResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

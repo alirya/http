@@ -54,7 +54,7 @@ export function NetworkAuthenticationRequiredParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<NetworkAuthenticationRequiredResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<NetworkAuthenticationRequiredResponse<Body, Headers, Message>, 'status'>>,
 ) : NetworkAuthenticationRequiredResponse<Body, Headers, Message>;
 
 export function NetworkAuthenticationRequiredParameter<
@@ -62,10 +62,10 @@ export function NetworkAuthenticationRequiredParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<NetworkAuthenticationRequiredResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<NetworkAuthenticationRequiredResponse<Body, Headers, Message>, 'status'>> = {},
 ) : NetworkAuthenticationRequiredResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 511}) as NetworkAuthenticationRequiredResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 511}) as NetworkAuthenticationRequiredResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

@@ -54,7 +54,7 @@ export function OkParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<OkResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<OkResponse<Body, Headers, Message>, 'status'>>,
 ) : OkResponse<Body, Headers, Message>;
 
 export function OkParameter<
@@ -62,10 +62,10 @@ export function OkParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<OkResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<OkResponse<Body, Headers, Message>, 'status'>> = {},
 ) : OkResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 200}) as OkResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 200}) as OkResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

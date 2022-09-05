@@ -54,7 +54,7 @@ export function FailedDependencyParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<FailedDependencyResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<FailedDependencyResponse<Body, Headers, Message>, 'status'>>,
 ) : FailedDependencyResponse<Body, Headers, Message>;
 
 export function FailedDependencyParameter<
@@ -62,10 +62,10 @@ export function FailedDependencyParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<FailedDependencyResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<FailedDependencyResponse<Body, Headers, Message>, 'status'>> = {},
 ) : FailedDependencyResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 424}) as FailedDependencyResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 424}) as FailedDependencyResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

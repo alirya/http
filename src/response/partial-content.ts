@@ -54,7 +54,7 @@ export function PartialContentParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<PartialContentResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<PartialContentResponse<Body, Headers, Message>, 'status'>>,
 ) : PartialContentResponse<Body, Headers, Message>;
 
 export function PartialContentParameter<
@@ -62,10 +62,10 @@ export function PartialContentParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<PartialContentResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<PartialContentResponse<Body, Headers, Message>, 'status'>> = {},
 ) : PartialContentResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 206}) as PartialContentResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 206}) as PartialContentResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

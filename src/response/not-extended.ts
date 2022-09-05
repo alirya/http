@@ -54,7 +54,7 @@ export function NotExtendedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<NotExtendedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<NotExtendedResponse<Body, Headers, Message>, 'status'>>,
 ) : NotExtendedResponse<Body, Headers, Message>;
 
 export function NotExtendedParameter<
@@ -62,10 +62,10 @@ export function NotExtendedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<NotExtendedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<NotExtendedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : NotExtendedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 510}) as NotExtendedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 510}) as NotExtendedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

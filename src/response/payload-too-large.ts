@@ -54,7 +54,7 @@ export function PayloadTooLargeParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<PayloadTooLargeResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<PayloadTooLargeResponse<Body, Headers, Message>, 'status'>>,
 ) : PayloadTooLargeResponse<Body, Headers, Message>;
 
 export function PayloadTooLargeParameter<
@@ -62,10 +62,10 @@ export function PayloadTooLargeParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<PayloadTooLargeResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<PayloadTooLargeResponse<Body, Headers, Message>, 'status'>> = {},
 ) : PayloadTooLargeResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 413}) as PayloadTooLargeResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 413}) as PayloadTooLargeResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

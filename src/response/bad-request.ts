@@ -54,7 +54,7 @@ export function BadRequestParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<BadRequestResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<BadRequestResponse<Body, Headers, Message>, 'status'>>,
 ) : BadRequestResponse<Body, Headers, Message>;
 
 export function BadRequestParameter<
@@ -62,10 +62,10 @@ export function BadRequestParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<BadRequestResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<BadRequestResponse<Body, Headers, Message>, 'status'>> = {},
 ) : BadRequestResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 400}) as BadRequestResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 400}) as BadRequestResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

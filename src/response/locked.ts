@@ -54,7 +54,7 @@ export function LockedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<LockedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<LockedResponse<Body, Headers, Message>, 'status'>>,
 ) : LockedResponse<Body, Headers, Message>;
 
 export function LockedParameter<
@@ -62,10 +62,10 @@ export function LockedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<LockedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<LockedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : LockedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 423}) as LockedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 423}) as LockedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

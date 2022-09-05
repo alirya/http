@@ -12,13 +12,13 @@ export default function StandardStrict() : Readonly<Strict> {
         100 : 'Continue',
 
         /**
-         * This code is sent in response to an Upgrade request header from the client, and indicates the protocol the server
+         * This status is sent in response to an Upgrade request header from the client, and indicates the protocol the server
          * is switching to.
          */
         101 : 'Switching Protocol',
 
         /**
-         * This status code is primarily intended to be used with the Link header, letting the user agent start preloading
+         * This status status is primarily intended to be used with the Link header, letting the user agent start preloading
          * resources while the server prepares a response.
          */
         103 : 'Early Hints',
@@ -43,7 +43,7 @@ export default function StandardStrict() : Readonly<Strict> {
          */
         202  : 'Accepted',
         /**
-         * This response code means the returned meta-information is not exactly the same as is available from the
+         * This response status means the returned meta-information is not exactly the same as is available from the
          * origin server, but is collected from a local or a third-party copy. This is mostly used for mirrors or backups
          * of another resource. Except for that specific case, the "200 OK" response is preferred to this status.
          */
@@ -61,7 +61,7 @@ export default function StandardStrict() : Readonly<Strict> {
         205 : 'Reset Content',
 
         /**
-         * This response code is used when the Range header is sent from the client to request only part of a resource.
+         * This response status is used when the Range header is sent from the client to request only part of a resource.
          */
         206 : 'Partial Content',
 
@@ -76,7 +76,7 @@ export default function StandardStrict() : Readonly<Strict> {
          */
         301 : 'Moved Permanently',
         /**
-         *  This response code means that the URI of requested resource has been changed temporarily.
+         *  This response status means that the URI of requested resource has been changed temporarily.
          *  Further changes in the URI might be made in the future. Therefore, this same URI should be used by the client in future requests.
          */
         302 : 'Found',
@@ -95,19 +95,19 @@ export default function StandardStrict() : Readonly<Strict> {
          */
         305 : 'Use Proxy',
         /**
-         *  This response code is no longer used; it is just reserved. It was used in a previous version of the HTTP/1.1 specification.
+         *  This response status is no longer used; it is just reserved. It was used in a previous version of the HTTP/1.1 specification.
          */
         306 : 'unused',
         /**
          * The server sends this response to direct the client to get the requested resource at another URI with same
-         * method that was used in the prior request. This has the same semantics as the 302 Found HTTP response code,
+         * method that was used in the prior request. This has the same semantics as the 302 Found HTTP response status,
          * with the exception that the user agent must not change the HTTP method used: If a POST was used in the first
          * request, a POST must be used in the second request.
          */
         307 : 'Temporary Redirect',
         /**
          * This means that the resource is now permanently located at another URI, specified by the Location: HTTP Response
-         * header. This has the same semantics as the 301 Moved Permanently HTTP response code, with the exception that
+         * header. This has the same semantics as the 301 Moved Permanently HTTP response status, with the exception that
          * the user agent must not change the HTTP method used: If a POST was used in the first request, a POST must be used in the second request.
          */
         308 : 'Permanent Redirect',
@@ -122,8 +122,8 @@ export default function StandardStrict() : Readonly<Strict> {
          */
         401 : 'Unauthorized',
         /**
-         * This response code is reserved for future use. The initial aim for creating this code was using it for digital payment systems,
-         * however this status code is used very rarely and no standard convention exists.
+         * This response status is reserved for future use. The initial aim for creating this status was using it for digital payment systems,
+         * however this status status is used very rarely and no standard convention exists.
          */
         402 : 'Payment Required',
         /**
@@ -135,12 +135,12 @@ export default function StandardStrict() : Readonly<Strict> {
          * The server can not find requested resource. In the browser, this means the URL is not recognized. In an API,
          * this can also mean that the endpoint is valid but the resource itself does not exist.
          * Servers may also send this response instead of 403 to hide the existence of a resource from an unauthorized client.
-         * This response code is probably the most famous one due to its frequent occurrence on the web.
+         * This response status is probably the most famous one due to its frequent occurrence on the web.
          */
         404 : 'Not Found',
         /**
          * The request method is known by the server but has been disabled and cannot be used. For example,
-         * an API may forbid DELETE-ing a resource. The two mandatory methods, GET and HEAD, must never be disabled and should not return this error code.
+         * an API may forbid DELETE-ing a resource. The two mandatory methods, GET and HEAD, must never be disabled and should not return this error status.
          */
         405 : 'Method Not Allowed',
         /**
@@ -166,8 +166,8 @@ export default function StandardStrict() : Readonly<Strict> {
         /**
          *  This response is sent when the requested content has been permanently deleted from server, with no forwarding address.
          *  Clients are expected to remove their caches and links to the resource.
-         *  The HTTP specification intends this status code to be used for "limited-time, promotional services".
-         *  APIs should not feel compelled to indicate resources that have been deleted with this status code.
+         *  The HTTP specification intends this status status to be used for "limited-time, promotional services".
+         *  APIs should not feel compelled to indicate resources that have been deleted with this status status.
          */
         410 : 'Gone',
         /**
@@ -196,7 +196,7 @@ export default function StandardStrict() : Readonly<Strict> {
          */
         416 : 'Range Not Satisfiable',
         /**
-         *  This response code means the expectation indicated by the Expect request header field can't be met by the server.
+         *  This response status means the expectation indicated by the Expect request header field can't be met by the server.
          */
         417 : 'Expectation Failed',
         /**
@@ -255,7 +255,7 @@ export default function StandardStrict() : Readonly<Strict> {
         500 : 'Internal Server Error',
         /**
          *  The request method is not supported by the server and cannot be handled.
-         *  The only methods that servers are required to support (and therefore that must not return this code) are GET and HEAD.
+         *  The only methods that servers are required to support (and therefore that must not return this status) are GET and HEAD.
          */
         501 : 'Not Implemented',
         /**
@@ -299,7 +299,7 @@ export default function StandardStrict() : Readonly<Strict> {
          */
         510 : 'Not Extended',
         /**
-         *  The 511 status code indicates that the client needs to authenticate to gain network access.
+         *  The 511 status status indicates that the client needs to authenticate to gain network access.
          */
         511 : 'Network Authentication Required',
     };

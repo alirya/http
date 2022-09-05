@@ -54,7 +54,7 @@ export function NoContentParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<NoContentResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<NoContentResponse<Body, Headers, Message>, 'status'>>,
 ) : NoContentResponse<Body, Headers, Message>;
 
 export function NoContentParameter<
@@ -62,10 +62,10 @@ export function NoContentParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<NoContentResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<NoContentResponse<Body, Headers, Message>, 'status'>> = {},
 ) : NoContentResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 204}) as NoContentResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 204}) as NoContentResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

@@ -54,7 +54,7 @@ export function NonauthoritativeInformationParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<NonauthoritativeInformationResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<NonauthoritativeInformationResponse<Body, Headers, Message>, 'status'>>,
 ) : NonauthoritativeInformationResponse<Body, Headers, Message>;
 
 export function NonauthoritativeInformationParameter<
@@ -62,10 +62,10 @@ export function NonauthoritativeInformationParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<NonauthoritativeInformationResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<NonauthoritativeInformationResponse<Body, Headers, Message>, 'status'>> = {},
 ) : NonauthoritativeInformationResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 203}) as NonauthoritativeInformationResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 203}) as NonauthoritativeInformationResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

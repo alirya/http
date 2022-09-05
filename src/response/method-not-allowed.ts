@@ -54,7 +54,7 @@ export function MethodNotAllowedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<MethodNotAllowedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<MethodNotAllowedResponse<Body, Headers, Message>, 'status'>>,
 ) : MethodNotAllowedResponse<Body, Headers, Message>;
 
 export function MethodNotAllowedParameter<
@@ -62,10 +62,10 @@ export function MethodNotAllowedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<MethodNotAllowedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<MethodNotAllowedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : MethodNotAllowedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 405}) as MethodNotAllowedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 405}) as MethodNotAllowedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

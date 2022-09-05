@@ -54,7 +54,7 @@ export function ResetContentParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<ResetContentResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<ResetContentResponse<Body, Headers, Message>, 'status'>>,
 ) : ResetContentResponse<Body, Headers, Message>;
 
 export function ResetContentParameter<
@@ -62,10 +62,10 @@ export function ResetContentParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<ResetContentResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<ResetContentResponse<Body, Headers, Message>, 'status'>> = {},
 ) : ResetContentResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 205}) as ResetContentResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 205}) as ResetContentResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

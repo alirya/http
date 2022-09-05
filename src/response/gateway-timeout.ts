@@ -54,7 +54,7 @@ export function GatewayTimeoutParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<GatewayTimeoutResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<GatewayTimeoutResponse<Body, Headers, Message>, 'status'>>,
 ) : GatewayTimeoutResponse<Body, Headers, Message>;
 
 export function GatewayTimeoutParameter<
@@ -62,10 +62,10 @@ export function GatewayTimeoutParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<GatewayTimeoutResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<GatewayTimeoutResponse<Body, Headers, Message>, 'status'>> = {},
 ) : GatewayTimeoutResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 504}) as GatewayTimeoutResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 504}) as GatewayTimeoutResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

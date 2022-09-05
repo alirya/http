@@ -54,7 +54,7 @@ export function UpgradeRequiredParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<UpgradeRequiredResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<UpgradeRequiredResponse<Body, Headers, Message>, 'status'>>,
 ) : UpgradeRequiredResponse<Body, Headers, Message>;
 
 export function UpgradeRequiredParameter<
@@ -62,10 +62,10 @@ export function UpgradeRequiredParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<UpgradeRequiredResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<UpgradeRequiredResponse<Body, Headers, Message>, 'status'>> = {},
 ) : UpgradeRequiredResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 426}) as UpgradeRequiredResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 426}) as UpgradeRequiredResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

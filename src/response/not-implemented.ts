@@ -54,7 +54,7 @@ export function NotImplementedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<NotImplementedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<NotImplementedResponse<Body, Headers, Message>, 'status'>>,
 ) : NotImplementedResponse<Body, Headers, Message>;
 
 export function NotImplementedParameter<
@@ -62,10 +62,10 @@ export function NotImplementedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<NotImplementedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<NotImplementedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : NotImplementedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 501}) as NotImplementedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 501}) as NotImplementedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

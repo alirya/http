@@ -54,7 +54,7 @@ export function ConflictParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<ConflictResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<ConflictResponse<Body, Headers, Message>, 'status'>>,
 ) : ConflictResponse<Body, Headers, Message>;
 
 export function ConflictParameter<
@@ -62,10 +62,10 @@ export function ConflictParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<ConflictResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<ConflictResponse<Body, Headers, Message>, 'status'>> = {},
 ) : ConflictResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 409}) as ConflictResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 409}) as ConflictResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

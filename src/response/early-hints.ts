@@ -54,7 +54,7 @@ export function EarlyHintsParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<EarlyHintsResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<EarlyHintsResponse<Body, Headers, Message>, 'status'>>,
 ) : EarlyHintsResponse<Body, Headers, Message>;
 
 export function EarlyHintsParameter<
@@ -62,10 +62,10 @@ export function EarlyHintsParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<EarlyHintsResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<EarlyHintsResponse<Body, Headers, Message>, 'status'>> = {},
 ) : EarlyHintsResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 103}) as EarlyHintsResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 103}) as EarlyHintsResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

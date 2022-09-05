@@ -54,7 +54,7 @@ export function NotModifiedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<NotModifiedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<NotModifiedResponse<Body, Headers, Message>, 'status'>>,
 ) : NotModifiedResponse<Body, Headers, Message>;
 
 export function NotModifiedParameter<
@@ -62,10 +62,10 @@ export function NotModifiedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<NotModifiedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<NotModifiedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : NotModifiedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 304}) as NotModifiedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 304}) as NotModifiedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

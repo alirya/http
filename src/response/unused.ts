@@ -54,7 +54,7 @@ export function UnusedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<UnusedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<UnusedResponse<Body, Headers, Message>, 'status'>>,
 ) : UnusedResponse<Body, Headers, Message>;
 
 export function UnusedParameter<
@@ -62,10 +62,10 @@ export function UnusedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<UnusedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<UnusedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : UnusedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 306}) as UnusedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 306}) as UnusedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

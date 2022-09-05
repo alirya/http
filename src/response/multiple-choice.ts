@@ -54,7 +54,7 @@ export function MultipleChoiceParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<MultipleChoiceResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<MultipleChoiceResponse<Body, Headers, Message>, 'status'>>,
 ) : MultipleChoiceResponse<Body, Headers, Message>;
 
 export function MultipleChoiceParameter<
@@ -62,10 +62,10 @@ export function MultipleChoiceParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<MultipleChoiceResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<MultipleChoiceResponse<Body, Headers, Message>, 'status'>> = {},
 ) : MultipleChoiceResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 300}) as MultipleChoiceResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 300}) as MultipleChoiceResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

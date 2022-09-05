@@ -54,7 +54,7 @@ export function SeeOtherParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<SeeOtherResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<SeeOtherResponse<Body, Headers, Message>, 'status'>>,
 ) : SeeOtherResponse<Body, Headers, Message>;
 
 export function SeeOtherParameter<
@@ -62,10 +62,10 @@ export function SeeOtherParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<SeeOtherResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<SeeOtherResponse<Body, Headers, Message>, 'status'>> = {},
 ) : SeeOtherResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 303}) as SeeOtherResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 303}) as SeeOtherResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

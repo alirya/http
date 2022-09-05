@@ -54,7 +54,7 @@ export function PaymentRequiredParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<PaymentRequiredResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<PaymentRequiredResponse<Body, Headers, Message>, 'status'>>,
 ) : PaymentRequiredResponse<Body, Headers, Message>;
 
 export function PaymentRequiredParameter<
@@ -62,10 +62,10 @@ export function PaymentRequiredParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<PaymentRequiredResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<PaymentRequiredResponse<Body, Headers, Message>, 'status'>> = {},
 ) : PaymentRequiredResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 402}) as PaymentRequiredResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 402}) as PaymentRequiredResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

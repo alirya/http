@@ -54,7 +54,7 @@ export function ExpectationFailedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<ExpectationFailedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<ExpectationFailedResponse<Body, Headers, Message>, 'status'>>,
 ) : ExpectationFailedResponse<Body, Headers, Message>;
 
 export function ExpectationFailedParameter<
@@ -62,10 +62,10 @@ export function ExpectationFailedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<ExpectationFailedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<ExpectationFailedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : ExpectationFailedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 417}) as ExpectationFailedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 417}) as ExpectationFailedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

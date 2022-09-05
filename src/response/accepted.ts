@@ -54,7 +54,7 @@ export function AcceptedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<AcceptedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<AcceptedResponse<Body, Headers, Message>, 'status'>>,
 ) : AcceptedResponse<Body, Headers, Message>;
 
 export function AcceptedParameter<
@@ -62,10 +62,10 @@ export function AcceptedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<AcceptedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<AcceptedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : AcceptedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 202}) as AcceptedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 202}) as AcceptedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
