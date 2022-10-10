@@ -39,7 +39,7 @@ export function CreateParameters<
     Body
 >(
     body : Body,
-) : Response<Body, {}, 200>;
+) : Response<Body, {}, number>;
 
 export function CreateParameters<
     Body,
@@ -47,7 +47,7 @@ export function CreateParameters<
 >(
     body : Body,
     headers : Headers,
-) : Response<Body, Headers, 200>;
+) : Response<Body, Headers, number>;
 
 
 // export function CreateParameters<
