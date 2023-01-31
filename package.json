@@ -23,6 +23,7 @@
     "@alirya/code": "^0.4.1",
     "@alirya/enum": "^0.13.1",
     "@alirya/map": "^0.13.1",
+    "@alirya/function": "^0.17.1",
     "@alirya/message": "^0.13.1",
     "@alirya/number": "^0.18.2",
     "@alirya/object": "^0.38.1",
