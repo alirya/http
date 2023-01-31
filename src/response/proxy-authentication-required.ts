@@ -54,7 +54,7 @@ export function ProxyAuthenticationRequiredParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<ProxyAuthenticationRequiredResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<ProxyAuthenticationRequiredResponse<Body, Headers, Message>, 'status'>>,
 ) : ProxyAuthenticationRequiredResponse<Body, Headers, Message>;
 
 export function ProxyAuthenticationRequiredParameter<
@@ -62,10 +62,10 @@ export function ProxyAuthenticationRequiredParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<ProxyAuthenticationRequiredResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<ProxyAuthenticationRequiredResponse<Body, Headers, Message>, 'status'>> = {},
 ) : ProxyAuthenticationRequiredResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 407}) as ProxyAuthenticationRequiredResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 407}) as ProxyAuthenticationRequiredResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

@@ -54,7 +54,7 @@ export function ServiceUnavailableParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<ServiceUnavailableResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<ServiceUnavailableResponse<Body, Headers, Message>, 'status'>>,
 ) : ServiceUnavailableResponse<Body, Headers, Message>;
 
 export function ServiceUnavailableParameter<
@@ -62,10 +62,10 @@ export function ServiceUnavailableParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<ServiceUnavailableResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<ServiceUnavailableResponse<Body, Headers, Message>, 'status'>> = {},
 ) : ServiceUnavailableResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 503}) as ServiceUnavailableResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 503}) as ServiceUnavailableResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

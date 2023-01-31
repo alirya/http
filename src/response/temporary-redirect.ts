@@ -54,7 +54,7 @@ export function TemporaryRedirectParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<TemporaryRedirectResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<TemporaryRedirectResponse<Body, Headers, Message>, 'status'>>,
 ) : TemporaryRedirectResponse<Body, Headers, Message>;
 
 export function TemporaryRedirectParameter<
@@ -62,10 +62,10 @@ export function TemporaryRedirectParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<TemporaryRedirectResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<TemporaryRedirectResponse<Body, Headers, Message>, 'status'>> = {},
 ) : TemporaryRedirectResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 307}) as TemporaryRedirectResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 307}) as TemporaryRedirectResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

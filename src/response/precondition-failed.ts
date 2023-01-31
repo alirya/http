@@ -54,7 +54,7 @@ export function PreconditionFailedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<PreconditionFailedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<PreconditionFailedResponse<Body, Headers, Message>, 'status'>>,
 ) : PreconditionFailedResponse<Body, Headers, Message>;
 
 export function PreconditionFailedParameter<
@@ -62,10 +62,10 @@ export function PreconditionFailedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<PreconditionFailedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<PreconditionFailedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : PreconditionFailedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 412}) as PreconditionFailedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 412}) as PreconditionFailedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

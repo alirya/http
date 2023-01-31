@@ -1,7 +1,7 @@
 import HeaderInterface from '../headers/headers';
 import BodyInterface from '../body/body';
 import MessageInterface from '@alirya/message/message';
-import CodeInterface from '@alirya/code/code';
+import CodeInterface from './status/status';
 
 export default interface Response<
     Body = unknown,

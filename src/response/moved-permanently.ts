@@ -54,7 +54,7 @@ export function MovedPermanentlyParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<MovedPermanentlyResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<MovedPermanentlyResponse<Body, Headers, Message>, 'status'>>,
 ) : MovedPermanentlyResponse<Body, Headers, Message>;
 
 export function MovedPermanentlyParameter<
@@ -62,10 +62,10 @@ export function MovedPermanentlyParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<MovedPermanentlyResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<MovedPermanentlyResponse<Body, Headers, Message>, 'status'>> = {},
 ) : MovedPermanentlyResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 301}) as MovedPermanentlyResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 301}) as MovedPermanentlyResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

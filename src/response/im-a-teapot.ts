@@ -54,7 +54,7 @@ export function ImATeapotParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<ImATeapotResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<ImATeapotResponse<Body, Headers, Message>, 'status'>>,
 ) : ImATeapotResponse<Body, Headers, Message>;
 
 export function ImATeapotParameter<
@@ -62,10 +62,10 @@ export function ImATeapotParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<ImATeapotResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<ImATeapotResponse<Body, Headers, Message>, 'status'>> = {},
 ) : ImATeapotResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 418}) as ImATeapotResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 418}) as ImATeapotResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

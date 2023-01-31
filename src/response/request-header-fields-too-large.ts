@@ -54,7 +54,7 @@ export function RequestHeaderFieldsTooLargeParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<RequestHeaderFieldsTooLargeResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<RequestHeaderFieldsTooLargeResponse<Body, Headers, Message>, 'status'>>,
 ) : RequestHeaderFieldsTooLargeResponse<Body, Headers, Message>;
 
 export function RequestHeaderFieldsTooLargeParameter<
@@ -62,10 +62,10 @@ export function RequestHeaderFieldsTooLargeParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<RequestHeaderFieldsTooLargeResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<RequestHeaderFieldsTooLargeResponse<Body, Headers, Message>, 'status'>> = {},
 ) : RequestHeaderFieldsTooLargeResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 431}) as RequestHeaderFieldsTooLargeResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 431}) as RequestHeaderFieldsTooLargeResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

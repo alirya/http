@@ -54,7 +54,7 @@ export function UseProxyParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<UseProxyResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<UseProxyResponse<Body, Headers, Message>, 'status'>>,
 ) : UseProxyResponse<Body, Headers, Message>;
 
 export function UseProxyParameter<
@@ -62,10 +62,10 @@ export function UseProxyParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<UseProxyResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<UseProxyResponse<Body, Headers, Message>, 'status'>> = {},
 ) : UseProxyResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 305}) as UseProxyResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 305}) as UseProxyResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

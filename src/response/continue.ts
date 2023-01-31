@@ -54,7 +54,7 @@ export function ContinueParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<ContinueResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<ContinueResponse<Body, Headers, Message>, 'status'>>,
 ) : ContinueResponse<Body, Headers, Message>;
 
 export function ContinueParameter<
@@ -62,10 +62,10 @@ export function ContinueParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<ContinueResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<ContinueResponse<Body, Headers, Message>, 'status'>> = {},
 ) : ContinueResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 100}) as ContinueResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 100}) as ContinueResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

@@ -54,7 +54,7 @@ export function InternalServerErrorParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<InternalServerErrorResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<InternalServerErrorResponse<Body, Headers, Message>, 'status'>>,
 ) : InternalServerErrorResponse<Body, Headers, Message>;
 
 export function InternalServerErrorParameter<
@@ -62,10 +62,10 @@ export function InternalServerErrorParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<InternalServerErrorResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<InternalServerErrorResponse<Body, Headers, Message>, 'status'>> = {},
 ) : InternalServerErrorResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 500}) as InternalServerErrorResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 500}) as InternalServerErrorResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

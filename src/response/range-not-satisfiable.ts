@@ -54,7 +54,7 @@ export function RangeNotSatisfiableParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<RangeNotSatisfiableResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<RangeNotSatisfiableResponse<Body, Headers, Message>, 'status'>>,
 ) : RangeNotSatisfiableResponse<Body, Headers, Message>;
 
 export function RangeNotSatisfiableParameter<
@@ -62,10 +62,10 @@ export function RangeNotSatisfiableParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<RangeNotSatisfiableResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<RangeNotSatisfiableResponse<Body, Headers, Message>, 'status'>> = {},
 ) : RangeNotSatisfiableResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 416}) as RangeNotSatisfiableResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 416}) as RangeNotSatisfiableResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

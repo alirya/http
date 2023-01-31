@@ -54,7 +54,7 @@ export function PreconditionRequiredParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<PreconditionRequiredResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<PreconditionRequiredResponse<Body, Headers, Message>, 'status'>>,
 ) : PreconditionRequiredResponse<Body, Headers, Message>;
 
 export function PreconditionRequiredParameter<
@@ -62,10 +62,10 @@ export function PreconditionRequiredParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<PreconditionRequiredResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<PreconditionRequiredResponse<Body, Headers, Message>, 'status'>> = {},
 ) : PreconditionRequiredResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 428}) as PreconditionRequiredResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 428}) as PreconditionRequiredResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

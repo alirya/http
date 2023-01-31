@@ -54,7 +54,7 @@ export function FoundParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<FoundResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<FoundResponse<Body, Headers, Message>, 'status'>>,
 ) : FoundResponse<Body, Headers, Message>;
 
 export function FoundParameter<
@@ -62,10 +62,10 @@ export function FoundParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<FoundResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<FoundResponse<Body, Headers, Message>, 'status'>> = {},
 ) : FoundResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 302}) as FoundResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 302}) as FoundResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

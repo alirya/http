@@ -54,7 +54,7 @@ export function UnavailableForLegalReasonsParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<UnavailableForLegalReasonsResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<UnavailableForLegalReasonsResponse<Body, Headers, Message>, 'status'>>,
 ) : UnavailableForLegalReasonsResponse<Body, Headers, Message>;
 
 export function UnavailableForLegalReasonsParameter<
@@ -62,10 +62,10 @@ export function UnavailableForLegalReasonsParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<UnavailableForLegalReasonsResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<UnavailableForLegalReasonsResponse<Body, Headers, Message>, 'status'>> = {},
 ) : UnavailableForLegalReasonsResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 451}) as UnavailableForLegalReasonsResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 451}) as UnavailableForLegalReasonsResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

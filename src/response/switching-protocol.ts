@@ -54,7 +54,7 @@ export function SwitchingProtocolParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<SwitchingProtocolResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<SwitchingProtocolResponse<Body, Headers, Message>, 'status'>>,
 ) : SwitchingProtocolResponse<Body, Headers, Message>;
 
 export function SwitchingProtocolParameter<
@@ -62,10 +62,10 @@ export function SwitchingProtocolParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<SwitchingProtocolResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<SwitchingProtocolResponse<Body, Headers, Message>, 'status'>> = {},
 ) : SwitchingProtocolResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 101}) as SwitchingProtocolResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 101}) as SwitchingProtocolResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

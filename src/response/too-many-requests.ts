@@ -54,7 +54,7 @@ export function TooManyRequestsParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<TooManyRequestsResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<TooManyRequestsResponse<Body, Headers, Message>, 'status'>>,
 ) : TooManyRequestsResponse<Body, Headers, Message>;
 
 export function TooManyRequestsParameter<
@@ -62,10 +62,10 @@ export function TooManyRequestsParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<TooManyRequestsResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<TooManyRequestsResponse<Body, Headers, Message>, 'status'>> = {},
 ) : TooManyRequestsResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 429}) as TooManyRequestsResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 429}) as TooManyRequestsResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

@@ -54,7 +54,7 @@ export function LengthRequiredParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<LengthRequiredResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<LengthRequiredResponse<Body, Headers, Message>, 'status'>>,
 ) : LengthRequiredResponse<Body, Headers, Message>;
 
 export function LengthRequiredParameter<
@@ -62,10 +62,10 @@ export function LengthRequiredParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<LengthRequiredResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<LengthRequiredResponse<Body, Headers, Message>, 'status'>> = {},
 ) : LengthRequiredResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 411}) as LengthRequiredResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 411}) as LengthRequiredResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

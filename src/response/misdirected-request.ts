@@ -54,7 +54,7 @@ export function MisdirectedRequestParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<MisdirectedRequestResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<MisdirectedRequestResponse<Body, Headers, Message>, 'status'>>,
 ) : MisdirectedRequestResponse<Body, Headers, Message>;
 
 export function MisdirectedRequestParameter<
@@ -62,10 +62,10 @@ export function MisdirectedRequestParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<MisdirectedRequestResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<MisdirectedRequestResponse<Body, Headers, Message>, 'status'>> = {},
 ) : MisdirectedRequestResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 421}) as MisdirectedRequestResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 421}) as MisdirectedRequestResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

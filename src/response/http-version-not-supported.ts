@@ -54,7 +54,7 @@ export function HttpVersionNotSupportedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<HttpVersionNotSupportedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<HttpVersionNotSupportedResponse<Body, Headers, Message>, 'status'>>,
 ) : HttpVersionNotSupportedResponse<Body, Headers, Message>;
 
 export function HttpVersionNotSupportedParameter<
@@ -62,10 +62,10 @@ export function HttpVersionNotSupportedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<HttpVersionNotSupportedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<HttpVersionNotSupportedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : HttpVersionNotSupportedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 505}) as HttpVersionNotSupportedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 505}) as HttpVersionNotSupportedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

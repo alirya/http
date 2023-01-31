@@ -54,7 +54,7 @@ export function UnprocessableEntityParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<UnprocessableEntityResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<UnprocessableEntityResponse<Body, Headers, Message>, 'status'>>,
 ) : UnprocessableEntityResponse<Body, Headers, Message>;
 
 export function UnprocessableEntityParameter<
@@ -62,10 +62,10 @@ export function UnprocessableEntityParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<UnprocessableEntityResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<UnprocessableEntityResponse<Body, Headers, Message>, 'status'>> = {},
 ) : UnprocessableEntityResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 422}) as UnprocessableEntityResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 422}) as UnprocessableEntityResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

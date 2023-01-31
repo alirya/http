@@ -54,7 +54,7 @@ export function PermanentRedirectParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<PermanentRedirectResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<PermanentRedirectResponse<Body, Headers, Message>, 'status'>>,
 ) : PermanentRedirectResponse<Body, Headers, Message>;
 
 export function PermanentRedirectParameter<
@@ -62,10 +62,10 @@ export function PermanentRedirectParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<PermanentRedirectResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<PermanentRedirectResponse<Body, Headers, Message>, 'status'>> = {},
 ) : PermanentRedirectResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 308}) as PermanentRedirectResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 308}) as PermanentRedirectResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

@@ -54,7 +54,7 @@ export function NotAcceptableParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<NotAcceptableResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<NotAcceptableResponse<Body, Headers, Message>, 'status'>>,
 ) : NotAcceptableResponse<Body, Headers, Message>;
 
 export function NotAcceptableParameter<
@@ -62,10 +62,10 @@ export function NotAcceptableParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<NotAcceptableResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<NotAcceptableResponse<Body, Headers, Message>, 'status'>> = {},
 ) : NotAcceptableResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 406}) as NotAcceptableResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 406}) as NotAcceptableResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

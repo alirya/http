@@ -54,7 +54,7 @@ export function RequestTimeoutParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<RequestTimeoutResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<RequestTimeoutResponse<Body, Headers, Message>, 'status'>>,
 ) : RequestTimeoutResponse<Body, Headers, Message>;
 
 export function RequestTimeoutParameter<
@@ -62,10 +62,10 @@ export function RequestTimeoutParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<RequestTimeoutResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<RequestTimeoutResponse<Body, Headers, Message>, 'status'>> = {},
 ) : RequestTimeoutResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 408}) as RequestTimeoutResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 408}) as RequestTimeoutResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

@@ -54,7 +54,7 @@ export function InsufficientStorageParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<InsufficientStorageResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<InsufficientStorageResponse<Body, Headers, Message>, 'status'>>,
 ) : InsufficientStorageResponse<Body, Headers, Message>;
 
 export function InsufficientStorageParameter<
@@ -62,10 +62,10 @@ export function InsufficientStorageParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<InsufficientStorageResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<InsufficientStorageResponse<Body, Headers, Message>, 'status'>> = {},
 ) : InsufficientStorageResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 507}) as InsufficientStorageResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 507}) as InsufficientStorageResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

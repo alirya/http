@@ -54,7 +54,7 @@ export function CreatedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<CreatedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<CreatedResponse<Body, Headers, Message>, 'status'>>,
 ) : CreatedResponse<Body, Headers, Message>;
 
 export function CreatedParameter<
@@ -62,10 +62,10 @@ export function CreatedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<CreatedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<CreatedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : CreatedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 201}) as CreatedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 201}) as CreatedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

@@ -54,7 +54,7 @@ export function VariantAlsoNegotiatesParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<VariantAlsoNegotiatesResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<VariantAlsoNegotiatesResponse<Body, Headers, Message>, 'status'>>,
 ) : VariantAlsoNegotiatesResponse<Body, Headers, Message>;
 
 export function VariantAlsoNegotiatesParameter<
@@ -62,10 +62,10 @@ export function VariantAlsoNegotiatesParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<VariantAlsoNegotiatesResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<VariantAlsoNegotiatesResponse<Body, Headers, Message>, 'status'>> = {},
 ) : VariantAlsoNegotiatesResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 506}) as VariantAlsoNegotiatesResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 506}) as VariantAlsoNegotiatesResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

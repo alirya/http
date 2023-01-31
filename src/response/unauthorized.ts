@@ -54,7 +54,7 @@ export function UnauthorizedParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<UnauthorizedResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<UnauthorizedResponse<Body, Headers, Message>, 'status'>>,
 ) : UnauthorizedResponse<Body, Headers, Message>;
 
 export function UnauthorizedParameter<
@@ -62,10 +62,10 @@ export function UnauthorizedParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<UnauthorizedResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<UnauthorizedResponse<Body, Headers, Message>, 'status'>> = {},
 ) : UnauthorizedResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 401}) as UnauthorizedResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 401}) as UnauthorizedResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

@@ -1,12 +1,12 @@
 import Response from './response';
-import StrictNumber from './code/number/strict';
+import StrictNumber from './status/number/strict';
 import MessageCode from './message/string/strict';
 import InferHeader from '../headers/record/infer';
 import InferBody from '../body/value/infer';
 import {Object} from 'ts-toolbelt';
 import StrictOmit from '@alirya/object/strict-omit';
 import InferMessage from '@alirya/message/message/infer';
-import InferCode from '@alirya/code/code/infer';
+import InferCode from './status/number/infer';
 import {Optional} from 'utility-types';
 
 export class CreateClass<
@@ -19,7 +19,7 @@ export class CreateClass<
     constructor(
         public body : Body,
         public headers : Headers,
-        public code : Code,
+        public status : Code,
         public message : Message,
     ) {}
 }
@@ -31,7 +31,7 @@ export class CreateClass<
 //     Headers extends Record<string, string>,
 //     Body
 // >(
-//     code : Code,
+//     status : Code,
 // ) : Response<Code, string, {}, undefined>;
 
 
@@ -39,7 +39,7 @@ export function CreateParameters<
     Body
 >(
     body : Body,
-) : Response<Body, {}, 200>;
+) : Response<Body, {}, number>;
 
 export function CreateParameters<
     Body,
@@ -47,7 +47,7 @@ export function CreateParameters<
 >(
     body : Body,
     headers : Headers,
-) : Response<Body, Headers, 200>;
+) : Response<Body, Headers, number>;
 
 
 // export function CreateParameters<
@@ -56,7 +56,7 @@ export function CreateParameters<
 //     Headers extends Record<string, string>,
 //     Body
 // >(
-//     code : Code,
+//     status : Code,
 //     message : Message,
 //     headers : Headers,
 // ) : Response<Code, Message, Headers, undefined>;
@@ -68,7 +68,7 @@ export function CreateParameters<
 >(
     body : Body,
     headers : Headers,
-    code : Code,
+    status : Code,
 ) : Response<Body, Headers, Code>;
 
 
@@ -80,7 +80,7 @@ export function CreateParameters<
 >(
     body : Body,
     headers : Headers,
-    code : Code,
+    status : Code,
     message : Message,
 ) : Response<Body, Headers, Code, Message>;
 
@@ -89,7 +89,7 @@ export function CreateParameters<
 //     Headers extends Record<string, string>,
 //     Body
 // >(
-//     code : Code,
+//     status : Code,
 //     message : null,
 //     headers : Headers,
 //     body : Body
@@ -107,12 +107,12 @@ export function CreateParameters<
 >(
     body ?: Body,
     headers : Headers|Record<string, string> = {},
-    code : Code|number = 200,
+    status : Code|number = 200,
     message ?: Message,
 ) : Response<Body|undefined, Headers|Record<string, string>, Code, Message|string> {
 
     return CreateParameter({
-        code,
+        status,
         message,
         headers,
         body
@@ -124,12 +124,12 @@ export function CreateParameters<
 
 
 /**
- * strict code auto generated message
+ * strict status auto generated message
  *
  * @param response
  */
 export function CreateParameter<
-    ResponseType extends Pick<Response<StrictNumber>, 'code'> & Optional<StrictOmit<Response, 'code'>, 'headers'|'body'|'message'>,
+    ResponseType extends Pick<Response<StrictNumber>, 'status'> & Optional<StrictOmit<Response, 'status'>, 'headers'|'body'|'message'>,
 >(
     response : ResponseType,
 ) : Response<
@@ -140,12 +140,12 @@ export function CreateParameter<
 >;
 
 /**
- * custom code with custom message
+ * custom status with custom message
  *
  * @param response
  */
 export function CreateParameter<
-    ResponseType extends Pick<Response, 'code'> & Optional<StrictOmit<Response, 'code'>, 'headers'|'body'>,
+    ResponseType extends Pick<Response, 'status'> & Optional<StrictOmit<Response, 'status'>, 'headers'|'body'>,
 >(
     response : Response
 ) :  Response<
@@ -164,7 +164,7 @@ export function CreateParameter<
 
     if(!response.message) {
 
-        response.message = MessageCode(response.code as StrictNumber);
+        response.message = MessageCode(response.status as StrictNumber);
     }
 
     if(!response.headers) {

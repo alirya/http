@@ -54,7 +54,7 @@ export function UriTooLongParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<UriTooLongResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<UriTooLongResponse<Body, Headers, Message>, 'status'>>,
 ) : UriTooLongResponse<Body, Headers, Message>;
 
 export function UriTooLongParameter<
@@ -62,10 +62,10 @@ export function UriTooLongParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<UriTooLongResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<UriTooLongResponse<Body, Headers, Message>, 'status'>> = {},
 ) : UriTooLongResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 414}) as UriTooLongResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 414}) as UriTooLongResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 

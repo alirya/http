@@ -54,7 +54,7 @@ export function UnsupportedMediaTypeParameter<
     Headers extends {} = {},
     Message extends string = string,
     >(
-    response : Partial<Omit<UnsupportedMediaTypeResponse<Body, Headers, Message>, 'code'>>,
+    response : Partial<Omit<UnsupportedMediaTypeResponse<Body, Headers, Message>, 'status'>>,
 ) : UnsupportedMediaTypeResponse<Body, Headers, Message>;
 
 export function UnsupportedMediaTypeParameter<
@@ -62,10 +62,10 @@ export function UnsupportedMediaTypeParameter<
     Body,
     Headers extends {}
     >(
-    response : Partial<Omit<UnsupportedMediaTypeResponse<Body, Headers, Message>, 'code'>> = {},
+    response : Partial<Omit<UnsupportedMediaTypeResponse<Body, Headers, Message>, 'status'>> = {},
 ) : UnsupportedMediaTypeResponse<Body|undefined, Headers|{}, Message|string> {
 
-    return CreateParameter({...response, code: 415}) as UnsupportedMediaTypeResponse<Body|undefined, Headers|{}, Message|string>;
+    return CreateParameter({...response, status: 415}) as UnsupportedMediaTypeResponse<Body|undefined, Headers|{}, Message|string>;
 }
 
 
