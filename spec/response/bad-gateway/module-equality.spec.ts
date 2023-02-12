@@ -1,23 +1,23 @@
-import {BadGatewayParameter, BadGatewayParameters} from '../../../dist/response/bad-gateway';
+import {BadGatewayParameter, BadGatewayParameters} from '../../../dist/response/bad-gateway.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = BadGatewayParameter({
+        const parameter = BadGatewayParameter({
             body,
             message,
             headers
         });
 
-        let parameters = BadGatewayParameters(message, headers, body);
+        const parameters = BadGatewayParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

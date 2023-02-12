@@ -1,23 +1,23 @@
-import {OkParameter, OkParameters} from '../../../dist/response/ok';
+import {OkParameter, OkParameters} from '../../../dist/response/ok.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = OkParameter({
+        const parameter = OkParameter({
             body,
             message,
             headers
         });
 
-        let parameters = OkParameters(message, headers, body);
+        const parameters = OkParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

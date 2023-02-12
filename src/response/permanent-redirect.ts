@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function PermanentRedirectParameters() : PermanentRedirectResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function PermanentRedirectParameters<
     >;
 }
 
-export interface PermanentRedirectResponse<
+export type PermanentRedirectResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 308, Message> {
-
-}
+> = Response<Body, Headers, 308, Message>
 
 
 export function PermanentRedirectParameter() : PermanentRedirectResponse<undefined>;

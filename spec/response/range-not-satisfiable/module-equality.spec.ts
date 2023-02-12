@@ -1,23 +1,23 @@
-import {RangeNotSatisfiableParameter, RangeNotSatisfiableParameters} from '../../../dist/response/range-not-satisfiable';
+import {RangeNotSatisfiableParameter, RangeNotSatisfiableParameters} from '../../../dist/response/range-not-satisfiable.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = RangeNotSatisfiableParameter({
+        const parameter = RangeNotSatisfiableParameter({
             body,
             message,
             headers
         });
 
-        let parameters = RangeNotSatisfiableParameters(message, headers, body);
+        const parameters = RangeNotSatisfiableParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

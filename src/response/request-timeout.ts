@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function RequestTimeoutParameters() : RequestTimeoutResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function RequestTimeoutParameters<
     >;
 }
 
-export interface RequestTimeoutResponse<
+export type RequestTimeoutResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 408, Message> {
-
-}
+> = Response<Body, Headers, 408, Message>
 
 
 export function RequestTimeoutParameter() : RequestTimeoutResponse<undefined>;

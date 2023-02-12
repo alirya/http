@@ -1,23 +1,23 @@
-import {SwitchingProtocolParameter, SwitchingProtocolParameters} from '../../../dist/response/switching-protocol';
+import {SwitchingProtocolParameter, SwitchingProtocolParameters} from '../../../dist/response/switching-protocol.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = SwitchingProtocolParameter({
+        const parameter = SwitchingProtocolParameter({
             body,
             message,
             headers
         });
 
-        let parameters = SwitchingProtocolParameters(message, headers, body);
+        const parameters = SwitchingProtocolParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

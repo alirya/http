@@ -1,4 +1,4 @@
-import {InsufficientStorageParameters, InsufficientStorageParameter} from '../../../dist/response/insufficient-storage';
+import {InsufficientStorageParameters, InsufficientStorageParameter} from '../../../dist/response/insufficient-storage.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
@@ -6,7 +6,7 @@ describe('empty', function() {
 
     it('parameter', function() {
 
-        let response = InsufficientStorageParameter();
+        const response = InsufficientStorageParameter();
 
         let string : string;
         let number : number;
@@ -21,14 +21,14 @@ describe('empty', function() {
         undef = response.body;
         unknown = response.body;
 
-        number = response.code;
+        number = response.status;
         string = response.message;
 
     });
 
     it('parameters', function() {
 
-        let response = InsufficientStorageParameters();
+        const response = InsufficientStorageParameters();
 
 
         let string : string;
@@ -44,7 +44,7 @@ describe('empty', function() {
         undef = response.body;
         unknown = response.body;
 
-        number = response.code;
+        number = response.status;
         string = response.message;
 
     });
@@ -56,7 +56,7 @@ describe('header', function() {
 
     it('parameter', function() {
 
-        let response = InsufficientStorageParameter({
+        const response = InsufficientStorageParameter({
             headers:{etag:'etag data'}
         });
 
@@ -73,14 +73,14 @@ describe('header', function() {
         undef = response.body;
         unknown = response.body;
 
-        number = response.code;
+        number = response.status;
         string = response.message;
 
     });
 
     it('parameters', function() {
 
-        let response = InsufficientStorageParameters(undefined, {etag:'etag data'});
+        const response = InsufficientStorageParameters(undefined, {etag:'etag data'});
 
 
         let string : string;
@@ -95,7 +95,7 @@ describe('header', function() {
         undef = response.body;
         unknown = response.body;
 
-        number = response.code;
+        number = response.status;
         string = response.message;
 
     });
@@ -106,7 +106,7 @@ describe('message', function() {
 
     it('parameter', function() {
 
-        let response = InsufficientStorageParameter({
+        const response = InsufficientStorageParameter({
             message: 'etag data'
         });
 
@@ -124,14 +124,14 @@ describe('message', function() {
         undef = response.body;
         unknown = response.body;
 
-        number = response.code;
+        number = response.status;
         string = response.message;
 
     });
 
     it('parameters', function() {
 
-        let response = InsufficientStorageParameters(undefined,{},'etag data');
+        const response = InsufficientStorageParameters(undefined,{},'etag data');
 
         let string : string;
         let number : number;
@@ -146,7 +146,7 @@ describe('message', function() {
         undef = response.body;
         unknown = response.body;
 
-        number = response.code;
+        number = response.status;
         string = response.message;
 
     });
@@ -157,7 +157,7 @@ describe('body', function() {
 
     it('parameter', function() {
 
-        let response = InsufficientStorageParameter({
+        const response = InsufficientStorageParameter({
             body:'data',
         });
 
@@ -181,13 +181,13 @@ describe('body', function() {
         string = response.body;
         unknown = response.body;
 
-        number = response.code;
+        number = response.status;
         string = response.message;
     });
 
     it('parameters', function() {
 
-        let response = InsufficientStorageParameters('data', undefined);
+        const response = InsufficientStorageParameters('data', undefined);
 
         let record : Record<string, string>;
         let string : string;
@@ -209,7 +209,7 @@ describe('body', function() {
         string = response.body;
         unknown = response.body;
 
-        number = response.code;
+        number = response.status;
         string = response.message;
 
     });

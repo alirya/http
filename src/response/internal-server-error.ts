@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function InternalServerErrorParameters() : InternalServerErrorResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function InternalServerErrorParameters<
     >;
 }
 
-export interface InternalServerErrorResponse<
+export type InternalServerErrorResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 500, Message> {
-
-}
+> = Response<Body, Headers, 500, Message>
 
 
 export function InternalServerErrorParameter() : InternalServerErrorResponse<undefined>;

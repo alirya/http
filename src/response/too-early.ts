@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function TooEarlyParameters() : TooEarlyResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function TooEarlyParameters<
     >;
 }
 
-export interface TooEarlyResponse<
+export type TooEarlyResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 425, Message> {
-
-}
+> = Response<Body, Headers, 425, Message>
 
 
 export function TooEarlyParameter() : TooEarlyResponse<undefined>;

@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function PartialContentParameters() : PartialContentResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function PartialContentParameters<
     >;
 }
 
-export interface PartialContentResponse<
+export type PartialContentResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 206, Message> {
-
-}
+> = Response<Body, Headers, 206, Message>
 
 
 export function PartialContentParameter() : PartialContentResponse<undefined>;

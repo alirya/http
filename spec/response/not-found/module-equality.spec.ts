@@ -1,23 +1,23 @@
-import {NotFoundParameter, NotFoundParameters} from '../../../dist/response/not-found';
+import {NotFoundParameter, NotFoundParameters} from '../../../dist/response/not-found.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = NotFoundParameter({
+        const parameter = NotFoundParameter({
             body,
             message,
             headers
         });
 
-        let parameters = NotFoundParameters(message, headers, body);
+        const parameters = NotFoundParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

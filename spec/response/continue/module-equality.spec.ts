@@ -1,23 +1,23 @@
-import {ContinueParameter, ContinueParameters} from '../../../dist/response/continue';
+import {ContinueParameter, ContinueParameters} from '../../../dist/response/continue.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = ContinueParameter({
+        const parameter = ContinueParameter({
             body,
             message,
             headers
         });
 
-        let parameters = ContinueParameters(message, headers, body);
+        const parameters = ContinueParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

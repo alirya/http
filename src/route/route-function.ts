@@ -1,4 +1,4 @@
-import Route from './route';
+import Route from './route.js';
 
 export default function  RequestClassParameters<
     Method extends string = string,

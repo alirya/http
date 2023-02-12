@@ -1,4 +1,4 @@
-import ClientError from '../../../../../dist/response/code/class/boolean/client-error';
+import ClientError from '../../../../../dist/response/status/class/boolean/client-error.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

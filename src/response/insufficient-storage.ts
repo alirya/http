@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function InsufficientStorageParameters() : InsufficientStorageResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function InsufficientStorageParameters<
     >;
 }
 
-export interface InsufficientStorageResponse<
+export type InsufficientStorageResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 507, Message> {
-
-}
+> = Response<Body, Headers, 507, Message>
 
 
 export function InsufficientStorageParameter() : InsufficientStorageResponse<undefined>;

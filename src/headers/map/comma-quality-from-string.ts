@@ -7,8 +7,8 @@ export default function CommaQualityFromString(value: string) : Map<string, numb
 
         if(parts[1]) {
 
-            let temp : string = parts[1];
-            let value : string = temp.split('=', 2).pop() as string;
+            const temp : string = parts[1];
+            const value : string = temp.split('=', 2).pop() as string;
 
             quality = parseFloat(value.trim());
 

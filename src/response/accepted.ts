@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function AcceptedParameters() : AcceptedResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function AcceptedParameters<
     >;
 }
 
-export interface AcceptedResponse<
+export type AcceptedResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 202, Message> {
-
-}
+> = Response<Body, Headers, 202, Message>
 
 
 export function AcceptedParameter() : AcceptedResponse<undefined>;

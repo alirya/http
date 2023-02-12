@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function ResetContentParameters() : ResetContentResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function ResetContentParameters<
     >;
 }
 
-export interface ResetContentResponse<
+export type ResetContentResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 205, Message> {
-
-}
+> = Response<Body, Headers, 205, Message>
 
 
 export function ResetContentParameter() : ResetContentResponse<undefined>;

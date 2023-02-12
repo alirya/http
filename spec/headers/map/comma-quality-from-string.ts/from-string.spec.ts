@@ -1,4 +1,4 @@
-import CommaQualityValueFromString from '../../../../dist/headers/map/comma-quality-from-string';
+import CommaQualityValueFromString from '../../../../dist/headers/map/comma-quality-from-string.js';
 
 it('basic', () => {
 

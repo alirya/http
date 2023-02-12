@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function FailedDependencyParameters() : FailedDependencyResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function FailedDependencyParameters<
     >;
 }
 
-export interface FailedDependencyResponse<
+export type FailedDependencyResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 424, Message> {
-
-}
+> = Response<Body, Headers, 424, Message>
 
 
 export function FailedDependencyParameter() : FailedDependencyResponse<undefined>;

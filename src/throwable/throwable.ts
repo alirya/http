@@ -1,5 +1,4 @@
-import Response from '../response/response';
-import BodyInterface from '../body/body';
+import BodyInterface from '../body/body.js';
 import {HttpError} from 'http-errors';
 
 

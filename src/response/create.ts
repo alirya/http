@@ -1,12 +1,12 @@
-import Response from './response';
-import StrictNumber from './status/number/strict';
-import MessageCode from './message/string/strict';
-import InferHeader from '../headers/record/infer';
-import InferBody from '../body/value/infer';
+import Response from './response.js';
+import StrictNumber from './status/number/strict.js';
+import MessageCode from './message/string/strict.js';
+import InferHeader from '../headers/record/infer.js';
+import InferBody from '../body/value/infer.js';
 import {Object} from 'ts-toolbelt';
-import StrictOmit from '@alirya/object/strict-omit';
-import InferMessage from '@alirya/message/message/infer';
-import InferCode from './status/number/infer';
+import StrictOmit from '@alirya/object/strict-omit.js';
+import InferMessage from '@alirya/message/message/infer.js';
+import InferCode from './status/number/infer.js';
 import {Optional} from 'utility-types';
 
 export class CreateClass<

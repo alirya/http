@@ -1,23 +1,23 @@
-import {RequestHeaderFieldsTooLargeParameter, RequestHeaderFieldsTooLargeParameters} from '../../../dist/response/request-header-fields-too-large';
+import {RequestHeaderFieldsTooLargeParameter, RequestHeaderFieldsTooLargeParameters} from '../../../dist/response/request-header-fields-too-large.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = RequestHeaderFieldsTooLargeParameter({
+        const parameter = RequestHeaderFieldsTooLargeParameter({
             body,
             message,
             headers
         });
 
-        let parameters = RequestHeaderFieldsTooLargeParameters(message, headers, body);
+        const parameters = RequestHeaderFieldsTooLargeParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

@@ -1,9 +1,7 @@
-import Response from '../response/response';
-import Throwable from './throwable';
-import Callable from '@alirya/function/callable';
+import Response from '../response/response.js';
 import HttpError from 'http-errors';
-import OmitUndefined from '@alirya/object/omit-undefined';
-import Pick from '@alirya/object/pick';
+import OmitUndefined from '@alirya/object/omit-undefined.js';
+import Pick from '@alirya/object/pick.js';
 
 // export default function Create<ResponseType extends Pick<Response, 'code'|'message'|'body'>>(
 //     response: ResponseType,

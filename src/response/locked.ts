@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function LockedParameters() : LockedResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function LockedParameters<
     >;
 }
 
-export interface LockedResponse<
+export type LockedResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 423, Message> {
-
-}
+> = Response<Body, Headers, 423, Message>
 
 
 export function LockedParameter() : LockedResponse<undefined>;

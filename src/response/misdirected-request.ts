@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function MisdirectedRequestParameters() : MisdirectedRequestResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function MisdirectedRequestParameters<
     >;
 }
 
-export interface MisdirectedRequestResponse<
+export type MisdirectedRequestResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 421, Message> {
-
-}
+> = Response<Body, Headers, 421, Message>
 
 
 export function MisdirectedRequestParameter() : MisdirectedRequestResponse<undefined>;

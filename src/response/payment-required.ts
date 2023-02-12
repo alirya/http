@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function PaymentRequiredParameters() : PaymentRequiredResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function PaymentRequiredParameters<
     >;
 }
 
-export interface PaymentRequiredResponse<
+export type PaymentRequiredResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 402, Message> {
-
-}
+> = Response<Body, Headers, 402, Message>
 
 
 export function PaymentRequiredParameter() : PaymentRequiredResponse<undefined>;

@@ -1,8 +1,8 @@
-import Response from './response';
-import Throwable from '../throwable/boolean/throwable';
-import {CreateParameter} from './create';
-import {PickParameters} from '@alirya/object/pick';
-import {InternalServerErrorParameters} from './internal-server-error';
+import Response from './response.js';
+import Throwable from '../throwable/boolean/throwable.js';
+import {CreateParameter} from './create.js';
+import {PickParameters} from '@alirya/object/pick.js';
+import {InternalServerErrorParameters} from './internal-server-error.js';
 
 export default function FromError(error : Error) : Response {
 

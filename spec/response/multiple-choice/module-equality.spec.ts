@@ -1,23 +1,23 @@
-import {MultipleChoiceParameter, MultipleChoiceParameters} from '../../../dist/response/multiple-choice';
+import {MultipleChoiceParameter, MultipleChoiceParameters} from '../../../dist/response/multiple-choice.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = MultipleChoiceParameter({
+        const parameter = MultipleChoiceParameter({
             body,
             message,
             headers
         });
 
-        let parameters = MultipleChoiceParameters(message, headers, body);
+        const parameters = MultipleChoiceParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

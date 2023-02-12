@@ -1,23 +1,23 @@
-import {PayloadTooLargeParameter, PayloadTooLargeParameters} from '../../../dist/response/payload-too-large';
+import {PayloadTooLargeParameter, PayloadTooLargeParameters} from '../../../dist/response/payload-too-large.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = PayloadTooLargeParameter({
+        const parameter = PayloadTooLargeParameter({
             body,
             message,
             headers
         });
 
-        let parameters = PayloadTooLargeParameters(message, headers, body);
+        const parameters = PayloadTooLargeParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

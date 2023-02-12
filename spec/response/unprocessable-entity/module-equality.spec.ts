@@ -1,23 +1,23 @@
-import {UnprocessableEntityParameter, UnprocessableEntityParameters} from '../../../dist/response/unprocessable-entity';
+import {UnprocessableEntityParameter, UnprocessableEntityParameters} from '../../../dist/response/unprocessable-entity.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = UnprocessableEntityParameter({
+        const parameter = UnprocessableEntityParameter({
             body,
             message,
             headers
         });
 
-        let parameters = UnprocessableEntityParameters(message, headers, body);
+        const parameters = UnprocessableEntityParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

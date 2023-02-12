@@ -1,10 +1,10 @@
 import * as Fs from 'fs';
-import {Type} from './string/replace-content';
-import ReplaceFile from './void/replace-file';
-import FileName from './string/file-name';
-import Strict from '../dist/response/message/record/standard-strict';
-import StrictString from '../dist/response/message/string/strict';
-import StrictType from '../dist/response/code/number/strict';
+import {Type} from './string/replace-content.js';
+import ReplaceFile from './void/replace-file.js';
+import FileName from './string/file-name.js';
+import Strict from '../dist/response/message/record/standard-strict.js';
+import StrictString from '../dist/response/message/string/strict.js';
+import StrictType from '../dist/response/code/number/strict.js';
 
 const path = __dirname + '/../src/response';
 const specPath = __dirname + '/../spec/response';

@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function ForbiddenParameters() : ForbiddenResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function ForbiddenParameters<
     >;
 }
 
-export interface ForbiddenResponse<
+export type ForbiddenResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 403, Message> {
-
-}
+> = Response<Body, Headers, 403, Message>
 
 
 export function ForbiddenParameter() : ForbiddenResponse<undefined>;

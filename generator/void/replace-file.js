@@ -1,4 +1,4 @@
-import ReplaceContent from '../string/replace-content';
+import ReplaceContent from '../string/replace-content.js';
 import * as Fs from 'fs';
 export default function ReplaceFile(source, destination, search, replace) {
     let data = Fs.readFileSync(source).toString();

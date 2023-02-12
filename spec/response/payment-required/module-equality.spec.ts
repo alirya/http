@@ -1,23 +1,23 @@
-import {PaymentRequiredParameter, PaymentRequiredParameters} from '../../../dist/response/payment-required';
+import {PaymentRequiredParameter, PaymentRequiredParameters} from '../../../dist/response/payment-required.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = PaymentRequiredParameter({
+        const parameter = PaymentRequiredParameter({
             body,
             message,
             headers
         });
 
-        let parameters = PaymentRequiredParameters(message, headers, body);
+        const parameters = PaymentRequiredParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

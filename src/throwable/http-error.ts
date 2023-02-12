@@ -1,5 +1,5 @@
-// import Throwable from './throwable';
-// import Response from '../response/response';
+// import Throwable from './throwable.js';
+// import Response from '../response/response.js';
 //
 // export default class HttpError extends globalThis.Error implements Throwable {
 //

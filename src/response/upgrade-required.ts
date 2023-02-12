@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function UpgradeRequiredParameters() : UpgradeRequiredResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function UpgradeRequiredParameters<
     >;
 }
 
-export interface UpgradeRequiredResponse<
+export type UpgradeRequiredResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 426, Message> {
-
-}
+> = Response<Body, Headers, 426, Message>
 
 
 export function UpgradeRequiredParameter() : UpgradeRequiredResponse<undefined>;

@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function LoopDetectedParameters() : LoopDetectedResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function LoopDetectedParameters<
     >;
 }
 
-export interface LoopDetectedResponse<
+export type LoopDetectedResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 508, Message> {
-
-}
+> = Response<Body, Headers, 508, Message>
 
 
 export function LoopDetectedParameter() : LoopDetectedResponse<undefined>;

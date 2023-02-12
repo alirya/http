@@ -1,23 +1,23 @@
-import {UseProxyParameter, UseProxyParameters} from '../../../dist/response/use-proxy';
+import {UseProxyParameter, UseProxyParameters} from '../../../dist/response/use-proxy.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = UseProxyParameter({
+        const parameter = UseProxyParameter({
             body,
             message,
             headers
         });
 
-        let parameters = UseProxyParameters(message, headers, body);
+        const parameters = UseProxyParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

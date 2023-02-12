@@ -1,4 +1,4 @@
-import ServerError from '../../../../../dist/response/code/class/boolean/server-error';
+import ServerError from '../../../../../dist/response/status/class/boolean/server-error.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

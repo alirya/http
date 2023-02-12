@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function SeeOtherParameters() : SeeOtherResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function SeeOtherParameters<
     >;
 }
 
-export interface SeeOtherResponse<
+export type SeeOtherResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 303, Message> {
-
-}
+> = Response<Body, Headers, 303, Message>
 
 
 export function SeeOtherParameter() : SeeOtherResponse<undefined>;

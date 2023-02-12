@@ -1,4 +1,4 @@
-import Status from '../status';
+import Status from '../status.js';
 
 type Infer<Type> = Type extends Status<infer As> ? As : never;
 

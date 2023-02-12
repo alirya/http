@@ -1,8 +1,8 @@
-import PathInterface from './path/path';
-import MethodInterface from './method/method';
-import HeaderInterface from '../headers/headers';
-import BodyInterface from '../body/body';
-import StrictMethod from './method/string/strict';
+import PathInterface from './path/path.js';
+import MethodInterface from './method/method.js';
+import HeaderInterface from '../headers/headers.js';
+import BodyInterface from '../body/body.js';
+import StrictMethod from './method/string/strict.js';
 
 export default interface Strict<
     Method extends StrictMethod = StrictMethod,

@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function RangeNotSatisfiableParameters() : RangeNotSatisfiableResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function RangeNotSatisfiableParameters<
     >;
 }
 
-export interface RangeNotSatisfiableResponse<
+export type RangeNotSatisfiableResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 416, Message> {
-
-}
+> = Response<Body, Headers, 416, Message>
 
 
 export function RangeNotSatisfiableParameter() : RangeNotSatisfiableResponse<undefined>;

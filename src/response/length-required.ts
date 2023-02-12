@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function LengthRequiredParameters() : LengthRequiredResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function LengthRequiredParameters<
     >;
 }
 
-export interface LengthRequiredResponse<
+export type LengthRequiredResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 411, Message> {
-
-}
+> = Response<Body, Headers, 411, Message>
 
 
 export function LengthRequiredParameter() : LengthRequiredResponse<undefined>;

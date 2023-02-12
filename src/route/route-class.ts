@@ -1,4 +1,4 @@
-import Route from './route';
+import Route from './route.js';
 
 export default class RouteClass<
     Method extends string = string,

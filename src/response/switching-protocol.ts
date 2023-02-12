@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function SwitchingProtocolParameters() : SwitchingProtocolResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function SwitchingProtocolParameters<
     >;
 }
 
-export interface SwitchingProtocolResponse<
+export type SwitchingProtocolResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 101, Message> {
-
-}
+> = Response<Body, Headers, 101, Message>
 
 
 export function SwitchingProtocolParameter() : SwitchingProtocolResponse<undefined>;

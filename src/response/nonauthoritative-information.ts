@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function NonauthoritativeInformationParameters() : NonauthoritativeInformationResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function NonauthoritativeInformationParameters<
     >;
 }
 
-export interface NonauthoritativeInformationResponse<
+export type NonauthoritativeInformationResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 203, Message> {
-
-}
+> = Response<Body, Headers, 203, Message>
 
 
 export function NonauthoritativeInformationParameter() : NonauthoritativeInformationResponse<undefined>;

@@ -1,23 +1,23 @@
-import {EarlyHintsParameter, EarlyHintsParameters} from '../../../dist/response/early-hints';
+import {EarlyHintsParameter, EarlyHintsParameters} from '../../../dist/response/early-hints.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = EarlyHintsParameter({
+        const parameter = EarlyHintsParameter({
             body,
             message,
             headers
         });
 
-        let parameters = EarlyHintsParameters(message, headers, body);
+        const parameters = EarlyHintsParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

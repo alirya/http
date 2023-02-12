@@ -1,23 +1,23 @@
-import {NotAcceptableParameter, NotAcceptableParameters} from '../../../dist/response/not-acceptable';
+import {NotAcceptableParameter, NotAcceptableParameters} from '../../../dist/response/not-acceptable.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = NotAcceptableParameter({
+        const parameter = NotAcceptableParameter({
             body,
             message,
             headers
         });
 
-        let parameters = NotAcceptableParameters(message, headers, body);
+        const parameters = NotAcceptableParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

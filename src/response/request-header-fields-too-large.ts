@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function RequestHeaderFieldsTooLargeParameters() : RequestHeaderFieldsTooLargeResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function RequestHeaderFieldsTooLargeParameters<
     >;
 }
 
-export interface RequestHeaderFieldsTooLargeResponse<
+export type RequestHeaderFieldsTooLargeResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 431, Message> {
-
-}
+> = Response<Body, Headers, 431, Message>
 
 
 export function RequestHeaderFieldsTooLargeParameter() : RequestHeaderFieldsTooLargeResponse<undefined>;

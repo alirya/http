@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function HttpVersionNotSupportedParameters() : HttpVersionNotSupportedResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function HttpVersionNotSupportedParameters<
     >;
 }
 
-export interface HttpVersionNotSupportedResponse<
+export type HttpVersionNotSupportedResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 505, Message> {
-
-}
+> = Response<Body, Headers, 505, Message>
 
 
 export function HttpVersionNotSupportedParameter() : HttpVersionNotSupportedResponse<undefined>;

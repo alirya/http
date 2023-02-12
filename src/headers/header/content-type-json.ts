@@ -1,4 +1,4 @@
-import ContentType from './content-type';
+import ContentType from './content-type.js';
 
 const ContentTypeJson : Record<'Content-Type', string> = Object.freeze(ContentType('application/json'));
 

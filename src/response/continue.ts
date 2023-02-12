@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function ContinueParameters() : ContinueResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function ContinueParameters<
     >;
 }
 
-export interface ContinueResponse<
+export type ContinueResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 100, Message> {
-
-}
+> = Response<Body, Headers, 100, Message>
 
 
 export function ContinueParameter() : ContinueResponse<undefined>;

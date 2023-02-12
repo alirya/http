@@ -1,23 +1,23 @@
-import {UpgradeRequiredParameter, UpgradeRequiredParameters} from '../../../dist/response/upgrade-required';
+import {UpgradeRequiredParameter, UpgradeRequiredParameters} from '../../../dist/response/upgrade-required.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = UpgradeRequiredParameter({
+        const parameter = UpgradeRequiredParameter({
             body,
             message,
             headers
         });
 
-        let parameters = UpgradeRequiredParameters(message, headers, body);
+        const parameters = UpgradeRequiredParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function MovedPermanentlyParameters() : MovedPermanentlyResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function MovedPermanentlyParameters<
     >;
 }
 
-export interface MovedPermanentlyResponse<
+export type MovedPermanentlyResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 301, Message> {
-
-}
+> = Response<Body, Headers, 301, Message>
 
 
 export function MovedPermanentlyParameter() : MovedPermanentlyResponse<undefined>;

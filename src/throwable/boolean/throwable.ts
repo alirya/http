@@ -1,8 +1,7 @@
-// import Throwable from '../throwable';
-import Integer from '@alirya/number/boolean/integer';
-// import HttpError from '../http-error';
-import {HttpError, isHttpError} from 'http-errors';
-import Throwable from '../throwable';
+// import Throwable from '../throwable.js';
+// import HttpError from '../http-error.js';
+import {isHttpError} from 'http-errors';
+import Throwable from '../throwable.js';
 
 
 export default function Throwable(error: globalThis.Error) : error is Throwable {

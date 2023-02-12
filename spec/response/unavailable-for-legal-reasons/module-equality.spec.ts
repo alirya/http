@@ -1,23 +1,23 @@
-import {UnavailableForLegalReasonsParameter, UnavailableForLegalReasonsParameters} from '../../../dist/response/unavailable-for-legal-reasons';
+import {UnavailableForLegalReasonsParameter, UnavailableForLegalReasonsParameters} from '../../../dist/response/unavailable-for-legal-reasons.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = UnavailableForLegalReasonsParameter({
+        const parameter = UnavailableForLegalReasonsParameter({
             body,
             message,
             headers
         });
 
-        let parameters = UnavailableForLegalReasonsParameters(message, headers, body);
+        const parameters = UnavailableForLegalReasonsParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

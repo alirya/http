@@ -1,23 +1,23 @@
-import {BadRequestParameter, BadRequestParameters} from '../../../dist/response/bad-request';
+import {BadRequestParameter, BadRequestParameters} from '../../../dist/response/bad-request.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = BadRequestParameter({
+        const parameter = BadRequestParameter({
             body,
             message,
             headers
         });
 
-        let parameters = BadRequestParameters(message, headers, body);
+        const parameters = BadRequestParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

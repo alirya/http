@@ -1,9 +1,9 @@
-import Request from './request';
-import InferMethod from './method/string/infer';
-import InferPath from './path/path/infer';
-import InferHeader from '../headers/record/infer';
-import InferBody from '../body/value/infer';
-import Partial from '@alirya/object/partial';
+import Request from './request.js';
+import InferMethod from './method/string/infer.js';
+import InferPath from './path/path/infer.js';
+import InferHeader from '../headers/record/infer.js';
+import InferBody from '../body/value/infer.js';
+import Partial from '@alirya/object/partial.js';
 
 export class CreateClass<
     Method extends string = string,

@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function NotModifiedParameters() : NotModifiedResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function NotModifiedParameters<
     >;
 }
 
-export interface NotModifiedResponse<
+export type NotModifiedResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 304, Message> {
-
-}
+> = Response<Body, Headers, 304, Message>
 
 
 export function NotModifiedParameter() : NotModifiedResponse<undefined>;

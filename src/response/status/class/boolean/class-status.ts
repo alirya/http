@@ -1,9 +1,9 @@
-import Class from '../class';
-import ClientError from './client-error';
-import ServerError from './server-error';
-import Successful from './successful';
-import Informational from './informational';
-import Redirection from './redirection';
+import Class from '../class.js';
+import ClientError from './client-error.js';
+import ServerError from './server-error.js';
+import Successful from './successful.js';
+import Informational from './informational.js';
+import Redirection from './redirection.js';
 
 /**
  * check if {@param status} is part of {@param status} http status status class

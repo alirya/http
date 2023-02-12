@@ -1,23 +1,23 @@
-import {ImATeapotParameter, ImATeapotParameters} from '../../../dist/response/im-a-teapot';
+import {ImATeapotParameter, ImATeapotParameters} from '../../../dist/response/im-a-teapot.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = ImATeapotParameter({
+        const parameter = ImATeapotParameter({
             body,
             message,
             headers
         });
 
-        let parameters = ImATeapotParameters(message, headers, body);
+        const parameters = ImATeapotParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

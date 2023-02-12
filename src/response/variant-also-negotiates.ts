@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function VariantAlsoNegotiatesParameters() : VariantAlsoNegotiatesResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function VariantAlsoNegotiatesParameters<
     >;
 }
 
-export interface VariantAlsoNegotiatesResponse<
+export type VariantAlsoNegotiatesResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 506, Message> {
-
-}
+> = Response<Body, Headers, 506, Message>
 
 
 export function VariantAlsoNegotiatesParameter() : VariantAlsoNegotiatesResponse<undefined>;

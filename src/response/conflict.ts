@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function ConflictParameters() : ConflictResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function ConflictParameters<
     >;
 }
 
-export interface ConflictResponse<
+export type ConflictResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 409, Message> {
-
-}
+> = Response<Body, Headers, 409, Message>
 
 
 export function ConflictParameter() : ConflictResponse<undefined>;

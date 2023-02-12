@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function PreconditionFailedParameters() : PreconditionFailedResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function PreconditionFailedParameters<
     >;
 }
 
-export interface PreconditionFailedResponse<
+export type PreconditionFailedResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 412, Message> {
-
-}
+> = Response<Body, Headers, 412, Message>
 
 
 export function PreconditionFailedParameter() : PreconditionFailedResponse<undefined>;

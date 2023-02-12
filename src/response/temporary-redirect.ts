@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function TemporaryRedirectParameters() : TemporaryRedirectResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function TemporaryRedirectParameters<
     >;
 }
 
-export interface TemporaryRedirectResponse<
+export type TemporaryRedirectResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 307, Message> {
-
-}
+> = Response<Body, Headers, 307, Message>
 
 
 export function TemporaryRedirectParameter() : TemporaryRedirectResponse<undefined>;

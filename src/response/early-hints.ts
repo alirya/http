@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function EarlyHintsParameters() : EarlyHintsResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function EarlyHintsParameters<
     >;
 }
 
-export interface EarlyHintsResponse<
+export type EarlyHintsResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 103, Message> {
-
-}
+> = Response<Body, Headers, 103, Message>
 
 
 export function EarlyHintsParameter() : EarlyHintsResponse<undefined>;

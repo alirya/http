@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function NotExtendedParameters() : NotExtendedResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function NotExtendedParameters<
     >;
 }
 
-export interface NotExtendedResponse<
+export type NotExtendedResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 510, Message> {
-
-}
+> = Response<Body, Headers, 510, Message>
 
 
 export function NotExtendedParameter() : NotExtendedResponse<undefined>;

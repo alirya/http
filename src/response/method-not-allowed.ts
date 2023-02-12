@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function MethodNotAllowedParameters() : MethodNotAllowedResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function MethodNotAllowedParameters<
     >;
 }
 
-export interface MethodNotAllowedResponse<
+export type MethodNotAllowedResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 405, Message> {
-
-}
+> = Response<Body, Headers, 405, Message>
 
 
 export function MethodNotAllowedParameter() : MethodNotAllowedResponse<undefined>;

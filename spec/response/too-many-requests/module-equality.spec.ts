@@ -1,23 +1,23 @@
-import {TooManyRequestsParameter, TooManyRequestsParameters} from '../../../dist/response/too-many-requests';
+import {TooManyRequestsParameter, TooManyRequestsParameters} from '../../../dist/response/too-many-requests.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = TooManyRequestsParameter({
+        const parameter = TooManyRequestsParameter({
             body,
             message,
             headers
         });
 
-        let parameters = TooManyRequestsParameters(message, headers, body);
+        const parameters = TooManyRequestsParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

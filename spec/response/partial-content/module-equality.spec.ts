@@ -1,23 +1,23 @@
-import {PartialContentParameter, PartialContentParameters} from '../../../dist/response/partial-content';
+import {PartialContentParameter, PartialContentParameters} from '../../../dist/response/partial-content.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = PartialContentParameter({
+        const parameter = PartialContentParameter({
             body,
             message,
             headers
         });
 
-        let parameters = PartialContentParameters(message, headers, body);
+        const parameters = PartialContentParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

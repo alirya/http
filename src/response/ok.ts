@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function OkParameters() : OkResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function OkParameters<
     >;
 }
 
-export interface OkResponse<
+export type OkResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 200, Message> {
-
-}
+> = Response<Body, Headers, 200, Message>
 
 
 export function OkParameter() : OkResponse<undefined>;

@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function NetworkAuthenticationRequiredParameters() : NetworkAuthenticationRequiredResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function NetworkAuthenticationRequiredParameters<
     >;
 }
 
-export interface NetworkAuthenticationRequiredResponse<
+export type NetworkAuthenticationRequiredResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 511, Message> {
-
-}
+> = Response<Body, Headers, 511, Message>
 
 
 export function NetworkAuthenticationRequiredParameter() : NetworkAuthenticationRequiredResponse<undefined>;

@@ -1,9 +1,9 @@
-import Status from '../status';
-import Number from '@alirya/number/boolean/number';
+import StatusType from '../status.js';
+import Number from '@alirya/number/boolean/number.js';
 
-export default function Status(status: Status|object) : status is Status {
+export default function Status(status: StatusType|object) : status is StatusType {
 
-    return Number((status as Status).status);
+    return Number((status as StatusType).status);
 }
 
-export const IsStatus = Status;
+export {Status as IsStatus};

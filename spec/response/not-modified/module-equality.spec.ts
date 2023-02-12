@@ -1,23 +1,23 @@
-import {NotModifiedParameter, NotModifiedParameters} from '../../../dist/response/not-modified';
+import {NotModifiedParameter, NotModifiedParameters} from '../../../dist/response/not-modified.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = NotModifiedParameter({
+        const parameter = NotModifiedParameter({
             body,
             message,
             headers
         });
 
-        let parameters = NotModifiedParameters(message, headers, body);
+        const parameters = NotModifiedParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

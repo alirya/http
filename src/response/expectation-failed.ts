@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function ExpectationFailedParameters() : ExpectationFailedResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function ExpectationFailedParameters<
     >;
 }
 
-export interface ExpectationFailedResponse<
+export type ExpectationFailedResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 417, Message> {
-
-}
+> = Response<Body, Headers, 417, Message>
 
 
 export function ExpectationFailedParameter() : ExpectationFailedResponse<undefined>;

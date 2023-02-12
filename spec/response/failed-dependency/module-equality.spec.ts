@@ -1,23 +1,23 @@
-import {FailedDependencyParameter, FailedDependencyParameters} from '../../../dist/response/failed-dependency';
+import {FailedDependencyParameter, FailedDependencyParameters} from '../../../dist/response/failed-dependency.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = FailedDependencyParameter({
+        const parameter = FailedDependencyParameter({
             body,
             message,
             headers
         });
 
-        let parameters = FailedDependencyParameters(message, headers, body);
+        const parameters = FailedDependencyParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

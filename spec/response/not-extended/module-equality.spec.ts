@@ -1,23 +1,23 @@
-import {NotExtendedParameter, NotExtendedParameters} from '../../../dist/response/not-extended';
+import {NotExtendedParameter, NotExtendedParameters} from '../../../dist/response/not-extended.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = NotExtendedParameter({
+        const parameter = NotExtendedParameter({
             body,
             message,
             headers
         });
 
-        let parameters = NotExtendedParameters(message, headers, body);
+        const parameters = NotExtendedParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

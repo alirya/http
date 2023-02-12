@@ -1,5 +1,5 @@
-import FileName from './file-name';
-import DefinitionName from './definition-name';
+import FileName from './file-name.js';
+import DefinitionName from './definition-name.js';
 export default function ReplaceContent(content, search, replace) {
     const importS = FileName(search.identifier);
     const importR = FileName(replace.identifier);

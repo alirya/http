@@ -1,23 +1,23 @@
-import {MovedPermanentlyParameter, MovedPermanentlyParameters} from '../../../dist/response/moved-permanently';
+import {MovedPermanentlyParameter, MovedPermanentlyParameters} from '../../../dist/response/moved-permanently.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = MovedPermanentlyParameter({
+        const parameter = MovedPermanentlyParameter({
             body,
             message,
             headers
         });
 
-        let parameters = MovedPermanentlyParameters(message, headers, body);
+        const parameters = MovedPermanentlyParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

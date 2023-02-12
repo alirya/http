@@ -1,23 +1,23 @@
-import {ForbiddenParameter, ForbiddenParameters} from '../../../dist/response/forbidden';
+import {ForbiddenParameter, ForbiddenParameters} from '../../../dist/response/forbidden.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
-describe('validate data', function() {
+describe('validate data.js', function() {
 
-    const body = 'data';
-    const message = 'data';
+    const body = 'data.js';
+    const message = 'data.js';
     const headers = {etag:'etag data'};
 
 
     it('all', function() {
 
-        let parameter = ForbiddenParameter({
+        const parameter = ForbiddenParameter({
             body,
             message,
             headers
         });
 
-        let parameters = ForbiddenParameters(message, headers, body);
+        const parameters = ForbiddenParameters(message, headers, body);
 
         expect(parameter).toEqual(parameters);
     });

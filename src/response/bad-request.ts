@@ -1,5 +1,5 @@
-import Response from './response';
-import {CreateParameter} from './create';
+import Response from './response.js';
+import {CreateParameter} from './create.js';
 
 export function BadRequestParameters() : BadRequestResponse<undefined>;
 
@@ -38,13 +38,11 @@ export function BadRequestParameters<
     >;
 }
 
-export interface BadRequestResponse<
+export type BadRequestResponse<
     Body = unknown,
     Headers extends {} = {},
     Message extends string = string,
-> extends Response<Body, Headers, 400, Message> {
-
-}
+> = Response<Body, Headers, 400, Message>
 
 
 export function BadRequestParameter() : BadRequestResponse<undefined>;
