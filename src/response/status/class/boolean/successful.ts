@@ -9,3 +9,5 @@ export default function Successful (status : number) : boolean {
 
     return GreaterParameters(status, 200, true) && LowerParameters(status, 300, false);
 }
+
+export {Successful as IsSuccessful};

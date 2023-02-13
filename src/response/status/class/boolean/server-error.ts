@@ -9,3 +9,5 @@ export default function ServerError(status : number) : boolean {
 
     return GreaterParameters(status, 500, true) && LowerParameters(status, 600, false);
 }
+
+export {ServerError as IsServerError};

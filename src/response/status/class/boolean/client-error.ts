@@ -9,3 +9,5 @@ export default function ClientError(status : number) : boolean {
 
     return GreaterParameters(status, 400, true) && LowerParameters(status, 500, false);
 }
+
+export {ClientError as IsClientError};

@@ -9,3 +9,5 @@ export default function Informational(status : number) : boolean {
 
     return GreaterParameters(status, 100, true) && LowerParameters(status, 200, false);
 }
+
+export {Informational as IsInformational};
