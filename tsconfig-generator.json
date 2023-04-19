@@ -2,7 +2,7 @@
   "compilerOptions": {
     "removeComments" : false,
     "moduleResolution": "node",
-    "module": "es2015",
+    "module": "es2020",
     "declaration": true,
     "target": "es2016",
     "outDir": "dist-generator",
