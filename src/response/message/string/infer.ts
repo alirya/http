@@ -1,3 +1,3 @@
-import Infer from '@alirya/message/message/infer.js';
+import Infer from '@axiona/message/message/infer.js';
 
 export default Infer;

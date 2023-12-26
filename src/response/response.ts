@@ -1,6 +1,6 @@
 import HeaderInterface from '../headers/headers.js';
 import BodyInterface from '../body/body.js';
-import MessageInterface from '@alirya/message/message.js';
+import MessageInterface from '@axiona/message/message.js';
 import CodeInterface from './status/status.js';
 
 export default interface Response<

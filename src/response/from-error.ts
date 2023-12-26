@@ -1,7 +1,7 @@
 import Response from './response.js';
 import Throwable from '../throwable/boolean/throwable.js';
 import {CreateParameter} from './create.js';
-import {PickParameters} from '@alirya/object/pick.js';
+import {PickParameters} from '@axiona/object/pick.js';
 import {InternalServerErrorParameters} from './internal-server-error.js';
 
 export default function FromError(error : Error) : Response {

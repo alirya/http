@@ -4,8 +4,8 @@ import MessageCode from './message/string/strict.js';
 import InferHeader from '../headers/record/infer.js';
 import InferBody from '../body/value/infer.js';
 import {Object} from 'ts-toolbelt';
-import StrictOmit from '@alirya/object/strict-omit.js';
-import InferMessage from '@alirya/message/message/infer.js';
+import StrictOmit from '@axiona/object/strict-omit.js';
+import InferMessage from '@axiona/message/message/infer.js';
 import InferCode from './status/number/infer.js';
 import {Optional} from 'utility-types';
 

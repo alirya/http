@@ -1,5 +1,5 @@
-import {LowerParameters} from '@alirya/number/boolean/lower.js';
-import {GreaterParameters} from '@alirya/number/boolean/greater.js';
+import {LowerParameters} from '@axiona/number/boolean/lower.js';
+import {GreaterParameters} from '@axiona/number/boolean/greater.js';
 /**
  * check if {@param status} is part of server error http status status (5xx)
  *

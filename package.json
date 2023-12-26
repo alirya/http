@@ -1,5 +1,5 @@
 {
-  "name": "@alirya/http",
+  "name": "@axiona/http",
   "version": "0.19.1",
   "description": "Typescript http",
   "publishConfig": {
@@ -12,22 +12,22 @@
     "cache": false
   },
   "license": "Apache-2.0",
-  "homepage": "https://github.com/alirya/http",
+  "homepage": "https://github.com/axiona/http",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alirya/http"
+    "url": "https://github.com/axiona/http"
   },
   "dependencies": {
     "tslib": "^2.5.0",
-    "@alirya/array": "^0.27.1",
-    "@alirya/code": "^0.4.1",
-    "@alirya/enum": "^0.13.1",
-    "@alirya/map": "^0.13.1",
-    "@alirya/function": "^0.17.1",
-    "@alirya/message": "^0.13.1",
-    "@alirya/number": "^0.18.2",
-    "@alirya/object": "^0.38.1",
-    "@alirya/string": "^0.17.1",
+    "@axiona/array": "^0.27.1",
+    "@axiona/code": "^0.4.1",
+    "@axiona/enum": "^0.13.1",
+    "@axiona/map": "^0.13.1",
+    "@axiona/function": "^0.17.1",
+    "@axiona/message": "^0.13.1",
+    "@axiona/number": "^0.18.2",
+    "@axiona/object": "^0.38.1",
+    "@axiona/string": "^0.17.1",
     "ts-toolbelt": "^9.6.0",
     "utility-types": "^3.10.0",
     "@types/http-errors": "^1.8.2",

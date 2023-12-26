@@ -1,5 +1,5 @@
-import {StringParameters} from '@alirya/map/string/string.js';
-import {MapperParameters} from '@alirya/map/mapper.js';
+import {StringParameters} from '@axiona/map/string/string.js';
+import {MapperParameters} from '@axiona/map/mapper.js';
 
 export default class CommaQuality extends Map<string, number> {
 

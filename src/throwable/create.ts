@@ -1,7 +1,7 @@
 import Response from '../response/response.js';
 import HttpError from 'http-errors';
-import OmitUndefined from '@alirya/object/omit-undefined.js';
-import Pick from '@alirya/object/pick.js';
+import OmitUndefined from '@axiona/object/omit-undefined.js';
+import Pick from '@axiona/object/pick.js';
 
 // export default function Create<ResponseType extends Pick<Response, 'code'|'message'|'body'>>(
 //     response: ResponseType,

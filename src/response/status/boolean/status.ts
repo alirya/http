@@ -1,5 +1,5 @@
 import StatusType from '../status.js';
-import Number from '@alirya/number/boolean/number.js';
+import Number from '@axiona/number/boolean/number.js';
 
 export default function Status(status: StatusType|object) : status is StatusType {
 

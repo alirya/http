@@ -1,8 +1,8 @@
 import RequestInterface from '../request.js';
-import String from '@alirya/string/boolean/string.js';
-import {ExistsParameters} from '@alirya/object/property/boolean/exists.js';
-import Object_ from '@alirya/object/boolean/object.js';
-import Enum from '@alirya/enum/boolean/enum.js';
+import String from '@axiona/string/boolean/string.js';
+import {ExistsParameters} from '@axiona/object/property/boolean/exists.js';
+import Object_ from '@axiona/object/boolean/object.js';
+import Enum from '@axiona/enum/boolean/enum.js';
 import Method from '../method/enum/method.js';
 
 export default function Request(value : object) : value is RequestInterface {

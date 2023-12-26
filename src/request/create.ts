@@ -3,7 +3,7 @@ import InferMethod from './method/string/infer.js';
 import InferPath from './path/path/infer.js';
 import InferHeader from '../headers/record/infer.js';
 import InferBody from '../body/value/infer.js';
-import Partial from '@alirya/object/partial.js';
+import Partial from '@axiona/object/partial.js';
 
 export class CreateClass<
     Method extends string = string,
