@@ -1,6 +1,6 @@
 {
   "name": "@axiona/http",
-  "version": "0.19.1",
+  "version": "0.20.0",
   "description": "Typescript http",
   "publishConfig": {
     "directory": "dist"
@@ -19,15 +19,15 @@
   },
   "dependencies": {
     "tslib": "^2.5.0",
-    "@axiona/array": "^0.27.1",
-    "@axiona/code": "^0.4.1",
-    "@axiona/enum": "^0.13.1",
-    "@axiona/map": "^0.13.1",
-    "@axiona/function": "^0.17.1",
-    "@axiona/message": "^0.13.1",
-    "@axiona/number": "^0.18.2",
-    "@axiona/object": "^0.38.1",
-    "@axiona/string": "^0.17.1",
+    "@axiona/array": "^0.28.0",
+    "@axiona/code": "^0.5.0",
+    "@axiona/enum": "^0.14.0",
+    "@axiona/map": "^0.14.0",
+    "@axiona/function": "^0.18.0",
+    "@axiona/message": "^0.14.0",
+    "@axiona/number": "^0.19.0",
+    "@axiona/object": "^0.39.0",
+    "@axiona/string": "^0.18.0",
     "ts-toolbelt": "^9.6.0",
     "utility-types": "^3.10.0",
     "@types/http-errors": "^1.8.2",
